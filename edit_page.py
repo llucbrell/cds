@@ -11,7 +11,11 @@ def create_edit_page(collection_id):
             dbc.Col([
                 html.H3("Tests"),
                 dbc.Input(id="new-test-name", placeholder="Nombre del test", type="text", className="mb-2"),
-                dbc.Button("Agregar Test +", id="add-test-button", color="primary", className="mb-2"),
+                dcc.ConfirmDialogProvider(
+                    children=dbc.Button("Agregar Test +", id="add-test-button", color="primary", className="mb-2"),
+                    id='alert',
+                    message='Botón Agregar Test presionado',
+                ),
                 html.Div(id="test-warning", style={"color": "red"}),
                 html.Div(id="test-table")
             ])

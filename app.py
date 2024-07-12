@@ -7,7 +7,6 @@ from flask import Flask
 from database import Database
 from layout import create_layout
 from edit_page import create_edit_page
-import edit_callbacks  # Asegúrate de que este import se hace después de definir `app` y `db`
 
 server = Flask(__name__)
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True, server=server)
@@ -74,6 +73,9 @@ def display_page(pathname):
         return create_edit_page(collection_id)
     else:
         return '404'
+
+
+import edit_callbacks
 
 if __name__ == '__main__':
     app.run_server(debug=True)
