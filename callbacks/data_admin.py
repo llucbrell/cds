@@ -11,6 +11,7 @@ def register_callbacks(dash_app):
         Output('auth-url-input', 'value'),
         Output('api-key-input', 'value'),
         Output('my-input', 'value'),
+        Output('template-input', 'value'),
         Input('url', 'pathname')
     )
     def load_data(pathname):
@@ -19,8 +20,8 @@ def register_callbacks(dash_app):
             test_id = int(parts[2])
             data = db.get_data(test_id)
             if data:
-                return data.auth_url, data.api_key, data.target_url
-        return '', '', ''
+                return data.auth_url, data.api_key, data.target_url, data.prompt_template
+        return '', '', '', ''
 
     @dash_app.callback(
         Output('save-auth-url-output', 'children'),
@@ -68,6 +69,21 @@ def register_callbacks(dash_app):
             return 'Target URL saved'
 
     @dash_app.callback(
+        Output('save-prompt-template-output', 'children'),
+        [Input('save-prompt-template', 'n_clicks')],
+        [State('template-input', 'value'), State('url', 'pathname')]
+    )
+    def save_prompt_template(n_clicks, template_text, pathname):
+        if n_clicks is None:
+            return ''
+        
+        parts = pathname.strip('/').split('/')
+        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
+            test_id = int(parts[2])
+            db.save_data(test_id, prompt_template=template_text)
+            return 'Prompt Template saved'
+
+    @dash_app.callback(
         Output('processed-text-store', 'data'),
         Output('template-output', 'children'),
         [Input('template-button', 'n_clicks')],
@@ -95,32 +111,3 @@ def register_callbacks(dash_app):
             return f'Sent to {url}. Response: {response}', False
         except Exception as e:
             return str(e), False
-
-    @dash_app.callback(
-        Output('save-prompt-template-output', 'children'),
-        Output('template-input', 'value'),  # Añadido para actualizar el campo de textarea después de guardar
-        [Input('save-prompt-template', 'n_clicks')],
-        [State('template-input', 'value'), State('url', 'pathname')]
-    )
-    def save_prompt_template(n_clicks, template_text, pathname):
-        if n_clicks is None:
-            return '', template_text  # Devuelve el valor actual si no se ha hecho clic
-
-        parts = pathname.strip('/').split('/')
-        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
-            test_id = int(parts[2])
-            db.save_data(test_id, prompt_template=template_text)
-            return 'Prompt Template saved', template_text  # Actualiza el campo de textarea con el valor guardado
-
-    @dash_app.callback(
-        Output('template-input', 'value'),
-        Input('url', 'pathname')
-    )
-    def load_prompt_template(pathname):
-        parts = pathname.strip('/').split('/')
-        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
-            test_id = int(parts[2])
-            data = db.get_data(test_id)
-            if data:
-                return data.prompt_template
-        return ''
