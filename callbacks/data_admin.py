@@ -2,42 +2,70 @@ from dash.dependencies import Input, Output, State
 from models import Database
 from componentes.text_processing import render_template
 from componentes.send_request import send_to_model
+import dash
 
 def register_callbacks(dash_app):
-    @dash_app.callback(
-        Output('my-output', 'children'),
-        [Input('my-input', 'value')]
-    )
-    def update_output_div(input_value):
-        return f'Output: {input_value}'
+    db = Database()
 
     @dash_app.callback(
-        Output('button-output', 'children'),
-        [Input('my-button', 'n_clicks')]
-    )
-    def update_button_output(n_clicks):
-        if n_clicks is None:
-            return 'Button not clicked yet'
-        else:
-            return f'Button clicked {n_clicks} times'
-
-    @dash_app.callback(
-        Output('collection-name', 'children'),
-        Output('test-name', 'children'),
+        Output('auth-url-input', 'value'),
+        Output('api-key-input', 'value'),
+        Output('my-input', 'value'),
         Input('url', 'pathname')
     )
-    def update_collection_and_test_name(pathname):
-        # Extrae el test_id y collection_id de la URL
+    def load_data(pathname):
         parts = pathname.strip('/').split('/')
         if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
             test_id = int(parts[2])
-            collection_id = int(parts[3])
-            db = Database()
-            collection = db.get_collection(collection_id)
-            test = db.get_test(test_id)
-            if collection and test:
-                return collection.name, test.name
-        return 'N/A', 'N/A'
+            data = db.get_data(test_id)
+            if data:
+                return data.auth_url, data.api_key, data.target_url
+        return '', '', ''
+
+    @dash_app.callback(
+        Output('save-auth-url-output', 'children'),
+        [Input('save-auth-url-button', 'n_clicks')],
+        [State('auth-url-input', 'value'), State('url', 'pathname')]
+    )
+    def save_auth_url(n_clicks, auth_url, pathname):
+        if n_clicks is None:
+            return ''
+        
+        parts = pathname.strip('/').split('/')
+        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
+            test_id = int(parts[2])
+            db.save_data(test_id, auth_url=auth_url)
+            return 'Auth URL saved'
+
+    @dash_app.callback(
+        Output('save-api-key-output', 'children'),
+        [Input('save-api-key-button', 'n_clicks')],
+        [State('api-key-input', 'value'), State('url', 'pathname')]
+    )
+    def save_api_key(n_clicks, api_key, pathname):
+        if n_clicks is None:
+            return ''
+        
+        parts = pathname.strip('/').split('/')
+        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
+            test_id = int(parts[2])
+            db.save_data(test_id, api_key=api_key)
+            return 'API Key saved'
+
+    @dash_app.callback(
+        Output('save-target-url-output', 'children'),
+        [Input('save-target-url-button', 'n_clicks')],
+        [State('my-input', 'value'), State('url', 'pathname')]
+    )
+    def save_target_url(n_clicks, target_url, pathname):
+        if n_clicks is None:
+            return ''
+        
+        parts = pathname.strip('/').split('/')
+        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
+            test_id = int(parts[2])
+            db.save_data(test_id, target_url=target_url)
+            return 'Target URL saved'
 
     @dash_app.callback(
         Output('processed-text-store', 'data'),
@@ -49,18 +77,21 @@ def register_callbacks(dash_app):
         if n_clicks is None or template_text is None:
             return '', ''
         
-        # Usar la función render_template para procesar el texto
         rendered_text = render_template(template_text)
         return rendered_text, rendered_text
 
     @dash_app.callback(
         Output('send-output', 'children'),
+        Output('template-send-button', 'disabled'),
         [Input('template-send-button', 'n_clicks')],
-        [State('my-input', 'value'), State('processed-text-store', 'data')]
+        [State('auth-url-input', 'value'), State('api-key-input', 'value'), State('my-input', 'value'), State('processed-text-store', 'data')]
     )
-    def send_processed_template(n_clicks, url, processed_text):
-        if n_clicks is None or not url or not processed_text:
-            return 'Invalid URL or processed text'
-        
-        response = send_to_model(url, processed_text)
-        return f'Sent to {url}. Response: {response}'
+    def send_processed_template(n_clicks, auth_url, api_key, url, processed_text):
+        if n_clicks is None or not auth_url or not api_key or not url or not processed_text:
+            return 'Invalid Auth URL, API Key, URL, or processed text', False
+
+        try:
+            response = send_to_model(auth_url, api_key, url, processed_text)
+            return f'Sent to {url}. Response: {response}', False
+        except Exception as e:
+            return str(e), False
