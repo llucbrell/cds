@@ -44,6 +44,17 @@ class Database:
         self.session.delete(collection)
         self.session.commit()
 
+    def update_collection(self, collection_id, new_name):
+        collection = self.session.query(Collection).get(collection_id)
+        collection.name = new_name
+        self.session.commit()
+
+    def get_collection(self, collection_id):
+        return self.session.query(Collection).get(collection_id)
+
+    def get_collections(self):
+        return self.session.query(Collection).all()
+
     def add_test(self, collection_id, name):
         new_test = Test(collection_id=collection_id, name=name)
         self.session.add(new_test)
@@ -58,9 +69,6 @@ class Database:
         new_execution = Execution(test_id=test_id, result=result)
         self.session.add(new_execution)
         self.session.commit()
-
-    def get_collections(self):
-        return self.session.query(Collection).all()
 
     def get_tests(self, collection_id):
         return self.session.query(Test).filter_by(collection_id=collection_id).all()
