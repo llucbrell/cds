@@ -1,0 +1,3 @@
+test_docs/
+__pycache__/
+tests.db
