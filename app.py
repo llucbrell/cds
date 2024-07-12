@@ -72,14 +72,15 @@ def delete_execution(execution_id, test_id):
     return redirect(url_for('executions', test_id=test_id))
 
 
+##########################################################
+# Ruta para la aplicación Dash a modo de manager de datos
+##########################################################
 
-
-#################################
-# Ruta para la aplicación Dash
-@app.route('/dash')
-def render_dash():
+@app.route('/tests/config/<int:test_id>/<int:collection_id>')
+def config_test(test_id, collection_id):
     # Pasar el contenido HTML generado por Dash al renderizar la plantilla
-    return render_template('dash_layout.html', dash_html=dash_app.index())
+    return render_template('dash_layout.html', dash_html=dash_app.index(), test_id=test_id, collection_id=collection_id)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
