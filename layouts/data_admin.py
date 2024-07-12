@@ -28,8 +28,6 @@ layout = dbc.Container([
             html.H3('Plantilla de Request', className="form-label"),
             dcc.Textarea(id='template-request', placeholder="Escribe la plantilla de reques como objeto json" ,value='', className="form-control", style={'width': '100%', 'height': 200}),
             dbc.Button('Save', id='save-request-template', color='primary', className="mt-2"),
-            dbc.Button('Download', id='download-request-template', color='primary', className="mt-2"),
-            dbc.Button('Load', id='load-request-template', color='primary', className="mt-2"),
             dbc.Button('Process Template', id='template-request-button', color='primary', className="mt-2"),
             html.Div(id='template-request-output', className="mt-3"),
             dcc.Store(id='processed-text-request-store')
@@ -40,8 +38,6 @@ layout = dbc.Container([
             html.H3('Constructor de plantilla de Prompts', className="form-label"),
             dcc.Textarea(id='template-input', placeholder="Escribe combinando texto normal y texto entre {{}} de manera que se sustituyan los valores al pulsar sobre el botón, prueba con {{date}}" ,value='', className="form-control", style={'width': '100%', 'height': 200}),
             dbc.Button('Save', id='save-prompt-template', color='primary', className="mt-2"),
-            dbc.Button('Download', id='download-prompt-template', color='primary', className="mt-2"),
-            dbc.Button('Load', id='load-prompt-template', color='primary', className="mt-2"),
             dbc.Button('Process Template', id='template-button', color='primary', className="mt-2"),
             dbc.Button('Prueba', id='template-send-button', color='primary', className="mt-2", disabled=False),
             html.Div(id='template-output', className="mt-3"),
