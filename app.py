@@ -1,15 +1,19 @@
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html, Input, Output, State
-from dash.exceptions import PreventUpdate
 from dash.dependencies import ALL
+from dash.exceptions import PreventUpdate  # Asegúrate de importar PreventUpdate
+from flask import Flask
 from database import Database
 from layout import create_layout
+from edit_page import create_edit_page
+import edit_callbacks  # Asegúrate de que este import se hace después de definir `app` y `db`
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
+server = Flask(__name__)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True, server=server)
 db = Database()
 
-app.layout = create_layout
+app.layout = create_layout()
 
 @app.callback(
     [Output("collection-warning", "children"),
@@ -57,6 +61,19 @@ def manage_collections(add_n_clicks, delete_n_clicks, collection_name, delete_id
         html.Thead(html.Tr([html.Th("Nombre"), html.Th("ID"), html.Th("Acciones")])),
         html.Tbody(rows)
     ], bordered=True, striped=True, hover=True)]
+
+@app.callback(
+    Output('page-content', 'children'),
+    [Input('url', 'pathname')]
+)
+def display_page(pathname):
+    if pathname == '/':
+        return []
+    elif pathname.startswith('/edit/'):
+        collection_id = pathname.split('/')[-1]
+        return create_edit_page(collection_id)
+    else:
+        return '404'
 
 if __name__ == '__main__':
     app.run_server(debug=True)

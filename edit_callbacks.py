@@ -1,46 +1,54 @@
-from dash import Input, Output, State, callback
-from dash.exceptions import PreventUpdate
-from database import Database
+from dash import dcc, html, Input, Output, State
+from dash.exceptions import PreventUpdate  # Asegúrate de importar PreventUpdate
+from dash.dependencies import ALL
+import dash_bootstrap_components as dbc
+from app import app, db  # Asegúrate de que `app` y `db` se han definido antes de este import
 
-db = Database()
-
-@callback(
-    Output("edit-content", "children"),
-    [Input("url", "pathname")]
+@app.callback(
+    [Output("test-warning", "children"),
+     Output("test-table", "children")],
+    [Input("add-test-button", "n_clicks"),
+     Input({"type": "delete-test-button", "index": ALL}, "n_clicks")],
+    [State("new-test-name", "value"),
+     State("collection-id", "data"),
+     State({"type": "delete-test-button", "index": ALL}, "id")]
 )
-def display_edit_page(pathname):
-    if not pathname.startswith("/edit/"):
+def manage_tests(add_n_clicks, delete_n_clicks, test_name, collection_id, delete_ids):
+    ctx = dash.callback_context
+    if not ctx.triggered:
         raise PreventUpdate
 
-    collection_id = pathname.split("/")[-1]
-    collection = db.get_collection(int(collection_id))
+    warning_message = ""
+    triggered_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
-    if collection:
-        return html.Div([
-            html.H3(f"Editando colección: {collection.name} (ID: {collection.id})"),
-            dbc.Input(id="edit-collection-name", value=collection.name, placeholder="Nuevo nombre de la colección", type="text", className="mb-2"),
-            dbc.Button("Guardar Cambios", id="save-edit-button", color="primary", className="mb-2"),
-            html.Div(id="edit-warning", style={"color": "red"})
+    print(f"Triggered ID: {triggered_id}")
+    print(f"add_n_clicks: {add_n_clicks}, delete_n_clicks: {delete_n_clicks}")
+    print(f"test_name: {test_name}, collection_id: {collection_id}, delete_ids: {delete_ids}")
+
+    if "add-test-button" in triggered_id and add_n_clicks:
+        if test_name:
+            db.add_test(collection_id, test_name)
+        else:
+            warning_message = "El nombre del test no puede estar vacío."
+
+    if "delete-test-button" in triggered_id:
+        delete_index = ctx.triggered[0]['prop_id'].split('.')[0]
+        test_id = eval(delete_index)["index"]
+        db.delete_test(test_id)
+
+    tests = db.get_tests(collection_id)
+    rows = []
+    for test in tests:
+        row = html.Tr([
+            html.Td(test.name),
+            html.Td(test.id),
+            html.Td([
+                dbc.Button("Borrar", id={"type": "delete-test-button", "index": test.id}, size="sm", className="ml-2")
+            ])
         ])
-    else:
-        return html.Div([
-            html.H3("Colección no encontrada."),
-            dcc.Link("Volver a la página principal", href="/")
-        ])
+        rows.append(row)
 
-@callback(
-    Output("edit-warning", "children"),
-    Input("save-edit-button", "n_clicks"),
-    [State("edit-collection-name", "value"),
-     State("url", "pathname")]
-)
-def save_edit(n_clicks, new_name, pathname):
-    if not n_clicks:
-        raise PreventUpdate
-
-    collection_id = pathname.split("/")[-1]
-    if new_name:
-        db.update_collection(int(collection_id), new_name)
-        return "Cambios guardados con éxito."
-    else:
-        return "El nombre no puede estar vacío."
+    return warning_message, [dbc.Table([
+        html.Thead(html.Tr([html.Th("Nombre"), html.Th("ID"), html.Th("Acciones")])),
+        html.Tbody(rows)
+    ], bordered=True, striped=True, hover=True)]
