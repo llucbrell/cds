@@ -11,6 +11,7 @@ dash_app = create_dash_app(app)
 
 db = Database()
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -42,12 +43,13 @@ def delete_collection(collection_id):
 # Rutas para tests
 @app.route('/tests/<int:collection_id>', methods=['GET', 'POST'])
 def tests(collection_id):
+    collection = db.get_collection(collection_id)
     if request.method == 'POST':
         name = request.form['name']
         db.add_test(collection_id, name)
         return redirect(url_for('tests', collection_id=collection_id))
     tests = db.get_tests(collection_id)
-    return render_template('tests.html', tests=tests, collection_id=collection_id)
+    return render_template('tests.html', tests=tests, collection=collection)
 
 @app.route('/tests/delete/<int:test_id>/<int:collection_id>')
 def delete_test(test_id, collection_id):
@@ -70,6 +72,9 @@ def delete_execution(execution_id, test_id):
     return redirect(url_for('executions', test_id=test_id))
 
 
+
+
+#################################
 # Ruta para la aplicación Dash
 @app.route('/dash')
 def render_dash():
