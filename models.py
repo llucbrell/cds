@@ -33,6 +33,8 @@ class Data(Base):
     auth_url = Column(String, nullable=True)
     api_key = Column(String, nullable=True)
     target_url = Column(String, nullable=True)
+    request_template = Column(String, nullable=True)
+    prompt_template = Column(String, nullable=True)
     test = relationship('Test', back_populates='data')
 
 DATABASE_URL = "sqlite:///tests.db"
@@ -92,10 +94,10 @@ class Database:
     def get_data(self, test_id):
         return self.session.query(Data).filter_by(test_id=test_id).first()
 
-    def save_data(self, test_id, auth_url=None, api_key=None, target_url=None):
+    def save_data(self, test_id, auth_url=None, api_key=None, target_url=None, request_template=None, prompt_template=None):
         data = self.session.query(Data).filter_by(test_id=test_id).first()
         if not data:
-            data = Data(test_id=test_id, auth_url=auth_url, api_key=api_key, target_url=target_url)
+            data = Data(test_id=test_id, auth_url=auth_url, api_key=api_key, target_url=target_url, request_template=request_template, prompt_template=prompt_template)
             self.session.add(data)
         else:
             if auth_url is not None:
@@ -104,4 +106,8 @@ class Database:
                 data.api_key = api_key
             if target_url is not None:
                 data.target_url = target_url
+            if request_template is not None:
+                data.request_template = request_template
+            if prompt_template is not None:
+                data.prompt_template = prompt_template
         self.session.commit()

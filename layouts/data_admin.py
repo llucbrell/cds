@@ -43,8 +43,9 @@ layout = dbc.Container([
             dbc.Button('Download', id='download-prompt-template', color='primary', className="mt-2"),
             dbc.Button('Load', id='load-prompt-template', color='primary', className="mt-2"),
             dbc.Button('Process Template', id='template-button', color='primary', className="mt-2"),
-            dbc.Button('Prueba', id='template-send-button', color='primary', className="mt-2", disabled=False),
+            dbc.Button('Prueba', id='template-send-button', color='primary', className="mt-3", disabled=False),
             html.Div(id='template-output', className="mt-3"),
+            html.Div(id='save-prompt-template-output', className="mt-3"),
             dcc.Store(id='processed-text-store')
         ])
     ]),
