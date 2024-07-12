@@ -60,6 +60,9 @@ class Database:
         self.session.add(new_test)
         self.session.commit()
 
+    def get_test(self, test_id):
+        return self.session.query(Test).get(test_id)
+
     def delete_test(self, test_id):
         test = self.session.query(Test).get(test_id)
         self.session.delete(test)
