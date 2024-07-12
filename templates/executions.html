@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Executions</h1>
+<form method="POST">
+    <div class="form-group">
+        <label for="result">Execution Result</label>
+        <input type="text" class="form-control" id="result" name="result" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Execution</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Result</th>
+            <th>Timestamp</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for execution in executions %}
+        <tr>
+            <td>{{ execution.id }}</td>
+            <td>{{ execution.result }}</td>
+            <td>{{ execution.timestamp }}</td>
+            <td>
+                <a href="{{ url_for('delete_execution', execution_id=execution.id, test_id=test_id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('tests', collection_id=execution.test.collection_id) }}" class="btn btn-secondary">Back to Tests</a>
+{% endblock %}
