@@ -20,6 +20,7 @@
             <div id="selected-range" class="alert alert-info" role="alert">
                 No range selected
             </div>
+            <input id="array-key" name="key" placeholder="Nombre del ítem" class="form-control" required>
             <button id="save-selection" class="btn btn-success mt-4">Guardar Selección</button>
             <button id="invert-selection" class="btn btn-warning mt-4">Invertir Selección</button>
         </div>
@@ -92,8 +93,20 @@
                     return;
                 }
 
+                try {
+                   var arrayKey = document.getElementById("array-key"); 
+                   console.log(arrayKey.value);
+                } catch (error) {
+                    alert("No se puede guardar un array sin referenciarlo con un nombre.");
+                    return;
+                }
+
                 console.log("Data to save:", selectedData);
                 
+                const pathArray = window.location.pathname.split('/');
+                const testId = pathArray[pathArray.length - 1];
+                
+                console.log(testId);
                 const confirmMessage = `Are you sure you want to save the following data?\n\n${JSON.stringify(selectedData, null, 2)}`;
                 if (confirm(confirmMessage)) {
                     fetch('/save_selection', {
@@ -101,12 +114,14 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ selected_data: selectedData })
+                        body: JSON.stringify({ value_key: arrayKey.value, value_value: selectedData, test_id: testId })
                     })
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
                             alert('Data saved successfully!');
+                            arrayKey.value = "";
+                            location.reload();
                         } else {
                             alert('Error saving data: ' + data.message);
                         }

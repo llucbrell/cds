@@ -132,6 +132,7 @@ class Database:
 
 
     def add_value(self, test_id, value_key, value_value, value_type, iterable_index=None):
+        print("saving")
         existing_value = self.session.query(Values).filter_by(test_id=test_id, value_key=value_key, value_type=value_type).first()
         if existing_value:
             return {'status': 'error', 'message': 'Value with this key already exists.'}

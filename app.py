@@ -216,20 +216,25 @@ def update_range():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)})
 
+
 @app.route('/save_selection', methods=['POST'])
 def save_selection():
     data = request.json
-    selected_data = data.get('selected_data')
+    print(data)
+    test_id = data.get('test_id')
+    value_key = data.get('value_key')
+    value_value = data.get('value_value')
+    string_array = ", ".join(map(str, value_value))
+    print(string_array)
+    print(value_key)
+    print(test_id)
     
-    if selected_data:
-        df = pd.DataFrame(selected_data)
-        # Save the dataframe to the database or perform any other action
-        print(df)  # For debugging, print the dataframe to ensure it's correct
-        # You can add your database saving logic here
-
+    if test_id and value_key and string_array:
+        db = Database()
+        db.add_value(test_id, value_key, string_array, value_type='array')
         return jsonify({'status': 'success', 'message': 'Data saved successfully'})
     else:
-        return jsonify({'status': 'error', 'message': 'No data received'})
+        return jsonify({'status': 'error', 'message': 'Not enought data received'})
 
 
 ##########################################################
