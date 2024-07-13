@@ -17,35 +17,51 @@
     </div>
     <div class="row mt-4">
         <div class="col-md-12">
-            <h4 style="margin-top: 50px;">Seleccionar Rango</h4>
-            <form id="range-form">
-                <div class="form-group">
-                    <label for="range-start">Inicio:</label>
-                    <input type="text" id="range-start" name="range_start" class="form-control" placeholder="Ej: A1">
-                </div>
-                <div class="form-group">
-                    <label for="range-end">Fin:</label>
-                    <input type="text" id="range-end" name="range_end" class="form-control" placeholder="Ej: C10">
-                </div>
-                <button type="submit" class="btn btn-primary mt-2">Actualizar Rango</button>
-            </form>
+            <div id="selected-range" class="alert alert-info" role="alert">
+                No range selected
+            </div>
+            <button id="save-selection" class="btn btn-success mt-4">Guardar Selección</button>
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/handsontable@latest/dist/handsontable.full.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const container = document.getElementById('csv-table');
+        const container = document.querySelector('#csv-table');
         let hot;
 
-        document.getElementById('csv-form').addEventListener('submit', function (event) {
+        // Initialize an empty Handsontable instance
+        hot = new Handsontable(container, {
+            data: [],
+            rowHeaders: true,
+            colHeaders: true,
+            contextMenu: true,
+            filters: true,
+            dropdownMenu: true,
+            height: 'auto',
+            autoWrapRow: true,
+            autoWrapCol: true,
+            licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
+        });
+
+        document.querySelector('#csv-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            const fileInput = document.getElementById('csv-file');
+            const fileInput = document.querySelector('#csv-file');
+            if (!fileInput) {
+                console.error("File input element not found.");
+                return;
+            }
             const file = fileInput.files[0];
+            if (!file) {
+                console.error("No file selected.");
+                return;
+            }
             const reader = new FileReader();
 
             reader.onload = function (event) {
+                console.log("File read successfully.");
                 const data = new Uint8Array(event.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
                 const firstSheetName = workbook.SheetNames[0];
@@ -57,43 +73,61 @@
             reader.readAsArrayBuffer(file);
         });
 
-        document.getElementById('range-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const rangeStart = document.getElementById('range-start').value;
-            const rangeEnd = document.getElementById('range-end').value;
-
-            const startCell = Handsontable.helper.cellReferenceToIndex(rangeStart);
-            const endCell = Handsontable.helper.cellReferenceToIndex(rangeEnd);
-
-            const selectedData = [];
-            for (let row = startCell.row; row <= endCell.row; row++) {
-                const rowData = [];
-                for (let col = startCell.col; col <= endCell.col; col++) {
-                    rowData.push(hot.getDataAtCell(row, col));
-                }
-                selectedData.push(rowData);
-            }
-
-            displayTable(selectedData.map(row => row.join(',')).join('\n'));
-        });
-
         function displayTable(csvData) {
+            console.log("Displaying table with data:", csvData);
             const data = csvData.split('\n').map(row => row.split(','));
 
-            if (hot) {
-                hot.destroy();
-            }
+            hot.updateSettings({
+                data: data
+            });
 
-            hot = new Handsontable(container, {
-                data: data,
-                rowHeaders: true,
-                colHeaders: true,
-                contextMenu: true,
-                filters: true,
-                dropdownMenu: true,
-                height: 'auto', // Ensures the table adapts to the content
-                width: '100%',  // Ensures the table adapts to the container width
-                licenseKey: 'non-commercial-and-evaluation'
+            // Add event listener for save-selection button after data is displayed
+            document.querySelector('#save-selection').addEventListener('click', function () {
+                console.log("Save selection button clicked.");
+                const selectedRange = hot.getSelected();
+                if (!selectedRange || selectedRange.length === 0) {
+                    console.error("No range selected!");
+                    alert("No range selected!");
+                    return;
+                }
+
+                console.log("Selected range:", selectedRange);
+
+                const [startRow, startCol, endRow, endCol] = selectedRange[0];
+                const dataToSave = [];
+
+                for (let row = startRow; row <= endRow; row++) {
+                    const rowData = [];
+                    for (let col = startCol; col <= endCol; col++) {
+                        rowData.push(hot.getDataAtCell(row, col));
+                    }
+                    dataToSave.push(rowData);
+                }
+
+                console.log("Data to save:", dataToSave);
+
+                fetch('/save_selection', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ selected_data: dataToSave })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert('Data saved successfully!');
+                    } else {
+                        alert('Error saving data: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+
+            // Add listener to update selected range display
+            hot.addHook('afterSelection', function (startRow, startCol, endRow, endCol) {
+                const rangeDisplay = `Selected range: ${Handsontable.helper.spreadsheetColumnLabel(startCol)}${startRow + 1} to ${Handsontable.helper.spreadsheetColumnLabel(endCol)}${endRow + 1}`;
+                document.querySelector('#selected-range').textContent = rangeDisplay;
             });
         }
     });

@@ -216,6 +216,22 @@ def update_range():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)})
 
+@app.route('/save_selection', methods=['POST'])
+def save_selection():
+    data = request.json
+    selected_data = data.get('selected_data')
+    
+    if selected_data:
+        df = pd.DataFrame(selected_data)
+        # Save the dataframe to the database or perform any other action
+        print(df)  # For debugging, print the dataframe to ensure it's correct
+        # You can add your database saving logic here
+
+        return jsonify({'status': 'success', 'message': 'Data saved successfully'})
+    else:
+        return jsonify({'status': 'error', 'message': 'No data received'})
+
+
 ##########################################################
 # Ruta para la aplicación Dash a modo de manager de datos
 ##########################################################
