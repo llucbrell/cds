@@ -12,6 +12,7 @@ def register_callbacks(dash_app):
         Output('api-key-input', 'value'),
         Output('my-input', 'value'),
         Output('template-input', 'value'),
+        Output('template-request', 'value'),
         Input('url', 'pathname')
     )
     def load_data(pathname):
@@ -20,7 +21,7 @@ def register_callbacks(dash_app):
             test_id = int(parts[2])
             data = db.get_data(test_id)
             if data:
-                return data.auth_url, data.api_key, data.target_url, data.prompt_template
+                return data.auth_url, data.api_key, data.target_url, data.prompt_template, data.request_template
         return '', '', '', ''
 
     @dash_app.callback(
@@ -116,14 +117,14 @@ def register_callbacks(dash_app):
         Output('send-output', 'children'),
         Output('template-send-button', 'disabled'),
         [Input('template-send-button', 'n_clicks')],
-        [State('auth-url-input', 'value'), State('api-key-input', 'value'), State('my-input', 'value'), State('processed-text-store', 'data')]
+        [State('auth-url-input', 'value'), State('api-key-input', 'value'), State('my-input', 'value'),  State('processed-text-store', 'data'), State('template-request', 'value')]
     )
-    def send_processed_template(n_clicks, auth_url, api_key, url, processed_text):
-        if n_clicks is None or not auth_url or not api_key or not url or not processed_text:
-            return 'Invalid Auth URL, API Key, URL, or processed text', False
+    def send_processed_template(n_clicks, auth_url, api_key, url, processed_text, template_request_text):
+        if n_clicks is None or not auth_url or not api_key or not url or not processed_text or not template_request_text:
+            return 'Invalid Auth URL, API Key, URL, or template text', False
 
         try:
-            response = send_to_model(auth_url, api_key, url, processed_text)
+            response = send_to_model(auth_url, api_key, url, processed_text ,template_request_text)
             return f'Sent to {url}. Response: {response}', False
         except Exception as e:
             return str(e), False
