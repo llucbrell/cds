@@ -1,3 +1,4 @@
+"""
 from dash.dependencies import Input, Output, State
 from models import Database
 from componentes.text_processing import render_template
@@ -137,3 +138,4 @@ def register_callbacks(dash_app):
 
 
     register_item_callbacks(dash_app)
+    """

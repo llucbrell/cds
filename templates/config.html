@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="collection-name" class="text-left my-4">{{ collection_name }}</h1>
+            <h1 id="test-name" class="text-center my-4">{{ test_name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center my-4">
+            <h1>Datos Generales</h1>
+        </div>
+        <div class="col-md-4">
+            <h3>Auth URL</h3>
+            <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ auth_url or '' }}" type="text" class="form-control">
+            <button id="save-auth-url-button" class="btn btn-primary mt-2">Save</button>
+            <div id="save-auth-url-output" class="mt-2"></div>
+        </div>
+        <div class="col-md-4">
+            <h3>API Key</h3>
+            <input id="api-key-input" placeholder="Your API Key" value="{{ api_key or '' }}" type="text" class="form-control">
+            <button id="save-api-key-button" class="btn btn-primary mt-2">Save</button>
+            <div id="save-api-key-output" class="mt-2"></div>
+        </div>
+        <div class="col-md-4">
+            <h3>Destination URL</h3>
+            <input id="my-input" placeholder="http://example.com" value="{{ target_url or '' }}" type="text" class="form-control">
+            <button id="save-target-url-button" class="btn btn-primary mt-2">Save</button>
+            <div id="save-target-url-output" class="mt-2"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Plantilla de Request</h3>
+            <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ template_request or '' }}</textarea>
+            <button id="save-request-template" class="btn btn-primary mt-2">Save</button>
+            <div id="template-request-output" class="mt-3"></div>
+        </div>
+    </div>
+
+
+        {% include 'admin_template.html' %}
+
+
+    <div class="row">
+        <div class="col-md-12 text-center my-4">
+            <h1>Combinar Prompt</h1>
+        </div>
+        <div class="col-md-12">
+            <h3>Constructor de plantilla de Prompts</h3>
+            <textarea id="template-input" placeholder="Escribe combinando texto normal y texto entre {{'{{'}}}} de manera que se sustituyan los valores al pulsar sobre el botón, prueba con {{'{{date}}'}}" class="form-control" style="width: 100%; height: 200px;">{{ prompt_template or '' }}</textarea>
+            <button id="save-prompt-template" class="btn btn-primary mt-2">Save</button>
+            <button id="template-button" class="btn btn-primary mt-2">Process Template</button>
+            <button id="template-send-button" class="btn btn-primary mt-2">Prueba</button>
+            <div id="template-output" class="mt-3"></div>
+            <div id="save-prompt-template-output" class="mt-3"></div>
+            <div id="send-output" class="mt-3"></div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function getIdsFromUrl() {
+            const pathArray = window.location.pathname.split('/');
+            const testId = pathArray[pathArray.length - 2];
+            const collectionId = pathArray[pathArray.length - 1];
+            return { testId, collectionId };
+        }
+
+        const { testId, collectionId } = getIdsFromUrl();
+        console.log(`testId: ${testId}, collectionId: ${collectionId}`);  // Logging IDs
+
+        function saveData(endpoint, data, outputId) {
+            console.log(`Sending data to ${endpoint}:`, data);  // Logging request data
+            fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`Response from ${endpoint}:`, data);  // Logging response data
+                document.getElementById(outputId).innerText = data.message;
+                document.getElementById(outputId).className = data.status === 'success' ? 'text-success' : 'text-danger';
+                setTimeout(() => {
+                    document.getElementById(outputId).innerText = '';
+                    document.getElementById(outputId).className = '';
+                }, 5000);  // Clear message after 5 seconds
+            })
+            .catch(error => console.error('Error:', error));  // Logging errors
+        }
+
+        document.getElementById('save-auth-url-button').addEventListener('click', function () {
+            const authUrl = document.getElementById('auth-url-input').value;
+            const endpoint = `/tests/config/${testId}/${collectionId}`;
+            saveData(endpoint, { 'auth-url-input': authUrl }, 'save-auth-url-output');
+        });
+
+        document.getElementById('save-api-key-button').addEventListener('click', function () {
+            const apiKey = document.getElementById('api-key-input').value;
+            const endpoint = `/tests/config/${testId}/${collectionId}`;
+            saveData(endpoint, { 'api-key-input': apiKey }, 'save-api-key-output');
+        });
+
+        document.getElementById('save-target-url-button').addEventListener('click', function () {
+            const targetUrl = document.getElementById('my-input').value;
+            const endpoint = `/tests/config/${testId}/${collectionId}`;
+            saveData(endpoint, { 'my-input': targetUrl }, 'save-target-url-output');
+        });
+
+        document.getElementById('save-request-template').addEventListener('click', function () {
+            const templateRequest = document.getElementById('template-request').value;
+            const endpoint = `/tests/config/${testId}/${collectionId}`;
+            saveData(endpoint, { 'template-request': templateRequest }, 'template-request-output');
+        });
+
+        document.getElementById('save-prompt-template').addEventListener('click', function () {
+            const promptTemplate = document.getElementById('template-input').value;
+            const endpoint = `/tests/config/${testId}/${collectionId}`;
+            saveData(endpoint, { 'template-input': promptTemplate }, 'save-prompt-template-output');
+        });
+
+        document.getElementById('template-button').addEventListener('click', function () {
+            const templateText = document.getElementById('template-input').value;
+            console.log('Processing template:', templateText);  // Logging template processing
+            fetch('/process-template', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 'template-input': templateText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Processed template response:', data);  // Logging processed template response
+                document.getElementById('template-output').innerText = data.rendered_text;
+            })
+            .catch(error => console.error('Error:', error));  // Logging errors
+        });
+
+        document.getElementById('template-send-button').addEventListener('click', function () {
+            const authUrl = document.getElementById('auth-url-input').value;
+            const apiKey = document.getElementById('api-key-input').value;
+            const url = document.getElementById('my-input').value;
+            const processedText = document.getElementById('template-output').innerText;
+            const templateRequestText = document.getElementById('template-request').value;
+
+            console.log('Sending template:', {
+                'auth-url-input': authUrl,
+                'api-key-input': apiKey,
+                'my-input': url,
+                'processed-text': processedText,
+                'template-request': templateRequestText
+            });  // Logging template sending data
+
+            document.getElementById('send-output').innerText = '';  // Clear the output first
+
+            fetch('/send-template', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'auth-url-input': authUrl,
+                    'api-key-input': apiKey,
+                    'my-input': url,
+                    'processed-text': processedText,
+                    'template-request': templateRequestText
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Send template response:', data);  // Logging send template response
+                document.getElementById('send-output').innerText = data.message;
+                document.getElementById('send-output').className = data.status === 'success' ? 'text-success' : 'text-danger';
+                setTimeout(() => {
+                    document.getElementById('send-output').innerText = '';
+                    document.getElementById('send-output').className = '';
+                }, 5000);  // Clear message after 5 seconds
+            })
+            .catch(error => console.error('Error:', error));  // Logging errors
+        });
+    });
+</script>
+{% endblock %}

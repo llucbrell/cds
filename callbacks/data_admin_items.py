@@ -1,6 +1,8 @@
+"""
+
 from dash.dependencies import Input, Output, State
 from models import Database
-from componentes.text_processing import render_template
+from componentes.text_processing import process_text
 from componentes.send_request import send_to_model
 import dash
 import dash
@@ -29,7 +31,7 @@ def register_item_callbacks(app):
         
         values = db.get_values(test_id=1)  # Reemplaza 'test_id=1' con el id adecuado
         fixed_values = [v for v in values if v.value_type == 'fixed']
-        fixed_items = html.Ul([html.Li(f"{v.value_key}: {v.value_value}") for v in fixed_values])
+        fixed_items = html.Ul([render_fixed_item(v) for v in fixed_values])
         
         return output_message, fixed_items
 
@@ -81,3 +83,24 @@ def register_item_callbacks(app):
         array_items = html.Ul([html.Li(v.value_value) for v in array_values])
         
         return output_message, array_items
+
+    @app.callback(
+        Output('fixed-items', 'children'),
+        Input({'type': 'delete-fixed', 'index': ALL}, 'n_clicks')
+    )
+    def delete_fixed_item(n_clicks):
+        ctx = dash.callback_context
+        if not ctx.triggered:
+            return ''
+        
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        index = json.loads(button_id)['index']
+        db.delete_value(index)
+        
+        values = db.get_values(test_id=1)  # Reemplaza 'test_id=1' con el id adecuado
+        fixed_values = [v for v in values if v.value_type == 'fixed']
+        fixed_items = html.Ul([render_fixed_item(v) for v in fixed_values])
+        
+        return fixed_items
+
+"""

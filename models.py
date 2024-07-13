@@ -46,6 +46,14 @@ class Values(Base):
     value_type = Column(String, nullable=True)  # fixed, iterable, array
     iterable_index = Column(Integer, nullable=True)  # Used for iterable types
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'value_key': self.value_key,
+            'value_value': self.value_value,
+            'value_type': self.value_type,
+            'iterable_index': self.iterable_index
+        }
 
 DATABASE_URL = "sqlite:///tests.db"
 engine = create_engine(DATABASE_URL)
@@ -124,10 +132,14 @@ class Database:
 
 
     def add_value(self, test_id, value_key, value_value, value_type, iterable_index=None):
+        existing_value = self.session.query(Values).filter_by(test_id=test_id, value_key=value_key, value_type=value_type).first()
+        if existing_value:
+            return {'status': 'error', 'message': 'Value with this key already exists.'}
         new_value = Values(test_id=test_id, value_key=value_key, value_value=value_value, value_type=value_type, iterable_index=iterable_index)
         self.session.add(new_value)
         self.session.commit()
-
+        return {'status': 'success', 'message': 'Value added successfully.'}
+        
     def get_value(self, value_id):
         return self.session.query(Values).get(value_id)
 

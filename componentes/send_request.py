@@ -9,7 +9,6 @@ def send_to_model(auth_url, api_key, url, processed_text, template_request_text)
     # Reemplazar {{url}}, {{api_key}} y {{prompt}} en la plantilla de solicitud
     template_request_text = template_request_text.replace('{{url}}', url).replace('{{api_key}}', api_key).replace('{{prompt}}', processed_text)
 
-    print(template_request_text)
     # Convertir el texto JSON en un diccionario de Python
     template_dict = json.loads(template_request_text)
 
@@ -20,6 +19,11 @@ def send_to_model(auth_url, api_key, url, processed_text, template_request_text)
 
     # Añadir el encabezado de autorización
     headers['Authorization'] = f'Bearer {api_key}'
+    print(request_url)
+    print(payload)
+    print(headers)
+    print(template_request_text)
+    print(processed_text)
 
     try:
         response = requests.post(request_url, json=payload, headers=headers)
@@ -32,15 +36,17 @@ def send_to_model(auth_url, api_key, url, processed_text, template_request_text)
         return f'Other error occurred: {err}'
 
 """
-    url = f"{burl}/chat"
-    payload = {
-        "message": text,
+   {
+    "ur": "{url}}/chat",
+    "payload": {
+        "message": "{{prompt}}",
         "mode": "chat"
+    },
+    "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{api_key}}"
     }
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {api_key}'
-    }
+} 
 """
 
 #https://localhost:3001/api/v1/workspace/your_workspace_name_with_dashes_instead_of_spaces/chat 

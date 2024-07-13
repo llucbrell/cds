@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from dash_app import create_dash_app
 from models import Database
 import dash
@@ -9,16 +9,15 @@ import pandas as pd
 import base64
 import io
 import json
+from componentes.text_processing import process_text
+from componentes.send_request import send_to_model
 
 app = Flask(__name__)
-
 
 # Integrar Dash en Flask
 dash_app = create_dash_app(app)
 
-
 db = Database()
-
 
 @app.route('/')
 def index():
@@ -57,7 +56,7 @@ def tests(collection_id):
         db.add_test(collection_id, name)
         return redirect(url_for('tests', collection_id=collection_id))
     tests = db.get_tests(collection_id)
-    return render_template('tests.html', tests=tests, collection=collection)
+    return render_template('tests.html', tests=tests, collection=collection, collection_id=collection_id)
 
 @app.route('/tests/delete/<int:test_id>/<int:collection_id>')
 def delete_test(test_id, collection_id):
@@ -79,16 +78,122 @@ def delete_execution(execution_id, test_id):
     db.delete_execution(execution_id)
     return redirect(url_for('executions', test_id=test_id))
 
+@app.route('/tests/config/<int:test_id>/<int:collection_id>', methods=['GET', 'POST'])
+def config_test(test_id, collection_id):
+    if request.method == 'POST':
+        try:
+            data = request.get_json()
+            auth_url = data.get('auth-url-input')
+            api_key = data.get('api-key-input')
+            target_url = data.get('my-input')
+            template_request = data.get('template-request')
+            prompt_template = data.get('template-input')
+            
+            db.save_data(test_id, auth_url=auth_url, api_key=api_key, target_url=target_url, request_template=template_request, prompt_template=prompt_template)
+            return jsonify({'message': 'Data saved successfully', 'status': 'success'})
+        except Exception as e:
+            return jsonify({'message': str(e), 'status': 'error'})
+
+    collection = db.get_collection(collection_id)
+    test = db.get_test(test_id)
+    data = db.get_data(test_id)
+    
+    if data:
+        auth_url = data.auth_url
+        api_key = data.api_key
+        target_url = data.target_url
+        template_request = data.request_template
+        prompt_template = data.prompt_template
+    else:
+        auth_url = api_key = target_url = template_request = prompt_template = ''
+    
+    return render_template('config.html', 
+                           collection_name=collection.name, 
+                           test_name=test.name, 
+                           auth_url=auth_url, 
+                           api_key=api_key, 
+                           target_url=target_url, 
+                           template_request=template_request, 
+                           prompt_template=prompt_template)
+
+@app.route('/process-template', methods=['POST'])
+def process_template():
+    try:
+        data = request.get_json()
+        template_text = data.get('template-input')
+        print(data)
+        print(template_text)
+        rendered_text = process_text(template_text)
+        return jsonify({'rendered_text': rendered_text})
+    except Exception as e:
+        return jsonify({'message': str(e), 'status': 'error'})
+
+@app.route('/send-template', methods=['POST'])
+def send_template():
+    try:
+        data = request.get_json()
+        auth_url = data.get('auth-url-input')
+        api_key = data.get('api-key-input')
+        url = data.get('my-input')
+        processed_text = data.get('processed-text')
+        template_request_text = data.get('template-request')
+        
+        response = send_to_model(auth_url, api_key, url, processed_text, template_request_text)
+        return jsonify({'message': f'Sent to {url}. Response: {response}', 'status': 'success'})
+    except Exception as e:
+        return jsonify({'message': str(e), 'status': 'error'})
+
+# Rutas para gestionar valores
+@app.route('/values/<int:test_id>', methods=['GET', 'POST'])
+def values(test_id):
+    if request.method == 'POST':
+        data = request.json
+        key = data.get('key')
+        value = data.get('value')
+        value_type = data.get('value_type')
+        db.add_value(test_id, key, value, value_type)
+        values = db.get_values(test_id)
+        return jsonify({'status': 'success', 'message': 'Value added successfully', 'values': [v.to_dict() for v in values]})
+    elif request.method == 'GET':
+        values = db.get_values(test_id)
+        return jsonify({'values': [v.to_dict() for v in values]})
+
+@app.route('/values/edit/<int:value_id>', methods=['GET', 'POST'])
+def edit_value(value_id):
+    value = db.get_value(value_id)
+    if request.method == 'POST':
+        if request.is_json:
+            data = request.get_json()
+            key = data.get('key')
+            value_value = data.get('value')
+            value_type = data.get('value_type')
+        else:
+            key = request.form['key']
+            value_value = request.form['value']
+            value_type = request.form['value_type']
+        db.update_value(value_id, key, value_value, value_type)
+        return jsonify({'status': 'success', 'message': 'Value updated successfully'})
+    return render_template('edit_value.html', value=value)
+
+@app.route('/values/delete/<int:value_id>', methods=['POST'])
+def delete_value(value_id):
+    value = db.get_value(value_id)
+    test_id = value.test_id
+    db.delete_value(value_id)
+    values = db.get_values(test_id)
+    return jsonify({'status': 'success', 'message': 'Value deleted successfully', 'values': [{'id': v.id, 'key': v.value_key, 'value': v.value_value, 'value_type': v.value_type} for v in values]})
+
 
 ##########################################################
 # Ruta para la aplicación Dash a modo de manager de datos
 ##########################################################
-
+"""
 @app.route('/tests/config/<int:test_id>/<int:collection_id>')
 def config_test(test_id, collection_id):
     # Pasar el contenido HTML generado por Dash al renderizar la plantilla
     return render_template('dash_layout.html', dash_html=dash_app.index(), test_id=test_id, collection_id=collection_id)
 
+"""
 
 if __name__ == '__main__':
     app.run(debug=True)

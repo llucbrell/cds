@@ -1,6 +1,6 @@
 from dash import Dash
 from layouts.data_admin import layout
-from callbacks.data_admin import register_callbacks
+#from callbacks.data_admin import register_callbacks
 import dash_bootstrap_components as dbc
 
 def create_dash_app(flask_app):
@@ -15,6 +15,6 @@ def create_dash_app(flask_app):
     dash_app.layout = layout
     
     # Registra los callbacks
-    register_callbacks(dash_app)
+    #register_callbacks(dash_app)
     
     return dash_app

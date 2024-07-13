@@ -1,7 +1,7 @@
 from jinja2 import Template
 from datetime import datetime
 
-def render_template(template_text):
+def process_text(template_text):
     # Datos dinámicos para la plantilla
     context = {
         'date': datetime.now().strftime('%Y-%m-%d'),
