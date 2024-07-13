@@ -184,10 +184,42 @@ def delete_value(value_id):
     return jsonify({'status': 'success', 'message': 'Value deleted successfully', 'values': [{'id': v.id, 'key': v.value_key, 'value': v.value_value, 'value_type': v.value_type} for v in values]})
 
 
+@app.route('/upload_csv', methods=['POST'])
+def upload_csv():
+    if 'csv_file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file part'})
+
+    file = request.files['csv_file']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No selected file'})
+
+    try:
+        df = pd.read_csv(file)
+        csv_data = df.to_csv(index=False)
+        return jsonify({'status': 'success', 'csv_data': csv_data})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
+@app.route('/update_range', methods=['POST'])
+def update_range():
+    data = request.json
+    range_start = data.get('range_start')
+    range_end = data.get('range_end')
+    
+    # Dummy data, replace with your data frame or session stored data
+    df = pd.read_csv('your_csv_file.csv') 
+
+    try:
+        range_df = df.loc[range_start:range_end]
+        csv_data = range_df.to_csv(index=False)
+        return jsonify({'status': 'success', 'csv_data': csv_data})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
 ##########################################################
 # Ruta para la aplicación Dash a modo de manager de datos
 ##########################################################
-"""
+"""""
 @app.route('/tests/config/<int:test_id>/<int:collection_id>')
 def config_test(test_id, collection_id):
     # Pasar el contenido HTML generado por Dash al renderizar la plantilla

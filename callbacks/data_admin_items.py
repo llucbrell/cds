@@ -1,3 +1,87 @@
+from dash.dependencies import Input, Output, State
+from models import Database
+from componentes.text_processing import process_text
+from componentes.send_request import send_to_model
+from dash import html, dcc
+import base64
+import io
+import pandas as pd
+
+
+def register_item_callbacks(app):
+    # Layout de la aplicación
+    app.layout = dbc.Container(
+        [
+            dbc.Row(
+                dbc.Col(
+                    html.H2(
+                        [
+                            dbc.Button(
+                                "Ítems Iterables",
+                                color="link",
+                                id="iterable-button",
+                                n_clicks=0,
+                            )
+                        ],
+                        className="mb-0"
+                    ),
+                    width=12,
+                )
+            ),
+            dbc.Collapse(
+                dbc.Card(
+                    dbc.CardBody(
+                        [
+                            html.H4("Crear Ítem Iterable"),
+                            dcc.Upload(
+                                id="upload-iterable",
+                                children=html.Div([
+                                    'Arrastra y suelta o ',
+                                    html.A('Selecciona un archivo')
+                                ]),
+                                style={
+                                    'width': '100%',
+                                    'height': '60px',
+                                    'lineHeight': '60px',
+                                    'borderWidth': '1px',
+                                    'borderStyle': 'dashed',
+                                    'borderRadius': '5px',
+                                    'textAlign': 'center',
+                                    'margin': '10px'
+                                },
+                            ),
+                            dbc.Input(
+                                id="iterable-range",
+                                placeholder="Rango (ej. A-C)",
+                                type="text",
+                                className="mt-2"
+                            ),
+                            dbc.Button(
+                                "Agregar Ítem Iterable",
+                                id="add-iterable",
+                                color="primary",
+                                className="mt-2"
+                            ),
+                            html.Div(id="iterable-output", className="mt-3"),
+                            html.Div(
+                                [
+                                    html.H4("Valores Iterables Existentes"),
+                                    html.Ul(id="iterable-items-list", className="list-group"),
+                                ],
+                                id="iterable-items",
+                                className="mt-3"
+                            ),
+                        ]
+                    ),
+                ),
+                id="iterable-collapse",
+                is_open=False,
+            ),
+            html.Div(id="output-data-upload"),
+        ],
+        fluid=True,
+    )
+
 """
 
 from dash.dependencies import Input, Output, State
