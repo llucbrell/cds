@@ -3,6 +3,12 @@ from models import Database
 from componentes.text_processing import render_template
 from componentes.send_request import send_to_model
 import dash
+from .data_admin_items import register_item_callbacks
+from dash import html, dcc
+import pandas as pd
+import base64
+import io
+import json
 
 def register_callbacks(dash_app):
     db = Database()
@@ -128,3 +134,6 @@ def register_callbacks(dash_app):
             return f'Sent to {url}. Response: {response}', False
         except Exception as e:
             return str(e), False
+
+
+    register_item_callbacks(dash_app)

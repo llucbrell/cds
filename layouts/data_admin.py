@@ -1,5 +1,16 @@
 from dash import dcc, html
+import dash
+from dash import html, dcc
+from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
+import dash
+from dash import html, dcc
+from dash.dependencies import Input, Output, State
+import dash_bootstrap_components as dbc
+import pandas as pd
+import base64
+import io
+import json
 
 layout = dbc.Container([
     dcc.Location(id='url', refresh=False),
@@ -8,6 +19,7 @@ layout = dbc.Container([
         html.H1(id='test-name', className="text-center my-4"),
     ]),
     dbc.Row([
+        html.H1("Datos Generales", className="text-center my-4"),
         dbc.Col([
             html.H3('Auth URL', className="my-4"),
             dcc.Input(id='auth-url-input', placeholder='http://example.com/api/v1/auth', value="", type='text', className="form-control"),
@@ -34,6 +46,43 @@ layout = dbc.Container([
         ])
     ]),
     dbc.Row([
+        
+        html.H1("Administrador de datos", className="text-center my-4"),
+            dcc.Tabs(id='tabs', children=[
+                dcc.Tab(label='Ítems Fijos', children=[
+                    html.Div([
+                        html.H4('Crear Ítem Fijo'),
+                        dbc.Input(id='fixed-key', placeholder='Clave'),
+                        dbc.Input(id='fixed-value', placeholder='Valor'),
+                        dbc.Button('Agregar Ítem Fijo', id='add-fixed', color='primary', className="mt-2"),
+                        html.Div(id='fixed-output', className="mt-3")
+                    ]),
+                    html.Div(id='fixed-items', className="mt-3")
+                ]),
+                dcc.Tab(label='Ítems Iterables', children=[
+                    html.Div([
+                        html.H4('Crear Ítem Iterable'),
+                        dcc.Upload(id='upload-iterable', children=html.Button('Subir CSV')),
+                        dbc.Input(id='iterable-range', placeholder='Rango (ej. A-C)'),
+                        dbc.Button('Agregar Ítem Iterable', id='add-iterable', color='primary', className="mt-2"),
+                        html.Div(id='iterable-output', className="mt-3")
+                    ]),
+                    html.Div(id='iterable-items', className="mt-3")
+                ]),
+                dcc.Tab(label='Ítems Arrays', children=[
+                    html.Div([
+                        html.H4('Crear Ítem Array'),
+                        dcc.Upload(id='upload-array', children=html.Button('Subir CSV')),
+                        dbc.Button('Agregar Ítem Array', id='add-array', color='primary', className="mt-2"),
+                        html.Div(id='array-output', className="mt-3")
+                    ]),
+                    html.Div(id='array-items', className="mt-3")
+                ])
+            ])
+    ]),
+    
+    dbc.Row([
+        html.H1("Combinar Prompt", className="text-center my-4"),
         dbc.Col([
             html.H3('Constructor de plantilla de Prompts', className="form-label"),
             dcc.Textarea(id='template-input', placeholder="Escribe combinando texto normal y texto entre {{}} de manera que se sustituyan los valores al pulsar sobre el botón, prueba con {{date}}" ,value='', className="form-control", style={'width': '100%', 'height': 200}),

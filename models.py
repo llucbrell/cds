@@ -37,6 +37,16 @@ class Data(Base):
     prompt_template = Column(String, nullable=True)
     test = relationship('Test', back_populates='data')
 
+class Values(Base):
+    __tablename__ = 'values'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    test_id = Column(Integer, ForeignKey('tests.id'), nullable=False)
+    value_key = Column(String, nullable=True)
+    value_value = Column(String, nullable=True)
+    value_type = Column(String, nullable=True)  # fixed, iterable, array
+    iterable_index = Column(Integer, nullable=True)  # Used for iterable types
+
+
 DATABASE_URL = "sqlite:///tests.db"
 engine = create_engine(DATABASE_URL)
 Base.metadata.create_all(engine)
@@ -111,3 +121,33 @@ class Database:
             if prompt_template is not None:
                 data.prompt_template = prompt_template
         self.session.commit()
+
+
+    def add_value(self, test_id, value_key, value_value, value_type, iterable_index=None):
+        new_value = Values(test_id=test_id, value_key=value_key, value_value=value_value, value_type=value_type, iterable_index=iterable_index)
+        self.session.add(new_value)
+        self.session.commit()
+
+    def get_value(self, value_id):
+        return self.session.query(Values).get(value_id)
+
+    def update_value(self, value_id, value_key=None, value_value=None, value_type=None, iterable_index=None):
+        value = self.session.query(Values).get(value_id)
+        if value_key is not None:
+            value.value_key = value_key
+        if value_value is not None:
+            value.value_value = value_value
+        if value_type is not None:
+            value.value_type = value_type
+        if iterable_index is not None:
+            value.iterable_index = iterable_index
+        self.session.commit()
+
+    def delete_value(self, value_id):
+        value = self.session.query(Values).get(value_id)
+        self.session.delete(value)
+        self.session.commit()
+
+    def get_values(self, test_id):
+        return self.session.query(Values).filter_by(test_id=test_id).all()
+
