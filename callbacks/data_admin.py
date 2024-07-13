@@ -69,6 +69,22 @@ def register_callbacks(dash_app):
             return 'Target URL saved'
 
     @dash_app.callback(
+        Output('template-request-output', 'children'),
+        [Input('save-request-template', 'n_clicks')],
+        [State('template-request', 'value'), State('url', 'pathname')]
+    )
+    def save_request_template(n_clicks, req_template_text, pathname):
+        if n_clicks is None:
+            return ''
+        parts = pathname.strip('/').split('/')
+        if len(parts) >= 4 and parts[0] == 'tests' and parts[1] == 'config':
+            test_id = int(parts[2])
+            db.save_data(test_id, request_template=req_template_text)
+            return 'Prompt Template saved'
+
+
+
+    @dash_app.callback(
         Output('save-prompt-template-output', 'children'),
         [Input('save-prompt-template', 'n_clicks')],
         [State('template-input', 'value'), State('url', 'pathname')]

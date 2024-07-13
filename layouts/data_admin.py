@@ -26,9 +26,9 @@ layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.H3('Plantilla de Request', className="form-label"),
-            dcc.Textarea(id='template-request', placeholder="Escribe la plantilla de reques como objeto json" ,value='', className="form-control", style={'width': '100%', 'height': 200}),
+            dcc.Textarea(id='template-request', placeholder="Escribe la plantilla de request como objeto json" ,value='', className="form-control", style={'width': '100%', 'height': 200}),
             dbc.Button('Save', id='save-request-template', color='primary', className="mt-2"),
-            dbc.Button('Process Template', id='template-request-button', color='primary', className="mt-2"),
+            # dbc.Button('Process Template', id='template-request-button', color='primary', className="mt-2"),
             html.Div(id='template-request-output', className="mt-3"),
             dcc.Store(id='processed-text-request-store')
         ])
