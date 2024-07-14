@@ -1,20 +1,72 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h1>Executions</h1>
-<form method="POST">
-    <div class="form-group">
-        <label for="result">Execution Result</label>
-        <input type="text" class="form-control" id="result" name="result" required>
+<h1>Ejecuciones del Test {{ test.name }}</h1>
+
+<!-- Opciones para seleccionar el método de ejecución -->
+<div class="mb-3">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="executionOption" id="selectIterable" value="iterable" checked>
+        <label class="form-check-label" for="selectIterable">
+            Seleccionar Clave de Item Iterable
+        </label>
     </div>
-    <button type="submit" class="btn btn-primary">Add Execution</button>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="executionOption" id="selectRepetition" value="repetition">
+        <label class="form-check-label" for="selectRepetition">
+            Seleccionar Número de Repeticiones
+        </label>
+    </div>
+</div>
+
+<!-- Formulario para seleccionar la clave de item iterable -->
+<div id="iterableSelection" class="mb-3">
+    <div class="form-group">
+        <label for="iterable-key">Clave de Item Iterable</label>
+        <select id="iterable-key" class="form-control">
+            {% for key in iterable_keys %}
+            <option value="{{ key }}">{{ key }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="async-checkbox-iterable">
+        <label class="form-check-label" for="async-checkbox-iterable">
+            Ejecutar Asíncronamente
+        </label>
+    </div>
+</div>
+
+<!-- Formulario para seleccionar el número de repeticiones -->
+<div id="repetitionSelection" class="mb-3" style="display: none;">
+    <div class="form-group">
+        <label for="num-repetitions">Número de Repeticiones</label>
+        <input type="number" id="num-repetitions" class="form-control" min="1" value="1">
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="async-checkbox-repetition">
+        <label class="form-check-label" for="async-checkbox-repetition">
+            Ejecutar Asíncronamente
+        </label>
+    </div>
+</div>
+
+<!-- Formulario para iniciar nueva ejecución -->
+<form id="start-execution-form" action="{{ url_for('start_execution', test_id=test.id) }}" method="post">
+    <input type="hidden" id="repetitions" name="repetitions" value="">
+    <input type="hidden" id="selection-type" name="selection_type" value="">
+    <input type="hidden" id="async-option" name="async_option" value="">
+    <input type="hidden" id="key" name="key" value="">
+    <button type="submit" class="btn btn-success mb-3">Iniciar Nueva Ejecución</button>
 </form>
+
 <table class="table">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Result</th>
+            <th>Resultado</th>
             <th>Timestamp</th>
-            <th>Actions</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -24,11 +76,65 @@
             <td>{{ execution.result }}</td>
             <td>{{ execution.timestamp }}</td>
             <td>
-                <a href="{{ url_for('delete_execution', execution_id=execution.id, test_id=test_id) }}" class="btn btn-danger">Delete</a>
+                {% if execution.result == 'In Progress' %}
+                <form action="{{ url_for('pause_execution', execution_id=execution.id) }}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-warning">Pausar</button>
+                </form>
+                {% else %}
+                <form action="{{ url_for('start_execution', test_id=test.id) }}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-success">Reanudar</button>
+                </form>
+                {% endif %}
+                <a href="{{ url_for('execution_results', execution_id=execution.id) }}" class="btn btn-info">Resultados</a>
+                <form action="{{ url_for('delete_execution', execution_id=execution.id) }}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="{{ url_for('tests', collection_id=execution.test.collection_id) }}" class="btn btn-secondary">Back to Tests</a>
+
+<a href="{{ url_for('tests', collection_id=test.collection_id) }}" class="btn btn-secondary">Volver a Tests</a>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input[name="executionOption"]').forEach(function(elem) {
+        elem.addEventListener('change', function(event) {
+            if (event.target.value === 'iterable') {
+                document.getElementById('iterableSelection').style.display = 'block';
+                document.getElementById('repetitionSelection').style.display = 'none';
+            } else if (event.target.value === 'repetition') {
+                document.getElementById('iterableSelection').style.display = 'none';
+                document.getElementById('repetitionSelection').style.display = 'block';
+            }
+        });
+    });
+
+    document.getElementById('start-execution-form').addEventListener('submit', function(event) {
+        let repetitions = '';
+        let selectionType = '';
+        let asyncOption = '';
+        let selectedKey = '';
+
+        if (document.getElementById('selectIterable').checked) {
+            // Obtenemos la clave seleccionada del iterable
+            selectedKey = document.getElementById('iterable-key').value;
+            repetitions = 1;
+            selectionType = 'iterable';
+            asyncOption = document.getElementById('async-checkbox-iterable').checked ? 'true' : 'false';
+        } else if (document.getElementById('selectRepetition').checked) {
+            repetitions = document.getElementById('num-repetitions').value;
+            selectionType = 'repetition';
+            asyncOption = document.getElementById('async-checkbox-repetition').checked ? 'true' : 'false';
+        }
+
+        document.getElementById('repetitions').value = repetitions;
+        document.getElementById('selection-type').value = selectionType;
+        document.getElementById('async-option').value = asyncOption;
+        document.getElementById('key').value = selectedKey;
+    });
+});
+</script>
+
 {% endblock %}

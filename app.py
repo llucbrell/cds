@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from dash_app import create_dash_app
-from models import Database
+from models import Database, Values
 import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output, State
@@ -11,6 +11,8 @@ import io
 import json
 from componentes.text_processing import process_text
 from componentes.send_request import send_to_model
+import threading
+import time
 
 app = Flask(__name__)
 
@@ -62,21 +64,6 @@ def tests(collection_id):
 def delete_test(test_id, collection_id):
     db.delete_test(test_id)
     return redirect(url_for('tests', collection_id=collection_id))
-
-# Rutas para ejecuciones
-@app.route('/executions/<int:test_id>', methods=['GET', 'POST'])
-def executions(test_id):
-    if request.method == 'POST':
-        result = request.form['result']
-        db.add_execution(test_id, result)
-        return redirect(url_for('executions', test_id=test_id))
-    executions = db.get_executions(test_id)
-    return render_template('executions.html', executions=executions, test_id=test_id)
-
-@app.route('/executions/delete/<int:execution_id>/<int:test_id>')
-def delete_execution(execution_id, test_id):
-    db.delete_execution(execution_id)
-    return redirect(url_for('executions', test_id=test_id))
 
 @app.route('/tests/config/<int:test_id>/<int:collection_id>', methods=['GET', 'POST'])
 def config_test(test_id, collection_id):
@@ -283,6 +270,149 @@ def delete_iterable_values():
             return jsonify({'status': 'error', 'message': 'No values found to delete'})
     else:
         return jsonify({'status': 'error', 'message': 'test_id and value_key required'})
+
+
+
+# Ruta para visualizar las ejecuciones de un test
+@app.route('/executions/<int:test_id>')
+def executions(test_id):
+    test = db.get_test(test_id)
+    executions = db.get_executions(test_id)
+    # Obtener las claves únicas de los items iterables
+    iterable_values = db.session.query(Values).filter_by(test_id=test_id, value_type='iterable').all()
+    iterable_keys = list(set([value.value_key for value in iterable_values]))
+    return render_template('executions.html', test=test, executions=executions, iterable_keys=iterable_keys)
+
+def run_execution(test_id, template_text, iterable_index=None):
+    rendered_text = process_text(template_text, test_id, iterable_index)
+    print(f"Execution result: {rendered_text}")
+    # Aquí puedes añadir la lógica para ejecutar el test utilizando `rendered_text`
+    db.add_execution(test_id, result=rendered_text)
+
+
+def process_and_send(template_text, test_id, iterable_index=None):
+    rendered_text = process_text(template_text, test_id, iterable_index)
+    # Aquí puedes añadir la lógica para enviar la petición y recibir la respuesta
+    data = db.get_data(test_id)
+    url = data.target_url
+    headers = {'Authorization': f'Bearer {data.api_key}'}
+
+    start_time = time.time()
+    response = requests.post(url, headers=headers, data=rendered_text)
+    end_time = time.time()
+
+    duration = end_time - start_time
+    status_code = response.status_code
+    response_text = response.text
+
+    # Almacenar los resultados en la base de datos
+    db.add_execution(test_id, result=response_text)
+
+    execution = db.get_executions(test_id)[-1]
+    execution.result = response_text
+    execution.timestamp = func.now()
+    execution.duration = duration
+    execution.status_code = status_code
+    db.session.commit()
+
+def launch_thread(rendered_template, async_option):
+    # lanza un thread
+    print("lanzando thread")
+
+@app.route('/start-execution/<int:test_id>', methods=['POST'])
+def start_execution(test_id):
+    selected_key = request.form.get('key')
+    selection_type = request.form.get('selection_type')
+    async_option = request.form.get('async_option') == 'true'
+    repetitions = request.form.get('repetitions')
+    print("RECIBIDO")
+    print(selection_type)
+    print(selected_key)
+    print(repetitions)
+    print(async_option)
+    
+    data = db.get_data(test_id)
+    if not data or not data.prompt_template:
+        raise ValueError("No data or prompt template found for the test")
+
+    template_text = data.prompt_template
+    print(template_text)
+
+    request_template = data.request_template
+    print(request_template)
+
+    # Obtener el número de veces que la clave aparece en la base de datos
+    key_count = db.session.query(Values).filter_by(test_id=test_id, value_key=selected_key, value_type='iterable').count()
+    print(f"La clave '{selected_key}' aparece {key_count} veces en la base de datos.")
+
+    if selection_type == 'iterable':
+        repetitions = key_count
+    else:
+        repetitions = int(repetitions) if repetitions else 1
+
+    if repetitions:
+        key_count = repetitions        
+
+    # Insert data into database
+    db.add_execution(test_id, result="In Progress")
+
+    # Define the function to run in a thread
+    def run_executions():
+        for iterable_index in range(key_count):
+            rendered_text = process_text(template_text, test_id, iterable_index)
+            # Simulación de una solicitud de red y almacenamiento de resultados en la base de datos
+        data = db.get_data(test_id)
+        url = data.target_url
+        headers = {'Authorization': f'Bearer {data.api_key}'}
+            
+        start_time = time.time()
+            #response = requests.post(url, headers=headers, data=rendered_text)
+        end_time = time.time()
+            
+        duration = end_time - start_time
+            #status_code = response.status_code
+            #response_text = response.text
+            
+            # Actualizar la ejecución en la base de datos con los resultados
+        execution = db.get_executions(test_id)[-1]
+            #execution.result = response_text
+            #execution.timestamp = func.now()
+        execution.duration = duration
+            #execution.status_code = status_code
+        db.session.commit()
+
+    if async_option:
+        # Ejecutar el bucle en un nuevo hilo
+        threading.Thread(target=run_executions).start()
+    else:
+        # Ejecutar el bucle de manera síncrona
+        threading.Thread(target=run_executions).start()
+
+    return redirect(url_for('executions', test_id=test_id))
+
+
+# Ruta para pausar una ejecución
+@app.route('/pause-execution/<int:execution_id>', methods=['POST'])
+def pause_execution(execution_id):
+    execution = db.get_execution(execution_id)
+    execution.result = "Paused"
+    db.session.commit()
+    return redirect(url_for('executions', test_id=execution.test_id))
+
+# Ruta para borrar una ejecución
+@app.route('/delete-execution/<int:execution_id>', methods=['POST'])
+def delete_execution(execution_id):
+    execution = db.get_execution(execution_id)
+    test_id = execution.test_id
+    db.session.delete(execution)
+    db.session.commit()
+    return redirect(url_for('executions', test_id=test_id))
+
+# Ruta para ver los resultados de una ejecución
+@app.route('/execution-results/<int:execution_id>')
+def execution_results(execution_id):
+    execution = db.get_execution(execution_id)
+    return render_template('execution_results.html', execution=execution)
 
 ##########################################################
 # Ruta para la aplicación Dash a modo de manager de datos

@@ -187,3 +187,16 @@ class Database:
             self.session.delete(value)
         self.session.commit()
         return len(values_to_delete)
+
+    def get_execution(self, execution_id):
+        return self.session.query(Execution).get(execution_id)
+    
+    def add_execution(self, test_id, result="In Progress"):
+        new_execution = Execution(test_id=test_id, result=result)
+        self.session.add(new_execution)
+        self.session.commit()
+    
+    def update_execution_status(self, execution_id, status):
+        execution = self.get_execution(execution_id)
+        execution.result = status
+        self.session.commit()

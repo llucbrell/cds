@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Resultados de la Ejecución {{ execution.id }}</h1>
+
+<p><strong>Resultado:</strong> {{ execution.result }}</p>
+<p><strong>Timestamp:</strong> {{ execution.timestamp }}</p>
+
+<!-- Aquí puedes añadir más detalles sobre los resultados de la ejecución -->
+
+<a href="{{ url_for('executions', test_id=execution.test_id) }}" class="btn btn-secondary">Volver a Ejecuciones</a>
+{% endblock %}
