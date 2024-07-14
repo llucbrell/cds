@@ -13,8 +13,19 @@ from componentes.text_processing import process_text
 from componentes.send_request import send_to_model
 import threading
 import time
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy import create_engine
+from models import Collection, Test, Execution, Data, Values  # Ajusta la ruta de importación según sea necesario
 
 app = Flask(__name__)
+
+
+# Crear una nueva fábrica de sesiones
+DATABASE_URL = "sqlite:///tests.db"
+engine = create_engine(DATABASE_URL)
+SessionFactory = sessionmaker(bind=engine)
+Session = scoped_session(SessionFactory)
+
 
 # Integrar Dash en Flask
 dash_app = create_dash_app(app)
@@ -325,14 +336,17 @@ def start_execution(test_id):
     selection_type = request.form.get('selection_type')
     async_option = request.form.get('async_option') == 'true'
     repetitions = request.form.get('repetitions')
+    
     print("RECIBIDO")
     print(selection_type)
     print(selected_key)
     print(repetitions)
     print(async_option)
     
-    data = db.get_data(test_id)
+    session = Session()
+    data = session.query(Data).filter_by(test_id=test_id).first()
     if not data or not data.prompt_template:
+        session.close()
         raise ValueError("No data or prompt template found for the test")
 
     template_text = data.prompt_template
@@ -342,7 +356,7 @@ def start_execution(test_id):
     print(request_template)
 
     # Obtener el número de veces que la clave aparece en la base de datos
-    key_count = db.session.query(Values).filter_by(test_id=test_id, value_key=selected_key, value_type='iterable').count()
+    key_count = session.query(Values).filter_by(test_id=test_id, value_key=selected_key, value_type='iterable').count()
     print(f"La clave '{selected_key}' aparece {key_count} veces en la base de datos.")
 
     if selection_type == 'iterable':
@@ -354,42 +368,67 @@ def start_execution(test_id):
         key_count = repetitions        
 
     # Insert data into database
-    db.add_execution(test_id, result="In Progress")
+    new_execution = Execution(test_id=test_id, result="In Progress")
+    session.add(new_execution)
+    session.commit()
+    execution_id = new_execution.id  # Obtener el ID de la nueva ejecución
+    session.close()
 
     # Define the function to run in a thread
-    def run_executions():
-        for iterable_index in range(key_count):
-            rendered_text = process_text(template_text, test_id, iterable_index)
-            # Simulación de una solicitud de red y almacenamiento de resultados en la base de datos
-        data = db.get_data(test_id)
+    def run_single_execution(iterable_index):
+        session = Session()
+        rendered_text = process_text(template_text, test_id, iterable_index)
+        # Simulación de una solicitud de red y almacenamiento de resultados en la base de datos
+        data = session.query(Data).filter_by(test_id=test_id).first()
         url = data.target_url
         headers = {'Authorization': f'Bearer {data.api_key}'}
-            
+        
         start_time = time.time()
-            #response = requests.post(url, headers=headers, data=rendered_text)
+        #response = requests.post(url, headers=headers, data=rendered_text)
         end_time = time.time()
-            
+        
         duration = end_time - start_time
-            #status_code = response.status_code
-            #response_text = response.text
-            
-            # Actualizar la ejecución en la base de datos con los resultados
-        execution = db.get_executions(test_id)[-1]
-            #execution.result = response_text
-            #execution.timestamp = func.now()
+        #status_code = response.status_code
+        #response_text = response.text
+        
+        # Actualizar la ejecución en la base de datos con los resultados
+        execution = session.query(Execution).filter_by(id=execution_id).first()
+        #execution.result = response_text
+        #execution.timestamp = func.now()
         execution.duration = duration
-            #execution.status_code = status_code
-        db.session.commit()
+        #execution.status_code = status_code
+        session.commit()
+        session.close()
+
+    def run_all_executions():
+        for iterable_index in range(key_count):
+            run_single_execution(iterable_index)
+        update_execution_status(execution_id, "Ended")
+
+    def update_execution_status(execution_id, status):
+        session = Session()
+        execution = session.query(Execution).filter_by(id=execution_id).first()
+        execution.result = status
+        session.commit()
+        session.close()
 
     if async_option:
-        # Ejecutar el bucle en un nuevo hilo
-        threading.Thread(target=run_executions).start()
+        # Ejecutar un hilo por cada iteración
+        threads = []
+        for iterable_index in range(key_count):
+            thread = threading.Thread(target=run_single_execution, args=(iterable_index,))
+            threads.append(thread)
+            thread.start()
+        # Asegurarse de que todos los hilos hayan terminado antes de actualizar el estado
+        for thread in threads:
+            thread.join()
+        update_execution_status(execution_id, "Ended")
     else:
-        # Ejecutar el bucle de manera síncrona
-        threading.Thread(target=run_executions).start()
+        # Ejecutar el bucle en un nuevo hilo de manera síncrona
+        thread = threading.Thread(target=run_all_executions)
+        thread.start()
 
     return redirect(url_for('executions', test_id=test_id))
-
 
 # Ruta para pausar una ejecución
 @app.route('/pause-execution/<int:execution_id>', methods=['POST'])
