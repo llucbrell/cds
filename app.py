@@ -116,17 +116,29 @@ def config_test(test_id, collection_id):
                            template_request=template_request, 
                            prompt_template=prompt_template)
 
+
 @app.route('/process-template', methods=['POST'])
 def process_template():
     try:
         data = request.get_json()
         template_text = data.get('template-input')
-        print(data)
-        print(template_text)
-        rendered_text = process_text(template_text)
+        test_id = data.get('test-id')
+        iterable_index = data.get('iterable-index')
+        print(iterable_index)
+        
+        if not template_text or not test_id:
+            raise ValueError("Template input and test ID are required")
+
+        if not iterable_index:
+            rendered_text = process_text(template_text, test_id)
+        else:
+            rendered_text = process_text(template_text, test_id, iterable_index)
+
         return jsonify({'rendered_text': rendered_text})
     except Exception as e:
         return jsonify({'message': str(e), 'status': 'error'})
+
+
 
 @app.route('/send-template', methods=['POST'])
 def send_template():
