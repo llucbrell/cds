@@ -5,27 +5,24 @@
             <h1>Visor de CSV</h1>
         </div>
         <div class="col-md-12">
-            <form id="csv-form" enctype="multipart/form-data">
+            <form id="csv-iterable-form" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="file" id="csv-file" name="csv_file" class="form-control" accept=".csv,.xlsx" required>
+                    <input type="file" id="csv-iterable-file" name="csv_file" class="form-control" accept=".csv,.xlsx" required>
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Cargar CSV</button>
             </form>
-            <div id="csv-output" class="mt-3"></div>
-            <div id="csv-table" class="mt-3" style="width: 100%; height: 600px; overflow: auto;"></div>
+            <div id="csv-iterable-output" class="mt-3"></div>
+            <div id="csv-iterable-table" class="mt-3" style="width: 100%; height: 600px; overflow: auto;"></div>
         </div>
     </div>
     <div class="row mt-4">
         <div class="col-md-12">
-            <div id="selected-range" class="alert alert-info" role="alert">
+            <div id="selected-iterable-range" class="alert alert-info" role="alert">
                 No range selected
             </div>
-            <br>
-            <input id="array-key" name="key" placeholder="Nombre del ítem" class="form-control" required>
-            <button id="save-selection" class="btn btn-success mt-4">Guardar Selección</button>
-            <button id="invert-selection" class="btn btn-warning mt-4">Invertir Selección</button>
-            <br>
-            <br>
+            <input id="array-iterable-key" name="key" placeholder="Nombre del ítem" class="form-control" required>
+            <button id="save-iterable-selection" class="btn btn-success mt-4">Guardar Selección</button>
+            <button id="invert-iterable-selection" class="btn btn-warning mt-4">Invertir Selección</button>
         </div>
     </div>
 </div>
@@ -34,7 +31,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const container = document.querySelector('#csv-table');
+        const container = document.querySelector('#csv-iterable-table');
         let hot;
         let selectedData = [];
 
@@ -52,9 +49,9 @@
             licenseKey: 'non-commercial-and-evaluation' // for non-commercial use only
         });
 
-        document.querySelector('#csv-form').addEventListener('submit', function (event) {
+        document.querySelector('#csv-iterable-form').addEventListener('submit', function (event) {
             event.preventDefault();
-            const fileInput = document.querySelector('#csv-file');
+            const fileInput = document.querySelector('#csv-iterable-file');
             if (!fileInput) {
                 console.error("File input element not found.");
                 return;
@@ -88,7 +85,7 @@
             });
 
             // Add event listener for save-selection button after data is displayed
-            document.querySelector('#save-selection').addEventListener('click', function () {
+            document.querySelector('#save-iterable-selection').addEventListener('click', function () {
                 console.log("Save selection button clicked.");
                 if (!selectedData || selectedData.length === 0) {
                     console.error("No range selected!");
@@ -97,7 +94,7 @@
                 }
 
                 try {
-                   var arrayKey = document.getElementById("array-key"); 
+                   var arrayKey = document.getElementById("array-iterable-key"); 
                    console.log(arrayKey.value);
                 } catch (error) {
                     alert("No se puede guardar un array sin referenciarlo con un nombre.");
@@ -112,7 +109,7 @@
                 console.log(testId);
                 const confirmMessage = `Are you sure you want to save the following data?\n\n${JSON.stringify(selectedData, null, 2)}`;
                 if (confirm(confirmMessage)) {
-                    fetch('/save_selection', {
+                    fetch('/save_iterable_selection', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -134,7 +131,7 @@
             });
 
             // Add event listener for invert-selection button
-            document.querySelector('#invert-selection').addEventListener('click', function () {
+            document.querySelector('#invert-iterable-selection').addEventListener('click', function () {
                 console.log("Invert selection button clicked.");
                 selectedData.reverse();
                 console.log("Inverted data:", selectedData);
@@ -143,7 +140,7 @@
             // Add listener to update selected range display
             hot.addHook('afterSelection', function (startRow, startCol, endRow, endCol) {
                 const rangeDisplay = `Selected range: ${Handsontable.helper.spreadsheetColumnLabel(startCol)}${startRow + 1} to ${Handsontable.helper.spreadsheetColumnLabel(endCol)}${endRow + 1}`;
-                document.querySelector('#selected-range').textContent = rangeDisplay;
+                document.querySelector('#selected-iterable-range').textContent = rangeDisplay;
 
                 selectedData = [];
                 for (let row = startRow; row <= endRow; row++) {

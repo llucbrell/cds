@@ -236,6 +236,41 @@ def save_selection():
     else:
         return jsonify({'status': 'error', 'message': 'Not enought data received'})
 
+@app.route('/save_iterable_selection', methods=['POST'])
+def save_iterable_selection():
+    data = request.json
+    print(data)
+    test_id = data.get('test_id')
+    value_key = data.get('value_key')
+    value_values = data.get('value_value')
+    print(value_key)
+    print(test_id)
+
+    if test_id and value_key and value_values:
+        db = Database()
+        for index, item in enumerate(value_values):
+            db.add_iterable_value(test_id, value_key, item, 'iterable', index)
+
+        return jsonify({'status': 'success', 'message': 'Data saved successfully'})
+    else:
+        return jsonify({'status': 'error', 'message': 'Not enough data received'})
+
+
+@app.route('/delete_iterable_values', methods=['POST'])
+def delete_iterable_values():
+    data = request.json
+    test_id = data.get('test_id')
+    value_key = data.get('value_key')
+    
+    if test_id and value_key:
+        db = Database()
+        num_deleted = db.delete_iterable_values_by_key(test_id, value_key)
+        if num_deleted > 0:
+            return jsonify({'status': 'success', 'message': f'{num_deleted} values deleted successfully'})
+        else:
+            return jsonify({'status': 'error', 'message': 'No values found to delete'})
+    else:
+        return jsonify({'status': 'error', 'message': 'test_id and value_key required'})
 
 ##########################################################
 # Ruta para la aplicación Dash a modo de manager de datos

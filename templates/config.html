@@ -35,6 +35,8 @@
             <h3>Plantilla de Request</h3>
             <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ template_request or '' }}</textarea>
             <button id="save-request-template" class="btn btn-primary mt-2">Save</button>
+            <button id="upload-request-template" class="btn btn-secondary mt-2">Upload</button>
+            <button id="download-request-template" class="btn btn-secondary mt-2">Download</button>
             <div id="template-request-output" class="mt-3"></div>
         </div>
     </div>
@@ -51,6 +53,8 @@
             <h3>Constructor de plantilla de Prompts</h3>
             <textarea id="template-input" placeholder="Escribe combinando texto normal y texto entre {{'{{'}}}} de manera que se sustituyan los valores al pulsar sobre el botón, prueba con {{'{{date}}'}}" class="form-control" style="width: 100%; height: 200px;">{{ prompt_template or '' }}</textarea>
             <button id="save-prompt-template" class="btn btn-primary mt-2">Save</button>
+            <button id="upload-prompt-template" class="btn btn-secondary mt-2">Upload</button>
+            <button id="download-prompt-template" class="btn btn-secondary mt-2">Download</button>
             <button id="template-button" class="btn btn-primary mt-2">Process Template</button>
             <button id="template-send-button" class="btn btn-primary mt-2">Prueba</button>
             <div id="template-output" class="mt-3"></div>
@@ -184,5 +188,68 @@
             .catch(error => console.error('Error:', error));  // Logging errors
         });
     });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Función para subir y leer archivo JSON en Request Template
+    document.getElementById('upload-request-template').addEventListener('click', function () {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'application/json';
+        input.onchange = function (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('template-request').value = reader.result;
+            };
+            reader.readAsText(file);
+        };
+        input.click();
+    });
+
+    // Función para subir y leer archivo TXT en Prompt Template
+    document.getElementById('upload-prompt-template').addEventListener('click', function () {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'text/plain';
+        input.onchange = function (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('template-input').value = reader.result;
+            };
+            reader.readAsText(file);
+        };
+        input.click();
+    });
+
+    // Función para descargar el contenido de Request Template como archivo JSON
+    document.getElementById('download-request-template').addEventListener('click', function () {
+        const content = document.getElementById('template-request').value;
+        const blob = new Blob([content], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Rtemplate_' + url.substr(url.lastIndexOf('/') + 1) + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    // Función para descargar el contenido de Prompt Template como archivo TXT
+    document.getElementById('download-prompt-template').addEventListener('click', function () {
+        const content = document.getElementById('template-input').value;
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Ptemplate_' + url.substr(url.lastIndexOf('/') + 1) + '.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+});
+
 </script>
 {% endblock %}

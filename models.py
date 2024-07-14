@@ -131,10 +131,20 @@ class Database:
         self.session.commit()
 
 
+    def add_iterable_value(self, test_id, value_key, value_value, value_type, iterable_index=None):
+        print("saving")
+        print(value_value)
+        new_value = Values(test_id=test_id, value_key=value_key, value_value=value_value, value_type=value_type, iterable_index=iterable_index)
+        self.session.add(new_value)
+        self.session.commit()
+        return {'status': 'success', 'message': 'Value added successfully.'}
+ 
     def add_value(self, test_id, value_key, value_value, value_type, iterable_index=None):
         print("saving")
+        print(value_value)
         existing_value = self.session.query(Values).filter_by(test_id=test_id, value_key=value_key, value_type=value_type).first()
         if existing_value:
+            print("existe")
             return {'status': 'error', 'message': 'Value with this key already exists.'}
         new_value = Values(test_id=test_id, value_key=value_key, value_value=value_value, value_type=value_type, iterable_index=iterable_index)
         self.session.add(new_value)
@@ -164,3 +174,16 @@ class Database:
     def get_values(self, test_id):
         return self.session.query(Values).filter_by(test_id=test_id).all()
 
+    def delete_values_by_key(self, test_id, value_key):
+        values_to_delete = self.session.query(Values).filter_by(test_id=test_id, value_key=value_key, value_type='array').all()
+        for value in values_to_delete:
+            self.session.delete(value)
+        self.session.commit()
+        return len(values_to_delete)
+
+    def delete_iterable_values_by_key(self, test_id, value_key):
+        values_to_delete = self.session.query(Values).filter_by(test_id=test_id, value_key=value_key, value_type='iterable').all()
+        for value in values_to_delete:
+            self.session.delete(value)
+        self.session.commit()
+        return len(values_to_delete)
