@@ -383,6 +383,7 @@ def start_execution(test_id):
         url = data.target_url
         headers = {'Authorization': f'Bearer {data.api_key}'}
         
+        print(rendered_text)
         start_time = time.time()
         #response = requests.post(url, headers=headers, data=rendered_text)
         end_time = time.time()
@@ -452,6 +453,20 @@ def delete_execution(execution_id):
 def execution_results(execution_id):
     execution = db.get_execution(execution_id)
     return render_template('execution_results.html', execution=execution)
+
+from flask import jsonify
+
+@app.route('/get-executions/<int:test_id>', methods=['GET'])
+def get_executions(test_id):
+    session = Session()
+    executions = session.query(Execution).filter_by(test_id=test_id).all()
+    session.close()
+    return jsonify([{
+        'id': execution.id,
+        'result': execution.result,
+        'timestamp': execution.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+    } for execution in executions])
+
 
 ##########################################################
 # Ruta para la aplicación Dash a modo de manager de datos

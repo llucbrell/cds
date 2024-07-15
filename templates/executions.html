@@ -69,7 +69,7 @@
             <th>Acciones</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="executions-table-body">
         {% for execution in executions %}
         <tr>
             <td>{{ execution.id }}</td>
@@ -112,10 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('start-execution-form').addEventListener('submit', function(event) {
-        let repetitions = '';
-        let selectionType = '';
-        let asyncOption = '';
-        let selectedKey = '';
+        let repetitions;
+        let selectionType;
+        let asyncOption;
+        let selectedKey;
 
         if (document.getElementById('selectIterable').checked) {
             // Obtenemos la clave seleccionada del iterable
@@ -134,6 +134,53 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('async-option').value = asyncOption;
         document.getElementById('key').value = selectedKey;
     });
+
+    const pauseUrlBase = '{{ url_for("pause_execution", execution_id=0) }}'.replace('0', '');
+    const resumeUrlBase = '{{ url_for("start_execution", test_id=test.id) }}';
+    const resultsUrlBase = '{{ url_for("execution_results", execution_id=0) }}'.replace('0', '');
+    const deleteUrlBase = '{{ url_for("delete_execution", execution_id=0) }}'.replace('0', '');
+
+    function updateExecutions() {
+        fetch('{{ url_for("get_executions", test_id=test.id) }}')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('executions-table-body');
+                tableBody.innerHTML = '';
+                data.forEach(execution => {
+                    const pauseUrl = pauseUrlBase + execution.id;
+                    const resultsUrl = resultsUrlBase + execution.id;
+                    const deleteUrl = deleteUrlBase + execution.id;
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${execution.id}</td>
+                        <td>${execution.result}</td>
+                        <td>${execution.timestamp}</td>
+                        <td>
+                            ${execution.result === 'In Progress' ? `
+                            <form action="${pauseUrl}" method="post" style="display: inline;">
+                                <button type="submit" class="btn btn-warning">Pausar</button>
+                            </form>
+                            ` : `
+                            <form action="${resumeUrlBase}" method="post" style="display: inline;">
+                                <button type="submit" class="btn btn-success">Reanudar</button>
+                            </form>
+                            `}
+                            <a href="${resultsUrl}" class="btn btn-info">Resultados</a>
+                            <form action="${deleteUrl}" method="post" style="display: inline;">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            });
+    }
+
+    // Actualizar la lista cada 5 segundos
+    setInterval(updateExecutions, 5000);
+    // Llamar una vez para cargar inicialmente
+    updateExecutions();
 });
 </script>
 
