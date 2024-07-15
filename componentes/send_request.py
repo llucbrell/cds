@@ -6,9 +6,16 @@ def send_to_model(auth_url, api_key, url, processed_text, template_request_text)
     if not authenticate(auth_url, api_key):
         return "Invalid API Key"
 
-    # Reemplazar {{url}}, {{api_key}} y {{prompt}} en la plantilla de solicitud
-    template_request_text = template_request_text.replace('{{url}}', url).replace('{{api_key}}', api_key).replace('{{prompt}}', processed_text)
 
+     
+    # Usar json.dumps para escaparse el processed_text
+    processed_text_escaped = json.dumps(processed_text)[1:-1]
+
+    # Reemplazar {{url}}, {{api_key}} y {{prompt}} en la plantilla de solicitud
+    template_request_text = template_request_text.replace('{{url}}', url).replace('{{api_key}}', api_key).replace('{{prompt}}', processed_text_escaped)
+
+
+    print(template_request_text)
     # Convertir el texto JSON en un diccionario de Python
     template_dict = json.loads(template_request_text)
 
@@ -19,11 +26,6 @@ def send_to_model(auth_url, api_key, url, processed_text, template_request_text)
 
     # Añadir el encabezado de autorización
     headers['Authorization'] = f'Bearer {api_key}'
-    print(request_url)
-    print(payload)
-    print(headers)
-    print(template_request_text)
-    print(processed_text)
 
     try:
         response = requests.post(request_url, json=payload, headers=headers)

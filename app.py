@@ -386,6 +386,7 @@ def start_execution(test_id):
         print(rendered_text)
         start_time = time.time()
         #response = requests.post(url, headers=headers, data=rendered_text)
+        send_process_template_to_model(rendered_text)
         end_time = time.time()
         
         duration = end_time - start_time
@@ -400,6 +401,18 @@ def start_execution(test_id):
         #execution.status_code = status_code
         session.commit()
         session.close()
+    
+    def send_process_template_to_model(processed_text):
+        ndata = db.get_data(test_id)
+        print(ndata.target_url)
+        print(ndata.auth_url)
+        print(ndata.api_key)
+        print(ndata.request_template)
+        print(processed_text)
+        
+        
+        response = send_to_model(ndata.auth_url, ndata.api_key, ndata.target_url, processed_text, ndata.request_template)
+        print(response)
 
     def run_all_executions():
         for iterable_index in range(key_count):
