@@ -321,7 +321,7 @@ def process_and_send(template_text, test_id, iterable_index=None):
 
     execution = db.get_executions(test_id)[-1]
     execution.result = response_text
-    execution.timestamp = func.now()
+    #execution.timestamp = func.now()
     execution.duration = duration
     execution.status_code = status_code
     db.session.commit()
@@ -396,7 +396,7 @@ def start_execution(test_id):
         execution = session.query(Execution).filter_by(id=execution_id).first()
         #execution.result = response_text
         #execution.timestamp = func.now()
-        execution.duration = duration
+        #execution.duration = duration
         #execution.status_code = status_code
         session.commit()
         session.close()
@@ -404,7 +404,10 @@ def start_execution(test_id):
     def run_all_executions():
         for iterable_index in range(key_count):
             run_single_execution(iterable_index)
-        update_execution_status(execution_id, "Ended")
+        if selection_type == 'iterable':
+            update_execution_status(execution_id, f"Ended with {key_count} iterations of key {selected_key}")
+        else:
+            update_execution_status(execution_id, f"Ended with {key_count} iterative repetitions")
 
     def update_execution_status(execution_id, status):
         session = Session()
@@ -454,17 +457,20 @@ def execution_results(execution_id):
     execution = db.get_execution(execution_id)
     return render_template('execution_results.html', execution=execution)
 
-from flask import jsonify
 
 @app.route('/get-executions/<int:test_id>', methods=['GET'])
 def get_executions(test_id):
     session = Session()
     executions = session.query(Execution).filter_by(test_id=test_id).all()
     session.close()
+    # Verificar las horas antes de formatearlas
+    for execution in executions:
+        print(f"ID: {execution.id}, Timestamp: {execution.timestamp}")
     return jsonify([{
         'id': execution.id,
         'result': execution.result,
-        'timestamp': execution.timestamp.strftime('%Y-%m-%d %H:%M:%S')
+        #'timestamp': execution.timestamp.strftime('%d-%m-%Y %H:%M')
+        'timestamp': execution.timestamp.isoformat() 
     } for execution in executions])
 
 

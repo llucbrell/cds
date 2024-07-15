@@ -150,12 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     const pauseUrl = pauseUrlBase + execution.id;
                     const resultsUrl = resultsUrlBase + execution.id;
                     const deleteUrl = deleteUrlBase + execution.id;
+                    console.log(execution.timestamp);
+                    const utcDate = new Date(execution.timestamp);
+                    const localDate = utcDate.toLocaleString();
 
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${execution.id}</td>
                         <td>${execution.result}</td>
-                        <td>${execution.timestamp}</td>
+                        <td>${localDate}</td>
                         <td>
                             ${execution.result === 'In Progress' ? `
                             <form action="${pauseUrl}" method="post" style="display: inline;">
