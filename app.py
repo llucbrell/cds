@@ -60,6 +60,21 @@ def delete_collection(collection_id):
     db.delete_collection(collection_id)
     return redirect(url_for('collections'))
 
+@app.route('/tests/update_name/<int:test_id>', methods=['POST'])
+def update_test_name(test_id):
+    try:
+        data = request.get_json()
+        new_test_name = data.get('new_test_name')
+        if not new_test_name:
+            return jsonify({'status': 'error', 'message': 'El nombre del test no puede estar vacío.'})
+        
+        test = db.get_test(test_id)
+        test.name = new_test_name
+        db.session.commit()
+        return jsonify({'status': 'success', 'message': 'Nombre del test actualizado con éxito.'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
 # Rutas para tests
 @app.route('/tests/<int:collection_id>', methods=['GET', 'POST'])
 def tests(collection_id):

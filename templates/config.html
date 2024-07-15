@@ -4,13 +4,24 @@
     <div class="row">
         <div class="col-md-12">
             <h1 id="collection-name" class="text-left my-4">{{ collection_name }}</h1>
-            <h1 id="test-name" class="text-center my-4">{{ test_name }}</h1>
         </div>
     </div>
-    <div class="row">
+ <div class="row">
+       <div class="col-md-4 offset-md-4">
+            <h3>Nombre</h3>
+    <div class="d-flex align-items-center">
+        <input id="new-test-name-input" placeholder="Nuevo Nombre del Test" value="{{ test_name or '' }}" type="text" class="form-control me-2">
+        <button id="save-test-name-button" class="btn btn-primary">Save</button>
+    </div>
+    <div id="save-test-name-output" class="mt-2"></div>
+</div> 
+    </div>
+     <div class="row">
         <div class="col-md-12 text-center my-4">
             <h1>Datos Generales</h1>
-        </div>
+        </div> 
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <h3>Auth URL</h3>
             <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ auth_url or '' }}" type="text" class="form-control">
@@ -29,6 +40,8 @@
             <button id="save-target-url-button" class="btn btn-primary mt-2">Save</button>
             <div id="save-target-url-output" class="mt-2"></div>
         </div>
+    </div>
+
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -260,6 +273,48 @@ document.addEventListener('DOMContentLoaded', function () {
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    function getIdsFromUrl() {
+        const pathArray = window.location.pathname.split('/');
+        const testId = pathArray[pathArray.length - 2];
+        const collectionId = pathArray[pathArray.length - 1];
+        return { testId, collectionId };
+    }
+
+    const { testId, collectionId } = getIdsFromUrl();
+    console.log(`testId: ${testId}, collectionId: ${collectionId}`);  // Logging IDs
+
+    function saveData(endpoint, data, outputId) {
+        console.log(`Sending data to ${endpoint}:`, data);  // Logging request data
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(`Response from ${endpoint}:`, data);  // Logging response data
+            const outputElement = document.getElementById(outputId);
+            outputElement.innerText = data.message;
+            outputElement.className = data.status === 'success' ? 'text-success' : 'text-danger';
+            setTimeout(() => {
+                outputElement.innerText = '';
+                outputElement.className = '';
+            }, 5000);  // Clear message after 5 seconds
+        })
+        .catch(error => console.error('Error:', error));  // Logging errors
+    }
+
+    document.getElementById('save-test-name-button').addEventListener('click', function() {
+        const newTestName = document.getElementById('new-test-name-input').value;
+        const endpoint = `/tests/update_name/${testId}`;
+        saveData(endpoint, { new_test_name: newTestName }, 'save-test-name-output');
+        document.getElementById('test-name').innerText = newTestName;
     });
 });
 
