@@ -1,5 +1,5 @@
 from dash import Dash, dcc, html
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output, State, ALL
 import dash_bootstrap_components as dbc
 import importlib
 import os
@@ -19,8 +19,7 @@ def create_dash_app(flask_app):
         dcc.Location(id='url', refresh=False),
         html.H1("Aplicación Dash con Plugins"),
         dcc.Store(id='execution-data'),
-        html.Div(id='plugin-list'),
-        html.Div(id='plugin-content')
+        html.Div(id='plugin-list')
     ])
 
     db = Database()
@@ -50,7 +49,8 @@ def create_dash_app(flask_app):
                         id={'type': 'plugin-checkbox', 'index': plugin['value']},
                         inputStyle={"margin-right": "10px"},
                         labelStyle={"font-size": "20px"}
-                    )
+                    ),
+                    html.Div(id={'type': 'plugin-container', 'index': plugin['value']})
                 ], className='plugin-checkbox-container') for plugin in plugins]
 
     @dash_app.callback(
@@ -74,21 +74,18 @@ def create_dash_app(flask_app):
             return []
 
     @dash_app.callback(
-        Output('plugin-content', 'children'),
-        [Input({'type': 'plugin-checkbox', 'index': plugin['value']}, 'value') for plugin in plugins],
+        Output({'type': 'plugin-container', 'index': ALL}, 'children'),
+        [Input({'type': 'plugin-checkbox', 'index': ALL}, 'value')],
         State('execution-data', 'data')
     )
-    def display_plugin(*selected_plugins, execution_data=None):
-        content = []
+    def display_plugin(selected_plugins, execution_data=None):
+        content = [[] for _ in selected_plugins]
         for i, selected in enumerate(selected_plugins):
             if selected:
-                try:
-                    module = importlib.import_module(f'plugins.{plugins[i]["value"]}')
-                    content.append(module.layout)
-                    if hasattr(module, 'update_data'):
-                        module.update_data(dash_app, execution_data)
-                except IndexError:
-                    print(f"Error: Index {i} out of range for plugins list.")
+                module = importlib.import_module(f'plugins.{plugins[i]["value"]}')
+                content[i].append(module.layout)
+                if hasattr(module, 'update_data'):
+                    module.update_data(dash_app, execution_data)
         return content
 
     return dash_app
