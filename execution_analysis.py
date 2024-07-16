@@ -5,6 +5,7 @@ import importlib
 import os
 import pandas as pd
 from models import Database
+import uuid
 
 def create_dash_app(flask_app):
     dash_app = Dash(
@@ -78,14 +79,17 @@ def create_dash_app(flask_app):
         [Input({'type': 'plugin-checkbox', 'index': ALL}, 'value')],
         State('execution-data', 'data')
     )
-    def display_plugin(selected_plugins, execution_data=None):
+    def display_plugin(selected_plugins, execution_data):
         content = [[] for _ in selected_plugins]
         for i, selected in enumerate(selected_plugins):
             if selected:
                 module = importlib.import_module(f'plugins.{plugins[i]["value"]}')
-                content[i].append(module.layout)
+                plugin_layout = module.layout
+                unique_id = str(uuid.uuid4())
+                plugin_layout.id = unique_id  # Assign a unique ID
+                content[i].append(plugin_layout)
                 if hasattr(module, 'update_data'):
-                    module.update_data(dash_app, execution_data)
+                    module.update_data(dash_app, execution_data, unique_id)
         return content
 
     return dash_app

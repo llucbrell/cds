@@ -1,3 +1,20 @@
+# Plugin Development Documentation for Dash Application
+
+This documentation provides guidelines on how to create plugins for the Dash application. Plugins can dynamically update based on data loaded from a database without needing to restart the server. Follow these steps to create and integrate a new plugin.
+
+## Plugin Structure
+
+Each plugin should be a Python module located in the `plugins` directory. The module should contain:
+- A `NAME` variable defining the name of the plugin.
+- A `layout` variable defining the Dash layout for the plugin.
+- An `update_data` function to handle data updates.
+- A `register_callbacks` function to register the plugin's callbacks with the main Dash app.
+
+### Example Plugin: Responses Table
+
+Create a file named `responses_table.py` in the `plugins` directory with the following content:
+
+```python
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
 import pandas as pd
