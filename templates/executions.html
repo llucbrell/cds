@@ -84,11 +84,12 @@
                 <form action="{{ url_for('start_execution', test_id=test.id) }}" method="post" style="display: inline;">
                     <button type="submit" class="btn btn-success">Reanudar</button>
                 </form>
-                {% endif %}
-                <a href="{{ url_for('execution_results', execution_id=execution.id) }}" class="btn btn-info">Resultados</a>
                 <form action="{{ url_for('delete_execution', execution_id=execution.id) }}" method="post" style="display: inline;">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
+                {% endif %}
+                <a href="{{ url_for('execution_results', execution_id=execution.id) }}" class="btn btn-info">Resultados</a>
+                <a href="{{ url_for('execution_analysis', execution_id=execution.id) }}" class="btn btn-info">Analisis</a>
             </td>
         </tr>
         {% endfor %}
@@ -139,6 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const resumeUrlBase = '{{ url_for("start_execution", test_id=test.id) }}';
     const resultsUrlBase = '{{ url_for("execution_results", execution_id=0) }}'.replace('0', '');
     const deleteUrlBase = '{{ url_for("delete_execution", execution_id=0) }}'.replace('0', '');
+    const analysisUrlBase = '{{ url_for("execution_analysis", execution_id=0) }}'.replace('0', '');
+
 
     function updateExecutions() {
         fetch('{{ url_for("get_executions", test_id=test.id) }}')
@@ -153,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log(execution.timestamp);
                     const utcDate = new Date(execution.timestamp);
                     const localDate = utcDate.toLocaleString();
+                    const analysisUrl = analysisUrlBase + execution.id;
 
                     const row = document.createElement('tr');
                     row.innerHTML = `
@@ -170,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </form>
                             `}
                             <a href="${resultsUrl}" class="btn btn-info">Resultados</a>
+                            <a href="${analysisUrl}" class="btn btn-info">Análisis</a>
                             <form action="${deleteUrl}" method="post" style="display: inline;">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>

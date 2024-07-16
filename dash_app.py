@@ -12,7 +12,7 @@ def create_dash_app(flask_app):
     )
     
     # Asigna el layout
-    dash_app.layout = layout
+    #dash_app.layout = layout
     
     # Registra los callbacks
     #register_callbacks(dash_app)

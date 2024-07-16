@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
-from dash_app import create_dash_app
+from execution_analysis import create_dash_app
 from models import Database, Values
 import dash
 from dash import html, dcc
@@ -521,6 +521,12 @@ def config_test(test_id, collection_id):
     return render_template('dash_layout.html', dash_html=dash_app.index(), test_id=test_id, collection_id=collection_id)
 
 """
+
+@app.route('/execution_analysis/<int:execution_id>/')
+def execution_analysis(execution_id):
+    # Pasar el contenido HTML generado por Dash al renderizar la plantilla
+    return render_template('dash_layout.html', dash_html=dash_app.index(), execution_id=execution_id)
+
 
 
 
