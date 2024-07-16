@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, func
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, func, Float
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 import time
 
@@ -26,6 +26,8 @@ class Execution(Base):
     result = Column(String, nullable=False)
     timestamp = Column(DateTime, default=func.now())
     test = relationship('Test', back_populates='executions')
+    responses = relationship('Response', back_populates='execution', cascade='all, delete-orphan')
+
 
 class Data(Base):
     __tablename__ = 'data'
@@ -46,7 +48,6 @@ class Values(Base):
     value_value = Column(String, nullable=True)
     value_type = Column(String, nullable=True)  # fixed, iterable, array
     iterable_index = Column(Integer, nullable=True)  # Used for iterable types
-
     def to_dict(self):
         return {
             'id': self.id,
@@ -55,6 +56,19 @@ class Values(Base):
             'value_type': self.value_type,
             'iterable_index': self.iterable_index
         }
+
+class Response(Base):
+    __tablename__ = 'responses'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    execution_id = Column(Integer, ForeignKey('executions.id'), nullable=False)
+    response_data = Column(String, nullable=False)
+    start_time = Column(Float, nullable=False)
+    end_time = Column(Float, nullable=False)
+    duration = Column(Float, nullable=False)
+    date = Column(DateTime, default=func.now())
+    execution = relationship('Execution', back_populates='responses')
+    
+
 
 DATABASE_URL = "sqlite:///tests.db"
 engine = create_engine(DATABASE_URL)
@@ -201,3 +215,19 @@ class Database:
         execution = self.get_execution(execution_id)
         execution.result = status
         self.session.commit()
+
+    def add_response(self, execution_id, response_data, start_time, end_time, duration):
+        new_response = Response(execution_id=execution_id, response_data=response_data, start_time=start_time, end_time=end_time, duration=duration)
+        self.session.add(new_response)
+        self.session.commit()
+
+    def get_responses(self, execution_id):
+        return self.session.query(Response).filter_by(execution_id=execution_id).all()
+
+    def delete_response(self, response_id):
+        response = self.session.query(Response).get(response_id)
+        self.session.delete(response)
+        self.session.commit()
+
+    def get_responses(self, execution_id):
+        return self.session.query(Response).filter_by(execution_id=execution_id).all()

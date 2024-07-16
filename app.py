@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
 from dash_app import create_dash_app
 from models import Database, Values
 import dash
@@ -9,6 +9,7 @@ import pandas as pd
 import base64
 import io
 import json
+import os
 from componentes.text_processing import process_text
 from componentes.send_request import send_to_model
 import threading
@@ -35,6 +36,15 @@ db = Database()
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 # Rutas para colecciones
 @app.route('/collections', methods=['GET', 'POST'])
@@ -400,11 +410,12 @@ def start_execution(test_id):
         
         print(rendered_text)
         start_time = time.time()
-        #response = requests.post(url, headers=headers, data=rendered_text)
-        send_process_template_to_model(rendered_text)
+        response = send_process_template_to_model(rendered_text)
         end_time = time.time()
+        print(response)
         
         duration = end_time - start_time
+        db.add_response(execution_id=execution_id, response_data=response, start_time=start_time, end_time=end_time, duration=duration )
         #status_code = response.status_code
         #response_text = response.text
         
@@ -424,10 +435,8 @@ def start_execution(test_id):
         print(ndata.api_key)
         print(ndata.request_template)
         print(processed_text)
-        
-        
-        response = send_to_model(ndata.auth_url, ndata.api_key, ndata.target_url, processed_text, ndata.request_template)
-        print(response)
+        resp = send_to_model(ndata.auth_url, ndata.api_key, ndata.target_url, processed_text, ndata.request_template)
+        return resp
 
     def run_all_executions():
         for iterable_index in range(key_count):
@@ -479,11 +488,11 @@ def delete_execution(execution_id):
     db.session.commit()
     return redirect(url_for('executions', test_id=test_id))
 
-# Ruta para ver los resultados de una ejecución
 @app.route('/execution-results/<int:execution_id>')
 def execution_results(execution_id):
     execution = db.get_execution(execution_id)
-    return render_template('execution_results.html', execution=execution)
+    test_results = db.get_responses(execution_id)
+    return render_template('executions_results.html', execution=execution, test_results=test_results)
 
 
 @app.route('/get-executions/<int:test_id>', methods=['GET'])
@@ -512,6 +521,8 @@ def config_test(test_id, collection_id):
     return render_template('dash_layout.html', dash_html=dash_app.index(), test_id=test_id, collection_id=collection_id)
 
 """
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

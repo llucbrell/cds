@@ -1,17 +1,46 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Flask App</title>
-</head>
-<body>
-    <h1>Welcome to My Flask App</h1>
-    <a href="/dash">Go to Dash App</a>
-</body>
-</html>
--->
 {% extends 'base.html' %}
+
 {% block content %}
-<h1>Welcome to Flask App</h1>
+<div class="container my-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-3 text-center">
+            <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Llama Surfing" class="img-fluid" style="max-width: 80%;">
+        </div>
+        <div class="col-md-9">
+            <h1 class="display-4 mb-4">Charlie Don't Surf</h1>
+            <p class="lead">CDS es una herramienta avanzada para administrar, construir prompts y testear modelos de lenguaje. Dirigida a desarrolladores, educadores y administradores, optimiza y evalúa la eficiencia de los modelos de lenguaje con precisión y eficacia.</p>
+        </div>
+    </div>
+    
+    <div class="my-5">
+        <h2 class="h3">Funcionalidades Clave</h2>
+        
+        <div class="my-4">
+            <h3 class="h4">Administración Integral</h3>
+            <p>Gestiona colecciones y pruebas, permitiendo la creación, edición y eliminación de colecciones. Configura pruebas detalladas con parámetros específicos y condiciones personalizadas.</p>
+        </div>
+        
+        <div class="my-4">
+            <h3 class="h4">Construcción de Prompts</h3>
+            <p>Utiliza plantillas Jinja para crear prompts personalizados con gran flexibilidad. Inserta variables, establece condiciones y reutiliza componentes para una construcción dinámica y adaptable.</p>
+        </div>
+        
+        <div class="my-4">
+            <h3 class="h4">Testeo de Modelos de Lenguaje</h3>
+            <p>Ejecuta pruebas automatizadas para evaluar la funcionalidad y rendimiento de los modelos bajo diversas condiciones. Lanza baterías de pruebas contra APIs de diferentes modelos para una evaluación exhaustiva.</p>
+            <p>Los resultados se almacenan y presentan organizadamente, proporcionando informes detallados para identificar áreas de mejora y optimizar los modelos.</p>
+        </div>
+    </div>
+    
+    <div class="my-5">
+        <h2 class="h3">Tecnología Utilizada</h2>
+        
+        <p>La aplicación se basa en una infraestructura robusta con Flask para la gestión y ejecución de pruebas, SQLAlchemy para la base de datos, y Jinja para la construcción de prompts. En el lado del cliente, JavaScript y Moment.js manejan la conversión de fechas y horas, mientras que Bootstrap asegura una interfaz intuitiva y responsive.</p>
+        
+        <p>Es la solución ideal para organizaciones que buscan maximizar el rendimiento y la fiabilidad de sus modelos de lenguaje, garantizando una evaluación precisa y una optimización continua.</p>
+    </div>
+    
+</div>
 {% endblock %}
