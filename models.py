@@ -67,7 +67,16 @@ class Response(Base):
     duration = Column(Float, nullable=False)
     date = Column(DateTime, default=func.now())
     execution = relationship('Execution', back_populates='responses')
-    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'execution_id': self.execution_id,
+            'response_data': self.response_data,
+            'start_time': self.start_time,
+            'end_time': self.end_time,
+            'duration': self.duration,
+            'date': self.date
+        } 
 
 
 DATABASE_URL = "sqlite:///tests.db"
