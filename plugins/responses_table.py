@@ -6,10 +6,12 @@ NAME = 'Responses Plugin'
 
 layout = html.Div([
     html.H2("Responses Data"),
+    #dash_table.DataTable(data=df.to_dict('records'), page_size=10)
     dash_table.DataTable(
         id='responses-table',
         columns=[{"name": i, "id": i} for i in ["id", "execution_id", "response_data", "start_time", "end_time", "duration", "date"]],
         data=[],
+        page_size=15,
         style_table={'overflowX': 'auto'},
         style_cell={'textAlign': 'left', 'padding': '5px'},
         style_header={

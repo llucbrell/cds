@@ -84,7 +84,7 @@
                 <form action="{{ url_for('start_execution', test_id=test.id) }}" method="post" style="display: inline;">
                     <button type="submit" class="btn btn-success">Reanudar</button>
                 </form>
-                <form action="{{ url_for('delete_execution', execution_id=execution.id) }}" method="post" style="display: inline;">
+                <form action="{{ url_for('delete_execution', execution_id=execution.id) }}" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
                 {% endif %}
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             `}
                             <a href="${resultsUrl}" class="btn btn-info">Resultados</a>
                             <a href="${analysisUrl}" class="btn btn-info">Análisis</a>
-                            <form action="${deleteUrl}" method="post" style="display: inline;">
+                            <form action="${deleteUrl}" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
                         </td>
@@ -190,6 +190,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Llamar una vez para cargar inicialmente
     updateExecutions();
 });
+
+function confirmDelete() {
+        return confirm('¿Estás seguro de que deseas eliminar este elemento?\nSe eliminarán todos los datos de esa ejecución');
+}
 </script>
 
 {% endblock %}

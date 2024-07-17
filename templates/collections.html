@@ -25,11 +25,16 @@
             <td>
                 <a href="{{ url_for('tests', collection_id=collection.id) }}" class="btn btn-info">View</a>
                 <a href="{{ url_for('edit_collection', collection_id=collection.id) }}" class="btn btn-secondary">Edit</a>
-                <a href="{{ url_for('delete_collection', collection_id=collection.id) }}" class="btn btn-danger">Delete</a>
+                <a href="{{ url_for('delete_collection', collection_id=collection.id) }}" class="btn btn-danger" onclick="return confirmDelete()">Delete</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 </div>
+<script>
+    function confirmDelete() {
+        return confirm('¿Estás seguro de que deseas eliminar este elemento?\nSe borrarán todos los tests, ejecuciones y datos relacionados y no se podrán recuperar.');
+    }
+</script>
 {% endblock %}
