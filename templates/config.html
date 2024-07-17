@@ -6,12 +6,17 @@
             <h1 id="collection-name" class="text-left my-4">{{ collection_name }}</h1>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+        <button id="back-button" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></button>
+        </div>
+    </div>
  <div class="row">
        <div class="col-md-4 offset-md-4">
             <h3>Nombre</h3>
     <div class="d-flex align-items-center">
         <input id="new-test-name-input" placeholder="Nuevo Nombre del Test" value="{{ test_name or '' }}" type="text" class="form-control me-2">
-        <button id="save-test-name-button" class="btn btn-primary">Save</button>
+        <button id="save-test-name-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
     </div>
     <div id="save-test-name-output" class="mt-2"></div>
 </div> 
@@ -24,20 +29,29 @@
     <div class="row">
         <div class="col-md-4">
             <h3>Auth URL</h3>
-            <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ auth_url or '' }}" type="text" class="form-control">
-            <button id="save-auth-url-button" class="btn btn-primary mt-2">Save</button>
-            <div id="save-auth-url-output" class="mt-2"></div>
-        </div>
+    <div class="d-flex align-items-center">
+        <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ auth_url or '' }}" type="text" class="form-control">
+        <button id="load-auth-url-collection" class="btn btn-outline-primary" title="Load from Collection" style="margin-left: 3px;"><i class="fas fa-upload"></i></button>
+        <button id="save-auth-url-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
+    </div>
+    <div id="save-auth-url-output" class="mt-2"></div>
+    </div>
         <div class="col-md-4">
             <h3>API Key</h3>
+        <div class="d-flex align-items-center">
             <input id="api-key-input" placeholder="Your API Key" value="{{ api_key or '' }}" type="text" class="form-control">
-            <button id="save-api-key-button" class="btn btn-primary mt-2">Save</button>
+        <button id="load-api-key-collection" class="btn btn-outline-primary" style="margin-left: 3px;"  title="Load from Collection" ><i class="fas fa-upload"></i></button>
+            <button id="save-api-key-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
+        </div>
             <div id="save-api-key-output" class="mt-2"></div>
         </div>
         <div class="col-md-4">
             <h3>Destination URL</h3>
+        <div class="d-flex align-items-center">
             <input id="my-input" placeholder="http://example.com" value="{{ target_url or '' }}" type="text" class="form-control">
-            <button id="save-target-url-button" class="btn btn-primary mt-2">Save</button>
+        <button id="load-target-url-collection" class="btn btn-outline-primary" style="margin-left: 3px;"  title="Load from Collection" ><i class="fas fa-upload"></i></button>
+            <button id="save-target-url-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
+        </div>
             <div id="save-target-url-output" class="mt-2"></div>
         </div>
     </div>
@@ -47,9 +61,10 @@
         <div class="col-md-12">
             <h3>Plantilla de Request</h3>
             <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ template_request or '' }}</textarea>
-            <button id="save-request-template" class="btn btn-primary mt-2">Save</button>
-            <button id="upload-request-template" class="btn btn-secondary mt-2">Upload</button>
-            <button id="download-request-template" class="btn btn-secondary mt-2">Download</button>
+            <button id="load-request-template-collection" class="btn btn-outline-primary mt-2" title="Load from Collection" ><i class="fas fa-upload"></i></button>
+            <button id="upload-request-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
+            <button id="download-request-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
+            <button id="save-request-template" class="btn btn-outline-primary mt-2" title="Save to DB" ><i class="fas fa-save"></i></button>
             <div id="template-request-output" class="mt-3"></div>
         </div>
     </div>
@@ -65,19 +80,25 @@
         <div class="col-md-12">
             <h3>Constructor de plantilla de Prompts</h3>
             <textarea id="template-input" placeholder="Escribe combinando texto normal y texto entre {{'{{'}}}} de manera que se sustituyan los valores al pulsar sobre el botón, prueba con {{'{{date}}'}}" class="form-control" style="width: 100%; height: 200px;">{{ prompt_template or '' }}</textarea>
-            <button id="save-prompt-template" class="btn btn-primary mt-2">Save</button>
-            <button id="upload-prompt-template" class="btn btn-secondary mt-2">Upload</button>
-            <button id="download-prompt-template" class="btn btn-secondary mt-2">Download</button>
-            <button id="template-button" class="btn btn-primary mt-2">Process Template</button>
-            <button id="template-send-button" class="btn btn-primary mt-2">Prueba</button>
-            <input id="iterable-index" value="0" title="Índice específico para iterables" type="number" class="form-control" style="width: auto; display: inline-block; float: right;">
+            <button id="load-prompt-template" class="btn btn-outline-primary mt-2" title="Load from Collection" ><i class="fas fa-upload"></i></button>
+            <button id="upload-prompt-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
+            <button id="download-prompt-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
+            <button id="template-button" class="btn btn-outline-warning mt-2" title="Process Template and show" ><i class="fas fa-cogs"></i></button>
+            <button id="template-send-button" class="btn btn-outline-warning mt-2" title="Process and send to model for testing response" ><i class="fas fa-paper-plane"></i></button>
+            <button id="save-prompt-template" class="btn btn-outline-primary mt-2" title="Save to DB" ><i class="fas fa-save"></i></button>
+            <input id="iterable-index" value="0" title="Índice específico para iterables" type="number" class="form-control mt-2" style="width: auto; display: inline-block; float: right;">
             <div id="template-output" class="mt-3"></div>
             <div id="save-prompt-template-output" class="mt-3"></div>
             <div id="send-output" class="mt-3"></div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12">
+        <button id="back-button-2" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></button>
+        </div>
+    </div>
 </div>
-        <button id="back-button" class="btn btn-secondary">Tests</button>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         function getIdsFromUrl() {
@@ -125,6 +146,9 @@
         });
 
         document.getElementById('back-button').addEventListener('click', function() {
+            window.history.back();
+        });
+        document.getElementById('back-button-2').addEventListener('click', function() {
             window.history.back();
         });
 

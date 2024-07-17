@@ -3,11 +3,14 @@
 <h1>Tests de la Colección {{ collection.name }}</h1>
 <form method="POST">
     <div class="form-group">
-        <label for="name">Test Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
+        <input type="text" placeholder="Test Name" class="form-control" id="name" name="name" required>
     </div>
-    <button type="submit" class="btn btn-primary">Add Test</button>
+    <button type="submit" class="btn btn-primary" style="float: right;">Add Test</button>
 </form>
+<br>
+<br>
+<br>
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -22,15 +25,16 @@
             <td>{{ test.id }}</td>
             <td>{{ test.name }}</td>
             <td>
-                <a href="{{ url_for('config_test', test_id=test.id, collection_id=collection.id) }}" class="btn btn-danger">Config</a>
-                <a href="{{ url_for('executions', test_id=test.id) }}" class="btn btn-info">Ejecutar</a>
-                <a href="{{ url_for('delete_test', test_id=test.id, collection_id=collection.id) }}" class="btn btn-danger" onclick="return confirmDelete()">Delete</a>
+                <a href="{{ url_for('config_test', test_id=test.id, collection_id=collection.id) }}" class="btn btn-outline-info" title="Config Test"><i class="fas fa-pen"></i></a>
+                <a href="{{ url_for('executions', test_id=test.id) }}" class="btn btn-outline-primary" title="List of test Executions"><i class="fas fa-tasks"></i></a>
+                <a href="{{ url_for('delete_test', test_id=test.id, collection_id=collection.id) }}"  onclick="return confirmDelete()" class="btn btn-outline-danger" title="Delete Test"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="{{ url_for('collections') }}" class="btn btn-secondary">Back to Collections</a>
+<a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+
 <script>
     function confirmDelete() {
         return confirm('¿Estás seguro de que deseas eliminar este elemento?\nSe borrarán todos los tests, ejecuciones y datos relacionados y no se podrán recuperar.');
