@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, send_file
 from execution_analysis import create_dash_app
 from models import Database, Values
 import dash
@@ -14,9 +14,12 @@ from componentes.text_processing import process_text
 from componentes.send_request import send_to_model
 import threading
 import time
+import csv
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import create_engine
-from models import Collection, Test, Execution, Data, Values  # Ajusta la ruta de importación según sea necesario
+from models import Collection, Test, Response, Execution, Data, Values  # Ajusta la ruta de importación según sea necesario
+from io import BytesIO  # Importar BytesIO para manejar datos binarios
+
 
 app = Flask(__name__)
 
@@ -528,7 +531,199 @@ def execution_analysis(execution_id):
     return render_template('dash_layout.html', dash_html=dash_app.index(), execution_id=execution_id)
 
 
+@app.route('/download_csv/<int:execution_id>')
+def download_csv(execution_id):
+    # Aquí deberías escribir lógica para generar el archivo CSV y devolverlo como una descarga
+    # Por ejemplo:
+    # filename = f'execution_{execution_id}.csv'
+    # Generar el archivo CSV y guardarlo temporalmente o devolverlo directamente con send_file
+    # return send_file(filename, as_attachment=True)
+    return "Placeholder para la descarga de CSV"
 
+
+@app.route('/download_all_data_csv', methods=['GET'])
+def download_all_data_csv():
+    columns = request.args.getlist('columns')
+    
+    # Obtener todos los datos de ejecuciones y respuestas
+    session = Session()
+    executions = session.query(Execution).all()
+    responses = session.query(Response).all()
+    
+    # Crear archivo CSV en memoria
+    output = io.StringIO()
+    writer = csv.writer(output)
+    
+    # Escribir encabezados basados en las columnas seleccionadas
+    headers = []
+    if 'ID' in columns:
+        headers.append('ID')
+    if 'Test ID' in columns:
+        headers.append('Test ID')
+    if 'Timestamp' in columns:
+        headers.append('Timestamp')
+    if 'Resultado' in columns:
+        headers.append('Resultado')
+    if 'Datos de Respuesta' in columns:
+        headers.append('Datos de Respuesta')
+    if 'Hora de Inicio' in columns:
+        headers.append('Hora de Inicio')
+    if 'Hora de Finalización' in columns:
+        headers.append('Hora de Finalización')
+    if 'Duración' in columns:
+        headers.append('Duración')
+    if 'Fecha' in columns:
+        headers.append('Fecha')
+    
+    writer.writerow(headers)
+    
+    # Escribir datos de ejecuciones y respuestas
+    for execution in executions:
+        execution_data = []
+
+        if 'ID' in columns:
+            execution_data.append(execution.id)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Test ID' in columns:
+           execution_data.append(execution.test_id)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Timestamp' in columns:
+            execution_data.append(execution.timestamp)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Resultado' in columns:
+            execution_data.append(execution.result)  # Asegurar que la columna se omite si no está seleccionada
+            # Añade más campos según sea necesario
+
+    for response in responses:
+        response_data = []
+
+        if 'Datos de Respuesta' in columns:
+            response_data.append(response.response_data)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Hora de Inicio' in columns:
+            response_data.append(response.start_time)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Hora de Finalización' in columns:
+            response_data.append(response.end_time)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Duración' in columns:
+            response_data.append(response.duration)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Fecha' in columns:
+            response_data.append(response.date)  # Asegurar que la columna se omite si no está seleccionada
+            # Añade más campos según sea necesario
+        writer.writerow(execution_data + response_data)
+    
+    # Convertir StringIO a BytesIO
+    output.seek(0)
+    output_binary = BytesIO(output.read().encode('utf-8'))
+    
+    # Volver al principio del archivo CSV y devolverlo como una descarga
+    output_binary.seek(0)
+    return send_file(
+        output_binary,
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name='data.csv'
+    )
+
+
+
+@app.route('/download_data_csv', methods=['GET'])
+def download_data_csv():
+    columns = request.args.getlist('columns')
+    execution_id = request.args.get('execution_id')
+
+    # Validar el execution_id
+    if not execution_id or not execution_id.isdigit():
+        return "ID de ejecución inválido", 400
+
+    execution_id = int(execution_id)
+
+    # Obtener datos de ejecuciones y respuestas
+    session = Session()
+    executions = session.query(Execution).filter(Execution.id == execution_id).all()
+    responses = session.query(Response).filter(Response.execution_id == execution_id).all()
+
+    # Crear archivo CSV en memoria
+    output = io.StringIO()
+    writer = csv.writer(output)
+
+    # Escribir encabezados basados en las columnas seleccionadas
+    headers = []
+    if 'ID' in columns:
+        headers.append('ID')
+    if 'Test ID' in columns:
+        headers.append('Test ID')
+    if 'Timestamp' in columns:
+        headers.append('Timestamp')
+    if 'Resultado' in columns:
+        headers.append('Resultado')
+    if 'Datos de Respuesta' in columns:
+        headers.append('Datos de Respuesta')
+    if 'Hora de Inicio' in columns:
+        headers.append('Hora de Inicio')
+    if 'Hora de Finalización' in columns:
+        headers.append('Hora de Finalización')
+    if 'Duración' in columns:
+        headers.append('Duración')
+    if 'Fecha' in columns:
+        headers.append('Fecha')
+
+    writer.writerow(headers)
+    # Escribir datos de ejecuciones y respuestas
+    for execution in executions:
+        execution_data = []
+
+        if 'ID' in columns:
+            execution_data.append(execution.id)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Test ID' in columns:
+           execution_data.append(execution.test_id)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Timestamp' in columns:
+            execution_data.append(execution.timestamp)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Resultado' in columns:
+            execution_data.append(execution.result)  # Asegurar que la columna se omite si no está seleccionada
+            # Añade más campos según sea necesario
+
+    for response in responses:
+        response_data = []
+
+        if 'Datos de Respuesta' in columns:
+            response_data.append(response.response_data)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Hora de Inicio' in columns:
+            response_data.append(response.start_time)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Hora de Finalización' in columns:
+            response_data.append(response.end_time)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Duración' in columns:
+            response_data.append(response.duration)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Fecha' in columns:
+            response_data.append(response.date)  # Asegurar que la columna se omite si no está seleccionada
+            # Añade más campos según sea necesario
+        writer.writerow(execution_data + response_data)
+ 
+    # Convertir StringIO a BytesIO
+    output.seek(0)
+    output_binary = BytesIO(output.read().encode('utf-8'))
+
+    # Volver al principio del archivo CSV y devolverlo como una descarga
+    output_binary.seek(0)
+    return send_file(
+        output_binary,
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name='data.csv'
+    )
+
+@app.route('/download_multiple_txt/<int:execution_id>')
+def download_multiple_txt(execution_id):
+    # Aquí deberías escribir lógica para generar múltiples archivos TXT y devolverlos como una descarga ZIP
+    # Por ejemplo:
+    # Generar los archivos TXT y guardarlos en un archivo ZIP temporal
+    # return send_file('archivo_zip_temporal.zip', as_attachment=True)
+    return "Placeholder para la descarga de múltiples TXT"
+
+@app.route('/results_executions_all', methods=['GET'])
+def all_executions():
+    session = Session()
+    executions = session.query(Execution).all()
+    responses = session.query(Response).all()
+
+    test_id = 1  # Ejemplo, obtén el test_id según tu lógica
+
+    return render_template('executions_results_all.html', executions=executions, responses=responses, test_id=test_id)
 
 if __name__ == '__main__':
     app.run(debug=True)

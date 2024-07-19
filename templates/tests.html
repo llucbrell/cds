@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+</div>
+</div>
+<div class="row align-items-center">
+        <div class="col-md-12 text-center">
+            <img src="{{ url_for('static', filename='images/surf_approval.png') }}" alt="Collections icon" class="img-fluid" style="max-width: 10%;">
+        </div>
+</div>
+<br>
+<br>
 <h1>Tests de la Colección {{ collection.name }}</h1>
 <form method="POST">
     <div class="form-group">
@@ -33,8 +48,12 @@
         {% endfor %}
     </tbody>
 </table>
+<div class="row">
+<div class="col-md-12">
 <a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
-
+</div>
+</div>
+</div>
 <script>
     function confirmDelete() {
         return confirm('¿Estás seguro de que deseas eliminar este elemento?\nSe borrarán todos los tests, ejecuciones y datos relacionados y no se podrán recuperar.');

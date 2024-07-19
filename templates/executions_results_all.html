@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-12 text-center">
+            <img src="{{ url_for('static', filename='images/surf_wax.png') }}" alt="Collections icon" class="img-fluid" style="max-width: 10%;">
+        </div>
+    </div>
+
+    <!-- Botón para regresar a la lista de pruebas, usando `test_id` -->
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url_for('executions', test_id=test_id) }}" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <!-- Navegación de pestañas -->
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="actions-csv-tab" data-toggle="tab" href="#actions-csv" role="tab" aria-controls="actions-csv" aria-selected="false">CSV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="actions-txt-tab" data-toggle="tab" href="#actions-txt" role="tab" aria-controls="actions-txt" aria-selected="false">TXT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenido de las pestañas -->
+    <div class="tab-content" id="myTabContent">
+        <!-- Pestaña CSV -->
+        <div class="tab-pane fade" id="actions-csv" role="tabpanel" aria-labelledby="actions-csv-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    {% include 'csv_all_data_downloader.html' %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestaña TXT -->
+        <div class="tab-pane fade" id="actions-txt" role="tabpanel" aria-labelledby="actions-txt-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    {% for execution in executions %}
+                        <a href="{{ url_for('download_multiple_txt', execution_id=execution.id) }}" class="btn btn-primary" title="Descargar Múltiples TXT"><i class="fas fa-download"></i> Descargar Múltiples TXT</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón para regresar a la lista de pruebas, usando `test_id` -->
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url_for('executions', test_id=test_id) }}" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

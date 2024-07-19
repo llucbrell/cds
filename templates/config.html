@@ -3,12 +3,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1 id="collection-name" class="text-left my-4">{{ collection_name }}</h1>
+        <button id="back-button" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></button>
         </div>
     </div>
+<div class="row align-items-center">
+        <div class="col-md-12 text-center">
+            <img src="{{ url_for('static', filename='images/surf_wax.png') }}" alt="Collections icon" class="img-fluid" style="max-width: 10%;">
+        </div>
+</div>
+
     <div class="row">
         <div class="col-md-12">
-        <button id="back-button" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></button>
+            <h1 id="collection-name" class="text-left my-4">{{ collection_name }}</h1>
         </div>
     </div>
  <div class="row">

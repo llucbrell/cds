@@ -1,0 +1,58 @@
+{% block content %}
+<div class="container">
+    <h1>Descargar Datos en CSV</h1>
+
+    <form onsubmit="downloadCSV(); return false;">
+        <input type="checkbox" id="chk_id" checked> ID<br>
+        <input type="checkbox" id="chk_test_id" checked> Test ID<br>
+        <input type="checkbox" id="chk_result" checked> Resultado<br>
+        <input type="checkbox" id="chk_timestamp" checked> Timestamp<br>
+        <input type="checkbox" id="chk_response_data" checked> Datos de Respuesta<br>
+        <input type="checkbox" id="chk_start_time" checked> Hora de Inicio<br>
+        <input type="checkbox" id="chk_end_time" checked> Hora de Finalización<br>
+        <input type="checkbox" id="chk_duration" checked> Duración<br>
+        <input type="checkbox" id="chk_date" checked> Fecha<br>
+        <br>
+        <button type="submit" class="btn btn-primary">Descargar CSV</button>
+    </form>
+</div>
+<script>
+    function getExecutionIdFromUrl() {
+        var url = window.location.href;
+        var match = url.match(/execution-results\/(\d+)/);
+        return match ? match[1] : null;
+    }
+
+    function downloadCSV() {
+        var selectedColumns = [];
+        if (document.getElementById('chk_id').checked) selectedColumns.push('ID');
+        if (document.getElementById('chk_test_id').checked) selectedColumns.push('Test ID');
+        if (document.getElementById('chk_result').checked) selectedColumns.push('Resultado');
+        if (document.getElementById('chk_timestamp').checked) selectedColumns.push('Timestamp');
+        if (document.getElementById('chk_response_data').checked) selectedColumns.push('Datos de Respuesta');
+        if (document.getElementById('chk_start_time').checked) selectedColumns.push('Hora de Inicio');
+        if (document.getElementById('chk_end_time').checked) selectedColumns.push('Hora de Finalización');
+        if (document.getElementById('chk_duration').checked) selectedColumns.push('Duración');
+        if (document.getElementById('chk_date').checked) selectedColumns.push('Fecha');
+
+        var executionId = getExecutionIdFromUrl();
+        
+        if (!executionId) {
+            alert('No se encontró el ID de ejecución en la URL.');
+            return;
+        }
+
+        // Construir la URL correctamente
+        var baseUrl = "{{ url_for('download_data_csv') }}";
+        var url = `${baseUrl}?execution_id=${encodeURIComponent(executionId)}`;
+        
+        for (var i = 0; i < selectedColumns.length; i++) {
+            url += `&columns=${encodeURIComponent(selectedColumns[i])}`;
+        }
+        
+        window.location.href = url;
+    }
+</script>
+
+
+{% endblock %}

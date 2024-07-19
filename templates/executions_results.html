@@ -1,36 +1,105 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Resultados de la Ejecución {{ execution.id }}</h1>
+<div class="container">
+    <div class="row align-items-center">
+                <div class="col-md-12 text-center">
+                    <img src="{{ url_for('static', filename='images/surf_wax.png') }}" alt="Collections icon" class="img-fluid" style="max-width: 10%;">
+                </div>
+        </div>
+    <div class="row">
+        <div class="col-md-12">
+    <a href="{{ url_for('executions', test_id=execution.test_id) }}" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
 
-<p><strong>Resultado:</strong> {{ execution.result }}</p>
-<p><strong>Timestamp:</strong> {{ execution.timestamp }}</p>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="true">Resultados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="actions-csv-tab" data-toggle="tab" href="#actions-csv" role="tab" aria-controls="actions-csv" aria-selected="false">CSV</a>
+                </li>
+               <li class="nav-item">
+                    <a class="nav-link" id="actions-txt-tab" data-toggle="tab" href="#actions-txt" role="tab" aria-controls="actions-txt" aria-selected="false">TXT</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<h2>Respuestas</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Datos de la Respuesta</th>
-            <th>Hora de Inicio</th>
-            <th>Hora de Finalización</th>
-            <th>Duración</th>
-            <th>Fecha</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for response in test_results %}
-        <tr>
-            <td>{{ response.id }}</td>
-            <td>{{ response.response_data }}</td>
-            <td>{{ response.start_time }}</td>
-            <td>{{ response.end_time }}</td>
-            <td>{{ response.duration }}</td>
-            <td>{{ response.date }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="tab-content" id="myTabContent">
+        <!-- Pestaña de Resultados -->
+        <div class="tab-pane fade show active" id="results" role="tabpanel" aria-labelledby="results-tab">
+            
+            <h1>Resultados de la Ejecución {{ execution.id }}</h1>
 
-<a href="{{ url_for('executions', test_id=execution.test_id) }}" class="btn btn-secondary">Volver a Ejecuciones</a>
+            <p><strong>Resultado:</strong> {{ execution.result }}</p>
+            <p><strong>Timestamp:</strong> {{ execution.timestamp }}</p>
+
+            <h2>Respuestas</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Datos de la Respuesta</th>
+                        <th>Hora de Inicio</th>
+                        <th>Hora de Finalización</th>
+                        <th>Duración</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for response in test_results %}
+                    <tr>
+                        <td>{{ response.id }}</td>
+                        <td>{{ response.response_data }}</td>
+                        <td>{{ response.start_time }}</td>
+                        <td>{{ response.end_time }}</td>
+                        <td>{{ response.duration }}</td>
+                        <td>{{ response.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pestaña de Acciones -->
+        <div class="tab-pane fade" id="actions-csv" role="tabpanel" aria-labelledby="actions-csv-tab">
+            <div class="row">
+                <div class="col-md-12">
+
+        {% include 'csv_data_downloader.html' %}
+                    <!-- 
+<a href="{{ url_for('download_multiple_txt', execution_id=execution.id) }}" class="btn btn-success" title="Descargar Múltiples TXT"><i class="fas fa-download"></i> Descargar Múltiples TXT</a>
+Botones de Descarga en el Template -->
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="actions-txt" role="tabpanel" aria-labelledby="actions-txt-tab">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- 
+<a href="{{ url_for('download_csv', execution_id=execution.id) }}" class="btn btn-success" title="Descargar CSV"><i class="fas fa-download"></i> Descargar CSV</a>
+Botones de Descarga en el Template -->
+<a href="{{ url_for('download_multiple_txt', execution_id=execution.id) }}" class="btn btn-primary" title="Descargar Múltiples TXT"><i class="fas fa-download"></i> Descargar Múltiples TXT</a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+    <a href="{{ url_for('executions', test_id=execution.test_id) }}" class="btn btn-warning" title="Back to Tests List" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+
+</div>
 {% endblock %}
