@@ -86,7 +86,7 @@
         <div class="col-md-12">
             <h3>Constructor de plantilla de Prompts</h3>
             <textarea id="template-input" placeholder="Escribe combinando texto normal y texto entre {{'{{'}}}} de manera que se sustituyan los valores al pulsar sobre el botón, prueba con {{'{{date}}'}}" class="form-control" style="width: 100%; height: 200px;">{{ prompt_template or '' }}</textarea>
-            <button id="load-prompt-template" class="btn btn-outline-primary mt-2" title="Load from Collection" ><i class="fas fa-upload"></i></button>
+            <button id="load-prompt-template-collection" class="btn btn-outline-primary mt-2" title="Load from Collection" ><i class="fas fa-upload"></i></button>
             <button id="upload-prompt-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
             <button id="download-prompt-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
             <button id="template-button" class="btn btn-outline-warning mt-2" title="Process Template and show" ><i class="fas fa-cogs"></i></button>
@@ -345,6 +345,56 @@ document.addEventListener('DOMContentLoaded', function () {
         const endpoint = `/tests/update_name/${testId}`;
         saveData(endpoint, { new_test_name: newTestName }, 'save-test-name-output');
         document.getElementById('test-name').innerText = newTestName;
+    });
+
+ function loadData(field) {
+        const endpoint = `/get_collection/${collectionId}`;
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const collectionData = data.data;
+                    if (field === 'name') {
+                        document.getElementById('new-test-name-input').value = collectionData.name || '';
+                    } else if (field === 'auth_url') {
+                        document.getElementById('auth-url-input').value = collectionData.auth_url || '';
+                    } else if (field === 'api_key') {
+                        document.getElementById('api-key-input').value = collectionData.api_key || '';
+                    } else if (field === 'target_url') {
+                        document.getElementById('my-input').value = collectionData.target_url || '';
+                    } else if (field === 'request_template') {
+                        document.getElementById('template-request').value = collectionData.request_template || '';
+                    } else if (field === 'prompt_template') {
+                        document.getElementById('template-input').value = collectionData.prompt_template || '';
+                    }
+                } else {
+                    console.error('Error loading collection data:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+
+    document.getElementById('load-auth-url-collection').addEventListener('click', function () {
+        loadData('auth_url');
+    });
+
+    document.getElementById('load-api-key-collection').addEventListener('click', function () {
+        loadData('api_key');
+    });
+
+    document.getElementById('load-target-url-collection').addEventListener('click', function () {
+        loadData('target_url');
+    });
+
+    document.getElementById('load-request-template-collection').addEventListener('click', function () {
+        loadData('request_template');
+    });
+
+    document.getElementById('load-prompt-template-collection').addEventListener('click', function () {
+        loadData('prompt_template');
     });
 });
 

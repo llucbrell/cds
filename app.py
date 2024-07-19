@@ -59,6 +59,24 @@ def collections():
     collections = db.get_collections()
     return render_template('collections.html', collections=collections)
 
+@app.route('/update_collection/<int:collection_id>', methods=['POST'])
+def update_collection(collection_id):
+    try:
+        data = request.json
+        db.update_collection(
+            collection_id,
+            data.get('name'),
+            auth_url=data.get('auth_url'),
+            api_key=data.get('api_key'),
+            target_url=data.get('target_url'),
+            request_template=data.get('request_template'),
+            prompt_template=data.get('prompt_template')
+        )
+        return jsonify({'status': 'success', 'message': 'Collection updated successfully.'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)})
+
+
 @app.route('/collections/edit/<int:collection_id>', methods=['GET', 'POST'])
 def edit_collection(collection_id):
     collection = db.get_collection(collection_id)
@@ -724,6 +742,26 @@ def all_executions():
     test_id = 1  # Ejemplo, obtén el test_id según tu lógica
 
     return render_template('executions_results_all.html', executions=executions, responses=responses, test_id=test_id)
+
+@app.route('/get_collection/<int:collection_id>', methods=['GET'])
+def get_collection(collection_id):
+    session = Session()
+    collection = session.query(Collection).filter(Collection.id == collection_id).first()
+    if collection:
+        return jsonify({
+            'status': 'success',
+            'data': {
+                'name': collection.name,
+                'auth_url': collection.auth_url,
+                'api_key': collection.api_key,
+                'target_url': collection.target_url,
+                'request_template': collection.request_template,
+                'prompt_template': collection.prompt_template
+            }
+        })
+    else:
+        return jsonify({'status': 'error', 'message': 'Collection not found'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)

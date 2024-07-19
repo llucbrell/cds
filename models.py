@@ -8,6 +8,11 @@ class Collection(Base):
     __tablename__ = 'collections'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
+    auth_url = Column(String, nullable=True)
+    api_key = Column(String, nullable=True)
+    target_url = Column(String, nullable=True)
+    request_template = Column(String, nullable=True)
+    prompt_template = Column(String, nullable=True)
     tests = relationship('Test', back_populates='collection', cascade='all, delete-orphan')
 
 class Test(Base):
@@ -98,10 +103,22 @@ class Database:
         self.session.delete(collection)
         self.session.commit()
 
-    def update_collection(self, collection_id, new_name):
+    def update_collection(self, collection_id, collection_name, auth_url=None, api_key=None, target_url=None, request_template=None, prompt_template=None):
         collection = self.session.query(Collection).get(collection_id)
-        collection.name = new_name
+        if collection_name is not None:
+            collection.name = collection_name
+        if auth_url is not None:
+            collection.auth_url = auth_url
+        if api_key is not None:
+            collection.api_key = api_key
+        if target_url is not None:
+            collection.target_url = target_url
+        if request_template is not None:
+            collection.request_template = request_template
+        if prompt_template is not None:
+            collection.prompt_template = prompt_template
         self.session.commit()
+
 
     def get_collection(self, collection_id):
         return self.session.query(Collection).get(collection_id)

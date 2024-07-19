@@ -2,52 +2,52 @@
 {% block content %}
 
 <div class="container">
-<div class="row">
-<div class="col-md-12">
-<a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        </div>
     </div>
-    </div>
-<div class="row align-items-center">
+    <div class="row align-items-center">
         <div class="col-md-12 text-center">
             <img src="{{ url_for('static', filename='images/surf_group_wax.png') }}" alt="Collections icon" class="img-fluid" style="max-width: 10%;">
         </div>
-</div>
-<h1>Edit Collection</h1>
-<form method="POST">
-    <div class="form-group">
-        <label for="name">Collection Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="{{ collection.name }}" required>
     </div>
-    <button type="submit" class="btn btn-primary">Update Collection</button>
-</form>
-     <div class="row">
-        <div class="col-md-12 text-center my-4">
-            <h1>Datos Generales</h1>
-        </div> 
+    <h1>Edit Collection</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Nombre</h3>
+            <div class="d-flex align-items-center">
+                <input id="new-test-name-input" placeholder="Nuevo Nombre del Test" value="{{ collection.name }}" type="text" class="form-control me-2">
+                <button id="save-test-name-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
+            </div>
+            <div id="save-test-name-output" class="mt-2"></div>
+        </div>
     </div>
+
     <div class="row">
         <div class="col-md-4">
             <h3>Auth URL</h3>
-    <div class="d-flex align-items-center">
-        <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ auth_url or '' }}" type="text" class="form-control">
-        <button id="save-auth-url-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
-    </div>
-    <div id="save-auth-url-output" class="mt-2"></div>
-    </div>
+            <div class="d-flex align-items-center">
+                <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ collection.auth_url }}" type="text" class="form-control">
+                <button id="save-auth-url-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
+            </div>
+            <div id="save-auth-url-output" class="mt-2"></div>
+        </div>
         <div class="col-md-4">
             <h3>API Key</h3>
-        <div class="d-flex align-items-center">
-            <input id="api-key-input" placeholder="Your API Key" value="{{ api_key or '' }}" type="text" class="form-control">
-            <button id="save-api-key-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
-        </div>
+            <div class="d-flex align-items-center">
+                <input id="api-key-input" placeholder="Your API Key" value="{{ collection.api_key }}" type="text" class="form-control">
+                <button id="save-api-key-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
+            </div>
             <div id="save-api-key-output" class="mt-2"></div>
         </div>
         <div class="col-md-4">
             <h3>Destination URL</h3>
-        <div class="d-flex align-items-center">
-            <input id="my-input" placeholder="http://example.com" value="{{ target_url or '' }}" type="text" class="form-control">
-            <button id="save-target-url-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
-        </div>
+            <div class="d-flex align-items-center">
+                <input id="my-input" placeholder="http://example.com" value="{{ collection.target_url }}" type="text" class="form-control">
+                <button id="save-target-url-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
+            </div>
             <div id="save-target-url-output" class="mt-2"></div>
         </div>
     </div>
@@ -55,74 +55,189 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Plantilla de Request</h3>
-            <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ template_request or '' }}</textarea>
+            <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ collection.request_template }}</textarea>
             <button id="upload-request-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
             <button id="download-request-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
-            <button id="save-request-template" class="btn btn-outline-primary mt-2" title="Save to DB" ><i class="fas fa-save"></i></button>
+            <!--
+            -->
+            <button id="save-request-template" class="btn btn-outline-primary mt-2" title="Save to DB"><i class="fas fa-save"></i></button>
             <div id="template-request-output" class="mt-3"></div>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12 text-center my-4">
+            <h1>Promt Template</h1>
+        </div>
+        <div class="col-md-12">
+            <h3>Constructor de plantilla de Prompts</h3>
+            <textarea id="template-input" placeholder="Template to reuse in all tests of the collection" class="form-control" style="width: 100%; height: 200px;">{{ collection.prompt_template }}</textarea>
+            <button id="upload-prompt-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
+            <button id="download-prompt-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
+            <!--
+            -->
+            <button id="save-prompt-template" class="btn btn-outline-primary mt-2" title="Save to DB" ><i class="fas fa-save"></i></button>
+            <div id="template-output" class="mt-3"></div>
+            <div id="save-prompt-template-output" class="mt-3"></div>
+            <div id="send-output" class="mt-3"></div>
+        </div>
+    </div>
 
     <div class="row">
-    <div class="col-md-12">
-        <a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        <div class="col-md-12">
+            <a href="{{ url_for('collections') }}" class="btn btn-warning" title="Back to Collection's list" style="float: right;"><i class="fas fa-arrow-left"></i></a>
+        </div>
     </div>
-    </div>
-    </div>
+</div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    function getIdsFromUrl() {
+        const pathArray = window.location.pathname.split('/');
+        const collectionId = pathArray[pathArray.length - 1];
+        return { collectionId };
+    }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        function getIdsFromUrl() {
-            const pathArray = window.location.pathname.split('/');
-            const collectionId = pathArray[pathArray.length - 1];
-            return { collectionId };
-        }
+    const { collectionId } = getIdsFromUrl();
+    console.log(`collectionId: ${collectionId}`);  // Logging IDs
 
-        const { collectionId } = getIdsFromUrl();
-        console.log(`collectionId: ${collectionId}`);  // Logging IDs
-
-        function saveData(endpoint, data, outputId) {
-            console.log(`Sending data to ${endpoint}:`, data);  // Logging request data
-            fetch(endpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(`Response from ${endpoint}:`, data);  // Logging response data
-                document.getElementById(outputId).innerText = data.message;
-                document.getElementById(outputId).className = data.status === 'success' ? 'text-success' : 'text-danger';
-                setTimeout(() => {
-                    document.getElementById(outputId).innerText = '';
-                    document.getElementById(outputId).className = '';
-                }, 5000);  // Clear message after 5 seconds
-            })
-            .catch(error => console.error('Error:', error));  // Logging errors
-        }
-
-        document.getElementById('save-auth-url-button').addEventListener('click', function () {
-            const authUrl = document.getElementById('auth-url-input').value;
-            const endpoint = `/tests/config/${testId}/${collectionId}`;
-            saveData(endpoint, { 'auth-url-input': authUrl }, 'save-auth-url-output');
+    function saveData(endpoint, data, outputId) {
+        console.log(`Sending data to ${endpoint}:`, data);  // Logging request data
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(`Response from ${endpoint}:`, data);  // Logging response data
+            const outputElement = document.getElementById(outputId);
+            outputElement.innerText = data.message;
+            outputElement.className = data.status === 'success' ? 'text-success' : 'text-danger';
+            setTimeout(() => {
+                outputElement.innerText = '';
+                outputElement.className = '';
+            }, 5000);  // Clear message after 5 seconds
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const outputElement = document.getElementById(outputId);
+            outputElement.innerText = 'An error occurred. Please try again.';
+            outputElement.className = 'text-danger';
+            setTimeout(() => {
+                outputElement.innerText = '';
+                outputElement.className = '';
+            }, 5000);  // Clear message after 5 seconds
         });
+    }
 
-        document.getElementById('save-api-key-button').addEventListener('click', function () {
-            const apiKey = document.getElementById('api-key-input').value;
-            const endpoint = `/tests/config/${testId}/${collectionId}`;
-            saveData(endpoint, { 'api-key-input': apiKey }, 'save-api-key-output');
+    function setupButton(buttonId, dataFunc, outputId) {
+        document.getElementById(buttonId).addEventListener('click', function () {
+            const data = dataFunc();
+            const endpoint = `/update_collection/${collectionId}`;
+            saveData(endpoint, data, outputId);
         });
+    }
 
-        document.getElementById('save-target-url-button').addEventListener('click', function () {
-            const targetUrl = document.getElementById('my-input').value;
-            const endpoint = `/tests/config/${testId}/${collectionId}`;
-            saveData(endpoint, { 'my-input': targetUrl }, 'save-target-url-output');
-        });
+    setupButton('save-test-name-button', function() {
+        return { name: document.getElementById('new-test-name-input').value };
+    }, 'save-test-name-output');
 
+    setupButton('save-auth-url-button', function() {
+        return {
+            auth_url: document.getElementById('auth-url-input').value
+        };
+    }, 'save-auth-url-output');
+
+    setupButton('save-api-key-button', function() {
+        return {
+            api_key: document.getElementById('api-key-input').value
+        };
+    }, 'save-api-key-output');
+
+    setupButton('save-target-url-button', function() {
+        return {
+            target_url: document.getElementById('my-input').value
+        };
+    }, 'save-target-url-output');
+
+    setupButton('save-request-template', function() {
+        return {
+            request_template: document.getElementById('template-request').value
+        };
+    }, 'template-request-output');
+
+    setupButton('save-prompt-template', function() {
+        return {
+            prompt_template: document.getElementById('template-input').value
+        };
+    }, 'save-prompt-template-output');
+    
+    
+
+
+    document.getElementById('upload-request-template').addEventListener('click', function () {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'application/json';
+        input.onchange = function (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('template-request').value = reader.result;
+            };
+            reader.readAsText(file);
+        };
+        input.click();
+    });
+
+    // Función para subir y leer archivo TXT en Prompt Template
+    document.getElementById('upload-prompt-template').addEventListener('click', function () {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'text/plain';
+        input.onchange = function (event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('template-input').value = reader.result;
+            };
+            reader.readAsText(file);
+        };
+        input.click();
+    });
+
+    // Función para descargar el contenido de Request Template como archivo JSON
+    document.getElementById('download-request-template').addEventListener('click', function () {
+        const content = document.getElementById('template-request').value;
+        const blob = new Blob([content], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Rtemplate_' + url.substr(url.lastIndexOf('/') + 1) + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    // Función para descargar el contenido de Prompt Template como archivo TXT
+    document.getElementById('download-prompt-template').addEventListener('click', function () {
+        const content = document.getElementById('template-input').value;
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Ptemplate_' + url.substr(url.lastIndexOf('/') + 1) + '.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
 });
+
 </script>
+
 {% endblock %}
