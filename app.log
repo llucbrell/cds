@@ -1,0 +1,37 @@
+Exception on /tests/config/1/1 [GET]
+Traceback (most recent call last):
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\Desarrollo\Web\sandbox\ia\chats-llms\charlie_dont_surf\app.py", line 151, in config_test
+    collection = db.get_collection(collection_id)
+  File "D:\Desarrollo\Web\sandbox\ia\chats-llms\charlie_dont_surf\models.py", line 124, in get_collection
+    return self.session.query(Collection).get(collection_id)
+  File "<string>", line 2, in get
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\util\deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\query.py", line 1127, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\query.py", line 1136, in _get_impl
+    return self.session._get_impl(
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\session.py", line 3862, in _get_impl
+    return db_load_fn(
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\session.py", line 2226, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\session.py", line 2095, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+  File "<string>", line 2, in _connection_for_bind
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\state_changes.py", line 103, in _go
+    self._raise_for_prerequisite_state(fn.__name__, current_state)
+  File "D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\sqlalchemy\orm\session.py", line 990, in _raise_for_prerequisite_state
+    raise sa_exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: This session is provisioning a new connection; concurrent operations are not permitted (Background on this error at: https://sqlalche.me/e/20/isce)
