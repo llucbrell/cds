@@ -8,6 +8,7 @@ class Collection(Base):
     __tablename__ = 'collections'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
+    model_name = Column(String, nullable=True)
     auth_url = Column(String, nullable=True)
     api_key = Column(String, nullable=True)
     target_url = Column(String, nullable=True)
@@ -38,6 +39,7 @@ class Data(Base):
     __tablename__ = 'data'
     id = Column(Integer, primary_key=True, autoincrement=True)
     test_id = Column(Integer, ForeignKey('tests.id'), nullable=False)
+    model_name = Column(String, nullable=True)
     auth_url = Column(String, nullable=True)
     api_key = Column(String, nullable=True)
     target_url = Column(String, nullable=True)
@@ -103,10 +105,12 @@ class Database:
         self.session.delete(collection)
         self.session.commit()
 
-    def update_collection(self, collection_id, collection_name, auth_url=None, api_key=None, target_url=None, request_template=None, prompt_template=None):
+    def update_collection(self, collection_id, collection_name, model_name=None, auth_url=None, api_key=None, target_url=None, request_template=None, prompt_template=None):
         collection = self.session.query(Collection).get(collection_id)
         if collection_name is not None:
             collection.name = collection_name
+        if model_name is not None:
+            collection.model_name = model_name
         if auth_url is not None:
             collection.auth_url = auth_url
         if api_key is not None:
@@ -153,12 +157,14 @@ class Database:
     def get_data(self, test_id):
         return self.session.query(Data).filter_by(test_id=test_id).first()
 
-    def save_data(self, test_id, auth_url=None, api_key=None, target_url=None, request_template=None, prompt_template=None):
+    def save_data(self, test_id, model_name=None, auth_url=None, api_key=None, target_url=None, request_template=None, prompt_template=None):
         data = self.session.query(Data).filter_by(test_id=test_id).first()
         if not data:
-            data = Data(test_id=test_id, auth_url=auth_url, api_key=api_key, target_url=target_url, request_template=request_template, prompt_template=prompt_template)
+            data = Data(test_id=test_id, model_name=model_name, auth_url=auth_url, api_key=api_key, target_url=target_url, request_template=request_template, prompt_template=prompt_template)
             self.session.add(data)
         else:
+            if model_name is not None:
+                data.model_name = model_name
             if auth_url is not None:
                 data.auth_url = auth_url
             if api_key is not None:

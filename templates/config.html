@@ -19,7 +19,7 @@
     </div>
  <div class="row">
        <div class="col-md-4 offset-md-4">
-            <h3>Nombre</h3>
+            <h3>Test Name</h3>
     <div class="d-flex align-items-center">
         <input id="new-test-name-input" placeholder="Nuevo Nombre del Test" value="{{ test_name or '' }}" type="text" class="form-control me-2">
         <button id="save-test-name-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
@@ -32,6 +32,19 @@
             <h1>Datos Generales</h1>
         </div> 
     </div>
+<div class="row">
+        <div class="col-md-4">
+            <h3>Model Name</h3>
+            <div class="d-flex align-items-center">
+                <input id="new-model-name-input" placeholder="Model Name" value="{{ model_name or '' }}" type="text" class="form-control me-2">
+                <button id="load-model-name-collection" class="btn btn-outline-primary" title="Load from Collection" style="margin-left: 3px;"><i class="fas fa-upload"></i></button>
+                <button id="save-model-name-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
+            </div>
+            <div id="save-model-name-output" class="mt-2"></div>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-4">
             <h3>Auth URL</h3>
@@ -62,7 +75,6 @@
         </div>
     </div>
 
-    </div>
     <div class="row">
         <div class="col-md-12">
             <h3>Plantilla de Request</h3>
@@ -139,6 +151,12 @@
             .catch(error => console.error('Error:', error));  // Logging errors
         }
 
+        document.getElementById('save-model-name-button').addEventListener('click', function () {
+            const authUrl = document.getElementById('new-model-name-input').value;
+            const endpoint = `/tests/config/${testId}/${collectionId}`;
+            saveData(endpoint, { 'new-model-name-input': authUrl }, 'save-model-name-output');
+        });
+
         document.getElementById('save-auth-url-button').addEventListener('click', function () {
             const authUrl = document.getElementById('auth-url-input').value;
             const endpoint = `/tests/config/${testId}/${collectionId}`;
@@ -201,6 +219,7 @@
         });
 
         document.getElementById('template-send-button').addEventListener('click', function () {
+            const modelName = document.getElementById('new-model-name-input').value;
             const authUrl = document.getElementById('auth-url-input').value;
             const apiKey = document.getElementById('api-key-input').value;
             const url = document.getElementById('my-input').value;
@@ -208,6 +227,7 @@
             const templateRequestText = document.getElementById('template-request').value;
 
             console.log('Sending template:', {
+                'new-model-name-input': modelName,
                 'auth-url-input': authUrl,
                 'api-key-input': apiKey,
                 'my-input': url,
@@ -223,6 +243,7 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    'new-model-name-input': modelName,
                     'auth-url-input': authUrl,
                     'api-key-input': apiKey,
                     'my-input': url,
@@ -356,7 +377,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const collectionData = data.data;
                     if (field === 'name') {
                         document.getElementById('new-test-name-input').value = collectionData.name || '';
-                    } else if (field === 'auth_url') {
+                    } else if (field === 'model_name') {
+                        document.getElementById('new-model-name-input').value = collectionData.model_name || '';
+                    }
+                    else if (field === 'auth_url') {
                         document.getElementById('auth-url-input').value = collectionData.auth_url || '';
                     } else if (field === 'api_key') {
                         document.getElementById('api-key-input').value = collectionData.api_key || '';
@@ -376,6 +400,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 
+    document.getElementById('load-model-name-collection').addEventListener('click', function () {
+        loadData('model_name');
+    });
 
     document.getElementById('load-auth-url-collection').addEventListener('click', function () {
         loadData('auth_url');

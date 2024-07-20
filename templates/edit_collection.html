@@ -16,12 +16,26 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h3>Nombre</h3>
             <div class="d-flex align-items-center">
-                <input id="new-test-name-input" placeholder="Nuevo Nombre del Test" value="{{ collection.name }}" type="text" class="form-control me-2">
+                <input id="new-test-name-input" placeholder="Nuevo Nombre del Test" value="{{ collection.name or '' }}" type="text" class="form-control me-2">
                 <button id="save-test-name-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
             </div>
             <div id="save-test-name-output" class="mt-2"></div>
+        </div>
+    </div>
+ <div class="row">
+        <div class="col-md-12 text-center my-4">
+            <h1>Datos Generales</h1>
+        </div> 
+    </div>
+<div class="row">
+        <div class="col-md-4">
+            <h3>Model Name</h3>
+            <div class="d-flex align-items-center">
+                <input id="new-model-name-input" placeholder="Model Name" value="{{ collection.model_name or '' }}" type="text" class="form-control me-2">
+                <button id="save-model-name-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
+            </div>
+            <div id="save-model-name-output" class="mt-2"></div>
         </div>
     </div>
 
@@ -29,7 +43,7 @@
         <div class="col-md-4">
             <h3>Auth URL</h3>
             <div class="d-flex align-items-center">
-                <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ collection.auth_url }}" type="text" class="form-control">
+                <input id="auth-url-input" placeholder="http://example.com/api/v1/auth" value="{{ collection.auth_url or '' }}" type="text" class="form-control">
                 <button id="save-auth-url-button" class="btn btn-outline-primary" title="Save to DB" style="margin-left: 3px;"><i class="fas fa-save"></i></button>
             </div>
             <div id="save-auth-url-output" class="mt-2"></div>
@@ -37,7 +51,7 @@
         <div class="col-md-4">
             <h3>API Key</h3>
             <div class="d-flex align-items-center">
-                <input id="api-key-input" placeholder="Your API Key" value="{{ collection.api_key }}" type="text" class="form-control">
+                <input id="api-key-input" placeholder="Your API Key" value="{{ collection.api_key or '' }}" type="text" class="form-control">
                 <button id="save-api-key-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
             </div>
             <div id="save-api-key-output" class="mt-2"></div>
@@ -45,7 +59,7 @@
         <div class="col-md-4">
             <h3>Destination URL</h3>
             <div class="d-flex align-items-center">
-                <input id="my-input" placeholder="http://example.com" value="{{ collection.target_url }}" type="text" class="form-control">
+                <input id="my-input" placeholder="http://example.com" value="{{ collection.target_url or '' }}" type="text" class="form-control">
                 <button id="save-target-url-button" class="btn btn-outline-primary" style="margin-left: 3px;" title="Save to DB"><i class="fas fa-save"></i></button>
             </div>
             <div id="save-target-url-output" class="mt-2"></div>
@@ -55,7 +69,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Plantilla de Request</h3>
-            <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ collection.request_template }}</textarea>
+            <textarea id="template-request" placeholder="Escribe la plantilla de request como objeto json, sustitución dinámica de {{'{{url}}'}}, {{'{{payload}}'}}, {{'{{api_key}}'}} y {{'{{prompt}}'}} por sus respectivos valores." class="form-control" style="width: 100%; height: 200px;">{{ collection.request_template or ''}}</textarea>
             <button id="upload-request-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
             <button id="download-request-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
             <!--
@@ -71,7 +85,7 @@
         </div>
         <div class="col-md-12">
             <h3>Constructor de plantilla de Prompts</h3>
-            <textarea id="template-input" placeholder="Template to reuse in all tests of the collection" class="form-control" style="width: 100%; height: 200px;">{{ collection.prompt_template }}</textarea>
+            <textarea id="template-input" placeholder="Template to reuse in all tests of the collection" class="form-control" style="width: 100%; height: 200px;">{{ collection.prompt_template or '' }}</textarea>
             <button id="upload-prompt-template" class="btn btn-outline-secondary mt-2" title="Upload from file"><i class="fas fa-file-upload"></i></button>
             <button id="download-prompt-template" class="btn btn-outline-secondary mt-2" title="Save to File"><i class="fas fa-file-download"></i></button>
             <!--
@@ -144,6 +158,10 @@ document.addEventListener('DOMContentLoaded', function () {
     setupButton('save-test-name-button', function() {
         return { name: document.getElementById('new-test-name-input').value };
     }, 'save-test-name-output');
+
+    setupButton('save-model-name-button', function() {
+        return { model_name: document.getElementById('new-model-name-input').value };
+    }, 'save-model-name-output');
 
     setupButton('save-auth-url-button', function() {
         return {

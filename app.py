@@ -66,6 +66,7 @@ def update_collection(collection_id):
         db.update_collection(
             collection_id,
             data.get('name'),
+            model_name=data.get('model_name'),
             auth_url=data.get('auth_url'),
             api_key=data.get('api_key'),
             target_url=data.get('target_url'),
@@ -128,12 +129,13 @@ def config_test(test_id, collection_id):
         try:
             data = request.get_json()
             auth_url = data.get('auth-url-input')
+            model_name = data.get('new-model-name-input')
             api_key = data.get('api-key-input')
             target_url = data.get('my-input')
             template_request = data.get('template-request')
             prompt_template = data.get('template-input')
             
-            db.save_data(test_id, auth_url=auth_url, api_key=api_key, target_url=target_url, request_template=template_request, prompt_template=prompt_template)
+            db.save_data(test_id, model_name=model_name, auth_url=auth_url, api_key=api_key, target_url=target_url, request_template=template_request, prompt_template=prompt_template)
             return jsonify({'message': 'Data saved successfully', 'status': 'success'})
         except Exception as e:
             return jsonify({'message': str(e), 'status': 'error'})
@@ -143,17 +145,19 @@ def config_test(test_id, collection_id):
     data = db.get_data(test_id)
     
     if data:
+        model_name = data.model_name
         auth_url = data.auth_url
         api_key = data.api_key
         target_url = data.target_url
         template_request = data.request_template
         prompt_template = data.prompt_template
     else:
-        auth_url = api_key = target_url = template_request = prompt_template = ''
+        model_name = auth_url = api_key = target_url = template_request = prompt_template = ''
     
     return render_template('config.html', 
                            collection_name=collection.name, 
                            test_name=test.name, 
+                           model_name=model_name, 
                            auth_url=auth_url, 
                            api_key=api_key, 
                            target_url=target_url, 
@@ -752,6 +756,7 @@ def get_collection(collection_id):
             'status': 'success',
             'data': {
                 'name': collection.name,
+                'model_name': collection.model_name,
                 'auth_url': collection.auth_url,
                 'api_key': collection.api_key,
                 'target_url': collection.target_url,
