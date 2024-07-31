@@ -90,6 +90,24 @@ class Response(Base):
         } 
 
 
+class ScrapingConfig(Base):
+    __tablename__ = 'scraping_configs'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=False)
+    url = Column(String, nullable=False)
+    levels = Column(Integer, nullable=False, default=1)
+    created_at = Column(DateTime, default=func.now())
+    results = relationship('ScrapingResult', back_populates='config', cascade='all, delete-orphan')
+
+class ScrapingResult(Base):
+    __tablename__ = 'scraping_results'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    config_id = Column(Integer, ForeignKey('scraping_configs.id'), nullable=False)
+    result_text = Column(String, nullable=False)
+    created_at = Column(DateTime, default=func.now())
+    config = relationship('ScrapingConfig', back_populates='results')
+
+
 DATABASE_URL = "sqlite:///tests.db"
 engine = create_engine(DATABASE_URL)
 Base.metadata.create_all(engine)
@@ -267,3 +285,24 @@ class Database:
 
     def get_responses(self, execution_id):
         return self.session.query(Response).filter_by(execution_id=execution_id).all()
+
+    def add_scraping_config(self, name, url, levels):
+        new_config = ScrapingConfig(name=name, url=url, levels=levels)
+        self.session.add(new_config)
+        self.session.commit()
+
+    def get_scraping_configs(self):
+        return self.session.query(ScrapingConfig).all()
+
+    def get_scraping_config(self, config_id):
+        return self.session.query(ScrapingConfig).get(config_id)
+
+    def delete_scraping_config(self, config_id):
+        config = self.session.query(ScrapingConfig).get(config_id)
+        self.session.delete(config)
+        self.session.commit()
+
+    def add_scraping_result(self, config_id, result_text):
+        new_result = ScrapingResult(config_id=config_id, result_text=result_text)
+        self.session.add(new_result)
+        self.session.commit()

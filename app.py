@@ -19,6 +19,10 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import create_engine
 from models import Collection, Test, Response, Execution, Data, Values  # Ajusta la ruta de importación según sea necesario
 from io import BytesIO  # Importar BytesIO para manejar datos binarios
+from bs4 import BeautifulSoup
+import requests
+import logging
+
 
 
 app = Flask(__name__)
@@ -783,6 +787,83 @@ def get_collection(collection_id):
         })
     else:
         return jsonify({'status': 'error', 'message': 'Collection not found'}), 404
+
+
+
+@app.route('/scraping', methods=['GET', 'POST'])
+def scraping():
+    if request.method == 'POST':
+        name = request.form['name']
+        url = request.form['url']
+        levels = int(request.form['levels'])
+        db.add_scraping_config(name, url, levels)
+        return redirect(url_for('scraping'))
+    
+    configs = db.get_scraping_configs()
+    return render_template('scraping.html', configs=configs)
+
+@app.route('/scraping/<int:config_id>', methods=['GET', 'POST'])
+def edit_scraping(config_id):
+    config = db.get_scraping_config(config_id)
+    if request.method == 'POST':
+        name = request.form['name']
+        url = request.form['url']
+        levels = int(request.form['levels'])
+        config.name = name
+        config.url = url
+        config.levels = levels
+        db.session.commit()
+        return redirect(url_for('scraping'))
+    
+    return render_template('edit_scraping.html', config=config)
+
+@app.route('/scraping/delete/<int:config_id>')
+def delete_scraping(config_id):
+    db.delete_scraping_config(config_id)
+    return redirect(url_for('scraping'))
+
+
+@app.route('/scrape/<int:config_id>')
+def scrape(config_id):
+    config = db.get_scraping_config(config_id)
+    url = config.url
+    levels = config.levels
+    result_text = perform_scraping(url, levels)
+    db.add_scraping_result(config_id, result_text)
+    return render_template('scraping_result.html', config=config, result_text=result_text)
+
+
+
+# Configurar el logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def perform_scraping(url, levels):
+    visited_urls = set()
+    result_texts = []
+
+    def scrape_page(current_url, current_level):
+        if current_level > levels or current_url in visited_urls:
+            return
+        visited_urls.add(current_url)
+        
+        logger.info(f'Visiting: {current_url} (Level {current_level})')
+        
+        response = requests.get(current_url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        text = ' '.join(soup.stripped_strings)
+        result_texts.append(text)
+
+        if current_level < levels:
+            for link in soup.find_all('a', href=True):
+                next_url = link['href']
+                if not next_url.startswith('http'):
+                    next_url = requests.compat.urljoin(current_url, next_url)
+                scrape_page(next_url, current_level + 1)
+
+    scrape_page(url, 1)
+    return '\n\n'.join(result_texts)
+
 
 
 if __name__ == '__main__':

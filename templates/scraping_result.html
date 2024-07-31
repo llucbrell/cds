@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scraping Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <style>
+          pre {
+            white-space: pre-wrap;       /* CSS3 */
+            white-space: -moz-pre-wrap;  /* Firefox */
+            white-space: -pre-wrap;      /* Opera <7 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* IE */
+        }
+    </style>
+<div class="container mt-4">
+    <h1>Scraping Result for {{ config.name }}</h1>
+    <a href="{{ url_for('scraping') }}" class="btn btn-primary mb-4">Back to Scraping Configs</a>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Result</h5>
+            <pre><code>{{ result_text }}</code></pre>
+        </div>
+    </div>
+</div>
+</body>
+</html>
