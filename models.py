@@ -73,6 +73,8 @@ class Response(Base):
     end_time = Column(Float, nullable=False)
     duration = Column(Float, nullable=False)
     date = Column(DateTime, default=func.now())
+    model_name = Column(String, nullable=False)
+    target_url = Column(String, nullable=False)
     execution = relationship('Execution', back_populates='responses')
     def to_dict(self):
         return {
@@ -82,7 +84,9 @@ class Response(Base):
             'start_time': self.start_time,
             'end_time': self.end_time,
             'duration': self.duration,
-            'date': self.date
+            'date': self.date, 
+            'model_name': self.model_name,
+            'target_url': self.target_url,
         } 
 
 
@@ -248,8 +252,8 @@ class Database:
         execution.result = status
         self.session.commit()
 
-    def add_response(self, execution_id, response_data, start_time, end_time, duration):
-        new_response = Response(execution_id=execution_id, response_data=response_data, start_time=start_time, end_time=end_time, duration=duration)
+    def add_response(self, execution_id, response_data, start_time, end_time, duration, model_name, target_url):
+        new_response = Response(execution_id=execution_id, response_data=response_data, start_time=start_time, end_time=end_time, duration=duration, model_name=model_name, target_url=target_url)
         self.session.add(new_response)
         self.session.commit()
 

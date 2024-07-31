@@ -199,7 +199,7 @@ def send_template():
         template_request_text = data.get('template-request')
         
         response = send_to_model(auth_url, api_key, url, processed_text, template_request_text)
-        return jsonify({'message': f'Sent to {url}. Response: {response}', 'status': 'success'})
+        return jsonify({'message': f'{response}', 'status': 'success'})
     except Exception as e:
         return jsonify({'message': str(e), 'status': 'error'})
 
@@ -430,7 +430,8 @@ def start_execution(test_id):
         rendered_text = process_text(template_text, test_id, iterable_index)
         # Simulación de una solicitud de red y almacenamiento de resultados en la base de datos
         data = session.query(Data).filter_by(test_id=test_id).first()
-        url = data.target_url
+        target_url = data.target_url
+        model_name = data.model_name
         headers = {'Authorization': f'Bearer {data.api_key}'}
         
         print(rendered_text)
@@ -440,7 +441,7 @@ def start_execution(test_id):
         print(response)
         
         duration = end_time - start_time
-        db.add_response(execution_id=execution_id, response_data=response, start_time=start_time, end_time=end_time, duration=duration )
+        db.add_response(execution_id=execution_id, response_data=response, start_time=start_time, end_time=end_time, duration=duration, model_name=model_name, target_url=target_url )
         #status_code = response.status_code
         #response_text = response.text
         
@@ -596,6 +597,10 @@ def download_all_data_csv():
         headers.append('Duración')
     if 'Fecha' in columns:
         headers.append('Fecha')
+    if 'Modelo' in columns:
+        headers.append('Modelo')
+    if 'Url Destino' in columns:
+        headers.append('Url Destino')
     
     writer.writerow(headers)
     
@@ -626,6 +631,10 @@ def download_all_data_csv():
             response_data.append(response.duration)  # Asegurar que la columna se omite si no está seleccionada
         if 'Fecha' in columns:
             response_data.append(response.date)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Modelo' in columns:
+            response_data.append(response.model_name)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Url Destino' in columns:
+            response_data.append(response.target_url)  # Asegurar que la columna se omite si no está seleccionada
             # Añade más campos según sea necesario
         writer.writerow(execution_data + response_data)
     
@@ -684,6 +693,10 @@ def download_data_csv():
         headers.append('Duración')
     if 'Fecha' in columns:
         headers.append('Fecha')
+    if 'Modelo' in columns:
+        headers.append('Modelo')
+    if 'Url Destino' in columns:
+        headers.append('Url Destino')
 
     writer.writerow(headers)
     # Escribir datos de ejecuciones y respuestas
@@ -713,6 +726,10 @@ def download_data_csv():
             response_data.append(response.duration)  # Asegurar que la columna se omite si no está seleccionada
         if 'Fecha' in columns:
             response_data.append(response.date)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Modelo' in columns:
+            response_data.append(response.model_name)  # Asegurar que la columna se omite si no está seleccionada
+        if 'Url Destino' in columns:
+            response_data.append(response.target_url)  # Asegurar que la columna se omite si no está seleccionada
             # Añade más campos según sea necesario
         writer.writerow(execution_data + response_data)
  

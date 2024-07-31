@@ -254,12 +254,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Send template response:', data);  // Logging send template response
-                document.getElementById('send-output').innerText = data.message;
+                document.getElementById('send-output').innerText =  data.message + data.response;
                 document.getElementById('send-output').className = data.status === 'success' ? 'text-success' : 'text-danger';
-                setTimeout(() => {
-                    document.getElementById('send-output').innerText = '';
-                    document.getElementById('send-output').className = '';
-                }, 5000);  // Clear message after 5 seconds
             })
             .catch(error => console.error('Error:', error));  // Logging errors
         });

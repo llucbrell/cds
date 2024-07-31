@@ -12,6 +12,8 @@
         <input type="checkbox" id="chk_end_time" checked> Hora de Finalización<br>
         <input type="checkbox" id="chk_duration" checked> Duración<br>
         <input type="checkbox" id="chk_date" checked> Fecha<br>
+        <input type="checkbox" id="chk_model_name" checked> Modelo<br>
+        <input type="checkbox" id="chk_target_url" checked> Url Destino<br>
         <br>
         <button type="submit" class="btn btn-primary">Descargar CSV</button>
     </form>
@@ -34,6 +36,8 @@
         if (document.getElementById('chk_end_time').checked) selectedColumns.push('Hora de Finalización');
         if (document.getElementById('chk_duration').checked) selectedColumns.push('Duración');
         if (document.getElementById('chk_date').checked) selectedColumns.push('Fecha');
+        if (document.getElementById('chk_model_name').checked) selectedColumns.push('Modelo');
+        if (document.getElementById('chk_target_url').checked) selectedColumns.push('Url Destino');
 
         // Construir la URL correctamente
         var baseUrl = "{{ url_for('download_all_data_csv') }}";
