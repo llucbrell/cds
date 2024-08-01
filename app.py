@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, send_file
+from flask import Flask, render_template, request, redirect, url_for, jsonify, send_from_directory, send_file, Response as FlaskResponse
 from execution_analysis import create_dash_app
 from models import Database, Values
 import dash
@@ -22,6 +22,9 @@ from io import BytesIO  # Importar BytesIO para manejar datos binarios
 from bs4 import BeautifulSoup
 import requests
 import logging
+import jsonfinder
+
+
 
 
 
@@ -832,11 +835,43 @@ def scrape(config_id):
     db.add_scraping_result(config_id, result_text)
     return render_template('scraping_result.html', config=config, result_text=result_text)
 
+@app.route('/scrape_json/<int:config_id>')
+def scrape_json(config_id):
+    config = db.get_scraping_config(config_id)
+    url = config.url
+    levels = config.levels
+    
+    # Realizar el scraping normal
+    scraped_text = perform_scraping(url, levels)
+    
+    # Extraer JSON del texto resultante
+    json_data = extract_json_from_text(scraped_text)
+    
+    return jsonify(json_data)
+
+@app.route('/scrape_xml/<int:config_id>')
+def scrape_xml(config_id):
+    config = db.get_scraping_config(config_id)
+    url = config.url
+    levels = config.levels
+    xml_data = perform_scraping_xml(url, levels)
+    return FlaskResponse(xml_data, mimetype='application/xml')
+
+@app.route('/scrape_csv/<int:config_id>')
+def scrape_csv(config_id):
+    config = db.get_scraping_config(config_id)
+    url = config.url
+    levels = config.levels
+    csv_data = perform_scraping_csv(url, levels)
+    return FlaskResponse(csv_data, mimetype='text/csv', headers={'Content-Disposition': 'attachment;filename=scraped_data.csv'})
+
 
 
 # Configurar el logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
 
 def perform_scraping(url, levels):
     visited_urls = set()
@@ -851,6 +886,11 @@ def perform_scraping(url, levels):
         
         response = requests.get(current_url)
         soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Eliminar CSS y JavaScript
+        for script_or_style in soup(["script", "style"]):
+            script_or_style.decompose()
+        
         text = ' '.join(soup.stripped_strings)
         result_texts.append(text)
 
@@ -863,6 +903,77 @@ def perform_scraping(url, levels):
 
     scrape_page(url, 1)
     return '\n\n'.join(result_texts)
+
+
+
+def extract_json_from_text(text):
+    json_data = []
+    for start, end, obj in jsonfinder.jsonfinder(text):
+        if obj is not None:
+            json_data.append(obj)
+    return json_data
+
+
+
+def perform_scraping_xml(url, levels):
+    visited_urls = set()
+    xml_data = []
+
+    def scrape_page(current_url, current_level):
+        if current_level > levels or current_url in visited_urls:
+            return
+        visited_urls.add(current_url)
+        
+        logger.info(f'Visiting: {current_url} (Level {current_level})')
+        
+        response = requests.get(current_url)
+        content_type = response.headers['Content-Type'].lower()
+        if 'application/xml' in content_type or 'text/xml' in content_type:
+            xml_data.append(response.text)
+
+        if current_level < levels:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            for link in soup.find_all('a', href=True):
+                next_url = link['href']
+                if not next_url.startswith('http'):
+                    next_url = requests.compat.urljoin(current_url, next_url)
+                scrape_page(next_url, current_level + 1)
+
+    scrape_page(url, 1)
+    return '\n\n'.join(xml_data)
+
+def perform_scraping_csv(url, levels):
+    visited_urls = set()
+    data_frames = []
+
+    def scrape_page(current_url, current_level):
+        if current_level > levels or current_url in visited_urls:
+            return
+        visited_urls.add(current_url)
+        
+        logger.info(f'Visiting: {current_url} (Level {current_level})')
+        
+        response = requests.get(current_url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        tables = soup.find_all('table')
+        for table in tables:
+            df = pd.read_html(str(table))[0]
+            data_frames.append(df)
+
+        if current_level < levels:
+            for link in soup.find_all('a', href=True):
+                next_url = link['href']
+                if not next_url.startswith('http'):
+                    next_url = requests.compat.urljoin(current_url, next_url)
+                scrape_page(next_url, current_level + 1)
+
+    scrape_page(url, 1)
+    if data_frames:
+        combined_df = pd.concat(data_frames, ignore_index=True)
+        csv_data = combined_df.to_csv(index=False)
+        return csv_data
+    else:
+        return ""
 
 
 
