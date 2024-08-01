@@ -868,6 +868,7 @@ def scrape_csv(config_id):
 
 
 # Configurar el logger
+""""
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -974,7 +975,7 @@ def perform_scraping_csv(url, levels):
         return csv_data
     else:
         return ""
-
+"""
 
 
 if __name__ == '__main__':
