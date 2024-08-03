@@ -1,0 +1,11 @@
+{
+    "url": "{{url}}/chat",
+    "payload": {
+        "message": "{{prompt}}",
+        "mode": "chat"
+    },
+    "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{api_key}}"
+    }
+}

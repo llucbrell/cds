@@ -204,8 +204,9 @@ def send_template():
         url = data.get('my-input')
         processed_text = data.get('processed-text')
         template_request_text = data.get('template-request')
+        model_name = data.get('new-model-name-input')
         
-        response = send_to_model(auth_url, api_key, url, processed_text, template_request_text)
+        response = send_to_model(auth_url, api_key, url, model_name, processed_text, template_request_text)
         return jsonify({'message': f'{response}', 'status': 'success'})
     except Exception as e:
         return jsonify({'message': str(e), 'status': 'error'})
@@ -467,8 +468,9 @@ def start_execution(test_id):
         print(ndata.auth_url)
         print(ndata.api_key)
         print(ndata.request_template)
+        print(ndata.model_name)
         print(processed_text)
-        resp = send_to_model(ndata.auth_url, ndata.api_key, ndata.target_url, processed_text, ndata.request_template)
+        resp = send_to_model(ndata.auth_url, ndata.api_key, ndata.target_url, ndata.model_name, processed_text, ndata.request_template)
         return resp
 
     def run_all_executions():

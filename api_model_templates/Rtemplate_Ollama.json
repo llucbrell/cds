@@ -1,0 +1,11 @@
+{
+    "url": "{{url}}",
+    "payload": {
+         "model": "{{model_name}}",
+        "prompt": "{{prompt}}",
+        "stream": false
+    },
+    "headers": {
+        "Content-Type": "application/json"
+    }
+}

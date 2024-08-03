@@ -106,6 +106,9 @@
             <button id="save-prompt-template" class="btn btn-outline-primary mt-2" title="Save to DB" ><i class="fas fa-save"></i></button>
             <input id="iterable-index" value="0" title="Índice específico para iterables" type="number" class="form-control mt-2" style="width: auto; display: inline-block; float: right;">
             <div id="template-output" class="mt-3"></div>
+            <div id="prompt-spinner" class="spinner-border text-primary" role="status" style="display: none;">
+                <span class="sr-only">Loading...</span>
+            </div>
             <div id="save-prompt-template-output" class="mt-3"></div>
             <div id="send-output" class="mt-3"></div>
         </div>
@@ -219,6 +222,13 @@
         });
 
         document.getElementById('template-send-button').addEventListener('click', function () {
+            function showSpinner() {
+            document.getElementById('prompt-spinner').style.display = 'block';
+        }
+
+        function hideSpinner() {
+            document.getElementById('prompt-spinner').style.display = 'none';
+        }
             const modelName = document.getElementById('new-model-name-input').value;
             const authUrl = document.getElementById('auth-url-input').value;
             const apiKey = document.getElementById('api-key-input').value;
@@ -237,6 +247,8 @@
 
             document.getElementById('send-output').innerText = '';  // Clear the output first
 
+            showSpinner();
+
             fetch('/send-template', {
                 method: 'POST',
                 headers: {
@@ -254,7 +266,12 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Send template response:', data);  // Logging send template response
-                document.getElementById('send-output').innerText =  data.message + data.response;
+                hideSpinner();
+                if(data.response){
+                    document.getElementById('send-output').innerText =  data.message + data.response;
+                }else{
+                    document.getElementById('send-output').innerText =  data.message;
+                }
                 document.getElementById('send-output').className = data.status === 'success' ? 'text-success' : 'text-danger';
             })
             .catch(error => console.error('Error:', error));  // Logging errors
@@ -356,6 +373,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error:', error));  // Logging errors
     }
+
+    
+
 
     document.getElementById('save-test-name-button').addEventListener('click', function() {
         const newTestName = document.getElementById('new-test-name-input').value;
