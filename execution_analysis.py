@@ -6,6 +6,16 @@ import os
 import pandas as pd
 from models import Database
 import uuid
+import sys  # Añadir esta importación
+
+def resource_path(relative_path):
+    """Obtiene la ruta absoluta al recurso, funciona para dev y PyInstaller"""
+    try:
+        # PyInstaller crea una carpeta temporal y almacena el camino en _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 def create_dash_app(flask_app):
     dash_app = Dash(
@@ -27,11 +37,11 @@ def create_dash_app(flask_app):
 
     def register_plugins():
         plugins = []
-        plugins_dir = 'plugins'
+        plugins_dir = resource_path('plugins')  # Usa resource_path para obtener la ruta correcta
         for filename in os.listdir(plugins_dir):
             if filename.endswith('.py') and filename != '__init__.py':
                 plugin_name = filename[:-3]
-                module = importlib.import_module(f'{plugins_dir}.{plugin_name}')
+                module = importlib.import_module(f'plugins.{plugin_name}')
                 plugins.append({'label': module.NAME, 'value': plugin_name})
                 if hasattr(module, 'register_callbacks'):
                     module.register_callbacks(dash_app)

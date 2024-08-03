@@ -32,6 +32,14 @@ from logging.handlers import RotatingFileHandler
 
 app = Flask(__name__)
 
+def resource_path(relative_path):
+    """Obtiene la ruta absoluta al recurso, funciona para dev y PyInstaller"""
+    try:
+        # PyInstaller crea una carpeta temporal y almacena el camino en _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 # Configura el registro para Flask y Werkzeug
 if not app.debug:
@@ -59,7 +67,7 @@ Session = scoped_session(SessionFactory)
 
 
 # Integrar Dash en Flask
-dash_app = create_dash_app(app)
+# dash_app = create_dash_app(app)
 
 db = Database()
 
@@ -576,13 +584,13 @@ def config_test(test_id, collection_id):
     # Pasar el contenido HTML generado por Dash al renderizar la plantilla
     return render_template('dash_layout.html', dash_html=dash_app.index(), test_id=test_id, collection_id=collection_id)
 
-"""
-
+## la de bajo es la última versión
 @app.route('/execution_analysis/<int:execution_id>/')
 def execution_analysis(execution_id):
     # Pasar el contenido HTML generado por Dash al renderizar la plantilla
     return render_template('dash_layout.html', dash_html=dash_app.index(), execution_id=execution_id)
 
+"""
 
 @app.route('/download_csv/<int:execution_id>')
 def download_csv(execution_id):

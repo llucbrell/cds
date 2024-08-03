@@ -1,39 +1,48 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+block_cipher = None
 
 a = Analysis(
     ['init.py'],
-    pathex=[],
+    pathex=['.'],
     binaries=[],
-    datas=[('static', 'static'), ('templates', 'templates')],
-    hiddenimports=[],
+    datas=[
+        ('static', 'static'),
+        ('templates', 'templates'),
+        ('plugins', 'plugins'),
+    ],
+    hiddenimports=['nltk'],
     hookspath=[],
-    hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    noarchive=False,
-    optimize=0,
+    win_no_prefer_redirects=False,
+    win_private_assemblies=False,
+    cipher=block_cipher,
 )
-pyz = PYZ(a.pure)
+pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
-    name='init',
+    exclude_binaries=True,
+    name='cds',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
+    console=False,  # Cambiar a False
+    icon='static/images/cds_icon_5.ico',
+    base='Win32GUI'  # Añadir esta línea
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
     upx_exclude=[],
-    runtime_tmpdir=None,
-    console=False,
-    disable_windowed_traceback=False,
-    argv_emulation=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-    icon=['static\\images\\cds_icon_5.ico'],
+    name='yourapp'
 )
