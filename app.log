@@ -1,6 +1,6 @@
-2024-08-03 10:56:46,887 INFO: 127.0.0.1 - - [03/Aug/2024 10:56:46] "[32mGET /static//images/cds_icon_5.png HTTP/1.1[0m" 308 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
-2024-08-03 10:56:46,980 INFO: 127.0.0.1 - - [03/Aug/2024 10:56:46] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
-2024-08-03 10:56:52,234 INFO: 127.0.0.1 - - [03/Aug/2024 10:56:52] "GET /collections HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
-2024-08-03 10:56:52,322 INFO: 127.0.0.1 - - [03/Aug/2024 10:56:52] "GET /static/images/surf_group.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
-2024-08-03 10:56:52,324 INFO: 127.0.0.1 - - [03/Aug/2024 10:56:52] "[36mGET /static/images/cds_icon.png HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
-2024-08-03 10:56:52,461 INFO: 127.0.0.1 - - [03/Aug/2024 10:56:52] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+2024-08-03 11:03:50,093 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6996 [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+2024-08-03 11:03:50,093 INFO: [33mPress CTRL+C to quit[0m [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+2024-08-03 11:04:13,488 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6996 [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+2024-08-03 11:04:13,489 INFO: [33mPress CTRL+C to quit[0m [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
