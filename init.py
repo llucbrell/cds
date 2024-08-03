@@ -19,7 +19,8 @@ def stop_server(process):
     os.kill(process.pid, signal.SIGTERM)  # Envía la señal SIGTERM al proceso del servidor
 
 def create_image():
-    return Image.open('./static/images/cds_icon_5.png')  # Asegúrate de tener el archivo icon.png en el mismo directorio
+    ic_path = os.path.abspath("./static/images/cds_icon_5.png")
+    return Image.open(ic_path)  # Asegúrate de tener el archivo icon.png en el mismo directorio
 
 def on_open_browser(icon, item):
     webbrowser.open('http://127.0.0.1:'+ str(app_port))
@@ -39,7 +40,7 @@ def show_initial_dialog():
     root.withdraw()  # Ocultar la ventana principal de Tkinter
 
     # Configurar el icono de la ventana principal
-    icon_path = "./static/images/cds_icon_5.ico"
+    icon_path = os.path.abspath("./static/images/cds_icon_5.ico")
     root.iconbitmap(icon_path)
 
     # Mostrar el mensaje de información
