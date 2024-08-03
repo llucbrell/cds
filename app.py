@@ -23,12 +23,32 @@ from bs4 import BeautifulSoup
 import requests
 import logging
 import jsonfinder
+from logging.handlers import RotatingFileHandler
+
 
 
 
 
 
 app = Flask(__name__)
+
+
+# Configura el registro para Flask y Werkzeug
+if not app.debug:
+    # Configura el handler de rotación de archivos
+    handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
+    handler.setFormatter(formatter)
+
+    # Añade el handler al logger de la aplicación Flask
+    app.logger.addHandler(handler)
+
+    # Captura el log de werkzeug (el servidor WSGI utilizado por Flask)
+    werkzeug_logger = logging.getLogger('werkzeug')
+    werkzeug_logger.setLevel(logging.INFO)
+    werkzeug_logger.addHandler(handler)
+
 
 
 # Crear una nueva fábrica de sesiones
@@ -42,6 +62,7 @@ Session = scoped_session(SessionFactory)
 dash_app = create_dash_app(app)
 
 db = Database()
+
 
 @app.route('/')
 def index():
@@ -981,4 +1002,5 @@ def perform_scraping_csv(url, levels):
 
 
 if __name__ == '__main__':
+    logging.basicConfig(filename='app.log', level=logging.INFO)
     app.run(debug=True)

@@ -8,9 +8,11 @@ import time
 import os
 import signal
 
+app_port = 6996
+
 def run_server():
     import app  # Importa el archivo que contiene la instancia de Flask
-    app.app.run(port=5000, use_reloader=False)
+    app.app.run(port=app_port, use_reloader=False)
 
 def stop_server(process):
     print("Stopping CDS Server...")
@@ -20,7 +22,7 @@ def create_image():
     return Image.open('./static/images/cds_icon_5.png')  # Asegúrate de tener el archivo icon.png en el mismo directorio
 
 def on_open_browser(icon, item):
-    webbrowser.open('http://127.0.0.1:5000')
+    webbrowser.open('http://127.0.0.1:'+ str(app_port))
 
 def on_open_logs(icon, item):
     webbrowser.open('file:///' + os.path.abspath('app.log'))
@@ -34,8 +36,15 @@ def setup(icon):
 
 def show_initial_dialog():
     root = tk.Tk()
-    root.withdraw()
-    messagebox.showinfo("Charlie Don't Surf", "App Running on http://127.0.0.1:5000")
+    root.withdraw()  # Ocultar la ventana principal de Tkinter
+
+    # Configurar el icono de la ventana principal
+    icon_path = "./static/images/cds_icon_5.ico"
+    root.iconbitmap(icon_path)
+
+    # Mostrar el mensaje de información
+    messagebox.showinfo("Charlie Don't Surf", "App Running on http://127.0.0.1:" + str(app_port))
+
 
 if __name__ == '__main__':
     # Iniciar el servidor Flask en un subproceso
