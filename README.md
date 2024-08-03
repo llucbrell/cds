@@ -14,3 +14,7 @@
 - **Iterative Testing**: Iterate over data sets to test prompts with various inputs.
 - **Data Collection**: Collect and store responses for in-depth analysis.
 
+## Windows build
+
+- use pyinstall install.spec
+- then open innosetup to create the installer

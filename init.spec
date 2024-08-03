@@ -19,6 +19,7 @@ a = Analysis(
     win_private_assemblies=False,
     cipher=block_cipher,
 )
+
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
@@ -45,4 +46,13 @@ coll = COLLECT(
     upx=True,
     upx_exclude=[],
     name='yourapp'
+)
+
+app = BUNDLE(
+    coll,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='yourapp',
+    onefile=True  # Esta línea asegura que el ejecutable sea un archivo único
 )

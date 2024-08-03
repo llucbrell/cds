@@ -1,3 +1,7 @@
 test_docs/
 __pycache__/
 tests.db
+build/*
+dist/*
+!dist/Output
+!dist/setup_build.iss
