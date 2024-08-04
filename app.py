@@ -592,6 +592,12 @@ def execution_analysis(execution_id):
 
 """
 
+@app.route('/execution_analysis/<int:execution_id>', methods=['GET'])
+def execution_analysis(execution_id):
+    # Tu lógica aquí
+    return redirect('scraping')
+
+
 @app.route('/download_csv/<int:execution_id>')
 def download_csv(execution_id):
     # Aquí deberías escribir lógica para generar el archivo CSV y devolverlo como una descarga

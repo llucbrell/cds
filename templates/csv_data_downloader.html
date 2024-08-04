@@ -1,21 +1,22 @@
 {% block content %}
 <div class="container">
-    <h1>Descargar Datos en CSV</h1>
+    <h1>Download Data as CSV File</h1>
 
+    <h6>Select columns to include</h6>
     <form onsubmit="downloadCSV(); return false;">
         <input type="checkbox" id="chk_id" checked> ID<br>
         <input type="checkbox" id="chk_test_id" checked> Test ID<br>
-        <input type="checkbox" id="chk_result" checked> Resultado<br>
+        <input type="checkbox" id="chk_result" checked> Result<br>
         <input type="checkbox" id="chk_timestamp" checked> Timestamp<br>
-        <input type="checkbox" id="chk_response_data" checked> Datos de Respuesta<br>
-        <input type="checkbox" id="chk_start_time" checked> Hora de Inicio<br>
-        <input type="checkbox" id="chk_end_time" checked> Hora de Finalización<br>
-        <input type="checkbox" id="chk_duration" checked> Duración<br>
-        <input type="checkbox" id="chk_date" checked> Fecha<br>
-        <input type="checkbox" id="chk_model_name" checked> Modelo<br>
-        <input type="checkbox" id="chk_target_url" checked> Url Destino<br>
+        <input type="checkbox" id="chk_response_data" checked> Response data<br>
+        <input type="checkbox" id="chk_start_time" checked> Start Time<br>
+        <input type="checkbox" id="chk_end_time" checked> End Time<br>
+        <input type="checkbox" id="chk_duration" checked> Duration<br>
+        <input type="checkbox" id="chk_date" checked> Date<br>
+        <input type="checkbox" id="chk_model_name" checked> Model Name<br>
+        <input type="checkbox" id="chk_target_url" checked> Target Url<br>
         <br>
-        <button type="submit" class="btn btn-primary">Descargar CSV</button>
+        <button type="submit" class="btn btn-primary">Download CSV file</button>
     </form>
 </div>
 <script>

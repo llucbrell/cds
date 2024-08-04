@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center my-4">
-            <h1>Visor de CSV</h1>
+            <h1>CSV Viewer</h1>
         </div>
         <div class="col-md-12">
             <form id="csv-form" enctype="multipart/form-data">
@@ -21,7 +21,7 @@
                 No range selected
             </div>
             <br>
-            <input id="array-key" name="key" placeholder="Nombre del ítem" class="form-control" required>
+            <input id="array-key" name="key" placeholder="Name" class="form-control" required>
             <button id="save-selection" class="btn btn-outline-success mt-4" title="Guardar"><i class="fa-solid fa-floppy-disk"></i></button>
             <button id="invert-selection" class="btn btn-outline-warning mt-4" tilte="Invertir Selección"><i class="fas fa-arrows-rotate"></i></button>
             <br>
@@ -100,7 +100,7 @@
                    var arrayKey = document.getElementById("array-key"); 
                    console.log(arrayKey.value);
                 } catch (error) {
-                    alert("No se puede guardar un array sin referenciarlo con un nombre.");
+                    alert("Can't save without name");
                     return;
                 }
 

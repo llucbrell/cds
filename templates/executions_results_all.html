@@ -19,18 +19,33 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link active" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="true">Results</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" id="actions-csv-tab" data-toggle="tab" href="#actions-csv" role="tab" aria-controls="actions-csv" aria-selected="false">CSV</a>
                 </li>
+                <!--
                 <li class="nav-item">
                     <a class="nav-link" id="actions-txt-tab" data-toggle="tab" href="#actions-txt" role="tab" aria-controls="actions-txt" aria-selected="false">TXT</a>
                 </li>
+                -->
             </ul>
         </div>
     </div>
 
     <!-- Contenido de las pestañas -->
     <div class="tab-content" id="myTabContent">
+    <!-- Pestaña de Resultados -->
+        <div class="tab-pane fade show active" id="results" role="tabpanel" aria-labelledby="results-tab">
+            
+            <h1>Execution Results</h1>
+            <h6>Download all data from all executions</h6>
+
+        </div>
+
+
         <!-- Pestaña CSV -->
         <div class="tab-pane fade" id="actions-csv" role="tabpanel" aria-labelledby="actions-csv-tab">
             <div class="row">
@@ -40,7 +55,7 @@
             </div>
         </div>
 
-        <!-- Pestaña TXT -->
+        <!-- 
         <div class="tab-pane fade" id="actions-txt" role="tabpanel" aria-labelledby="actions-txt-tab">
             <div class="row">
                 <div class="col-md-12">
@@ -50,6 +65,8 @@
                 </div>
             </div>
         </div>
+        Pestaña TXT -->
+
     </div>
 
     <!-- Botón para regresar a la lista de pruebas, usando `test_id` -->

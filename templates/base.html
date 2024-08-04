@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
     <title>Flask App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@latest/dist/handsontable.full.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/handsometable.full.min.css') }}" rel="stylesheet">
     <link rel="icon" href="{{ url_for('static', filename='/images/cds_icon_5.png') }}" type="image/x-icon">
     <style>
         body {
@@ -41,7 +41,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <a class="navbar-brand" href="{{ url_for('index') }}">
-            <img src="{{ url_for('static', filename='images/cds_icon.png') }}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            <img src="{{ url_for('static', filename='images/cds_icon_5.png') }}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('collections') }}">Colecciones</a>
+                    <a class="nav-link" href="{{ url_for('collections') }}">Collections</a>
                 </li>
                 <!--
                 <li class="nav-item">
@@ -73,19 +73,19 @@
         </a>
         <span>GPL 3 License</span>
         <span>
-        <a href="https://github.com/yourprofile" target="_blank">
+        <a href="https://github.com/llucbrell/cds/tree/master" target="_blank">
             <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+        <span style="margin-left: 3px;">Source Code</span>
         </a>
         </span>
-        <span style="margin-left: 3px;">Código Fuente</span>
-        <a href="https://github.com/yourprofile" target="_blank">
+        <a href="https://github.com/llucbrell/cds/tree/master/rtemplates" target="_blank">
             <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub">
+        <span style="margin-left: 3px;">Request Templates</span>
         </span>
-        <span style="margin-left: 3px;">Plantillas</span>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
 </html>

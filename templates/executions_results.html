@@ -17,14 +17,16 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="true">Resultados</a>
+                    <a class="nav-link active" id="results-tab" data-toggle="tab" href="#results" role="tab" aria-controls="results" aria-selected="true">Results</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="actions-csv-tab" data-toggle="tab" href="#actions-csv" role="tab" aria-controls="actions-csv" aria-selected="false">CSV</a>
                 </li>
+                <!--
                <li class="nav-item">
                     <a class="nav-link" id="actions-txt-tab" data-toggle="tab" href="#actions-txt" role="tab" aria-controls="actions-txt" aria-selected="false">TXT</a>
                 </li>
+                -->
             </ul>
         </div>
     </div>
@@ -33,21 +35,21 @@
         <!-- Pestaña de Resultados -->
         <div class="tab-pane fade show active" id="results" role="tabpanel" aria-labelledby="results-tab">
             
-            <h1>Resultados de la Ejecución {{ execution.id }}</h1>
+            <h1>Execution Results for {{ execution.id }}</h1>
 
-            <p><strong>Resultado:</strong> {{ execution.result }}</p>
+            <p><strong>Results:</strong> {{ execution.result }}</p>
             <p><strong>Timestamp:</strong> {{ execution.timestamp }}</p>
 
-            <h2>Respuestas</h2>
+            <h2>Responses</h2>
             <table class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Datos de la Respuesta</th>
-                        <th>Hora de Inicio</th>
-                        <th>Hora de Finalización</th>
-                        <th>Duración</th>
-                        <th>Fecha</th>
+                        <th>Response Data</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Duration</th>
+                        <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,18 +80,16 @@ Botones de Descarga en el Template -->
                 </div>
             </div>
         </div>
+                    <!-- 
         <div class="tab-pane fade" id="actions-txt" role="tabpanel" aria-labelledby="actions-txt-tab">
             <div class="row">
                 <div class="col-md-12">
-                    <!-- 
-<a href="{{ url_for('download_csv', execution_id=execution.id) }}" class="btn btn-success" title="Descargar CSV"><i class="fas fa-download"></i> Descargar CSV</a>
-Botones de Descarga en el Template -->
 <a href="{{ url_for('download_multiple_txt', execution_id=execution.id) }}" class="btn btn-primary" title="Descargar Múltiples TXT"><i class="fas fa-download"></i> Descargar Múltiples TXT</a>
 
                 </div>
             </div>
         </div>
-
+Botones de Descarga en el Template -->
 
 
     </div>

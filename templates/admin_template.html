@@ -1,7 +1,7 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12 text-center my-4">
-        <h1>Administrador de datos</h1>
+        <h1>Data Loader</h1>
     </div>
     <div class="col-md-12">
         <div class="accordion" id="dataAdminAccordion">
@@ -9,7 +9,7 @@
                 <div class="card-header" id="fixedHeading">
                     <h2 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#fixedCollapse" aria-expanded="false" aria-controls="fixedCollapse">
-                            Ítems Fijos
+                            Fixed value Variables
                         </button>
                     </h2>
                 </div>
@@ -17,23 +17,23 @@
                     <div class="card-body">
                     <ul class="nav nav-tabs" id="scraperTabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true">Añadir</a>
+                            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true">Add</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced" aria-selected="false">Lista</a>
+                            <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced" aria-selected="false">List</a>
                         </li>
                     </ul>
     <div class="tab-content" id="scraperTabsContent">
         <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
             <br>
             <br>
-                    <h4>Crear Ítem Fijo</h4>
+                    <h4>Create</h4>
                         <form id="fixed-form">
                             <div class="form-group">
-                                <input id="fixed-key" name="key" placeholder="Clave" class="form-control" required>
+                                <input id="fixed-key" name="key" placeholder="Key" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <input id="fixed-value" name="value" placeholder="Valor" class="form-control" required>
+                                <input id="fixed-value" name="value" placeholder="Value" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="value_type" value="fixed">
@@ -47,7 +47,7 @@
             <br>
                         <button id="reload-fixed" class="btn btn-outline-secondary mt-2" title="Refrescar" style="float: right;"><i class="fas fa-rotate-right"></i></button>
                         <div id="fixed-items" class="mt-3">
-                            <h4>Valores Existentes</h4>
+                            <h4>Stored Variables</h4>
                             <ul class="list-group" id="fixed-items-list">
                                 <!-- Lista de ítems fijos se llenará dinámicamente -->
                             </ul>
@@ -61,7 +61,7 @@
                 <div class="card-header" id="iterableHeading">
                     <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#iterableCollapse" aria-expanded="false" aria-controls="iterableCollapse">
-                            Ítems Iterables
+                            Iterable Variables
                         </button>
                     </h2>
                 </div>
@@ -70,10 +70,10 @@
 
             <ul class="nav nav-tabs" id="scraperTabs2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#iterable-viewer" role="tab" aria-controls="basic" aria-selected="true">Añadir</a>
+                            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#iterable-viewer" role="tab" aria-controls="basic" aria-selected="true">Add</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#iterable-list" role="tab" aria-controls="advanced" aria-selected="false">Lista</a>
+                            <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#iterable-list" role="tab" aria-controls="advanced" aria-selected="false">List</a>
                         </li>
                     </ul>
 
@@ -87,7 +87,7 @@
         <div class="tab-pane fade show" id="iterable-list" role="tabpanel" aria-labelledby="basic-tab">
             <br>
             <br>
-                            <h4>Valores Iterables Existentes</h4>
+                            <h4>Stored data</h4>
                             <ul class="list-group" id="iterable-items-list">
                                 <!-- Lista de ítems iterables se llenará dinámicamente -->
                             </ul>
@@ -101,7 +101,7 @@
                 <div class="card-header" id="arrayHeading">
                     <h2 class="mb-0">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#arrayCollapse" aria-expanded="false" aria-controls="arrayCollapse">
-                            Ítems Arrays
+                            Arrays of values
                         </button>
                     </h2>
                 </div>
@@ -109,10 +109,10 @@
                     <div class="card-body">
            <ul class="nav nav-tabs" id="scraperTabs2" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#array-viewer" role="tab" aria-controls="basic" aria-selected="true">Añadir</a>
+                            <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#array-viewer" role="tab" aria-controls="basic" aria-selected="true">Add</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#array-list" role="tab" aria-controls="advanced" aria-selected="false">Lista</a>
+                            <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#array-list" role="tab" aria-controls="advanced" aria-selected="false">List</a>
                         </li>
                     </ul>
 
