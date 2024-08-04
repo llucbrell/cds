@@ -45,7 +45,7 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='yourapp'
+    name='cds'
 )
 
 app = BUNDLE(
@@ -53,6 +53,6 @@ app = BUNDLE(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='yourapp',
+    name='cds',
     onefile=True  # Esta línea asegura que el ejecutable sea un archivo único
 )
