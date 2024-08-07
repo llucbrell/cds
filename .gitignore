@@ -5,3 +5,6 @@ build/*
 dist/*
 !dist/Output
 !dist/setup_build.iss
+app.log
+app.log.
+.__app.lock

@@ -161,11 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedKey = document.getElementById('iterable-key').value;
             repetitions = 1;
             selectionType = 'iterable';
-            asyncOption = document.getElementById('async-checkbox-iterable').checked ? 'true' : 'false';
+            //asyncOption = document.getElementById('async-checkbox-iterable').checked ? 'true' : 'false';
+            asyncOption = 'false'
         } else if (document.getElementById('selectRepetition').checked) {
             repetitions = document.getElementById('num-repetitions').value;
             selectionType = 'repetition';
-            asyncOption = document.getElementById('async-checkbox-repetition').checked ? 'true' : 'false';
+            asyncOption = 'false'
+            //asyncOption = document.getElementById('async-checkbox-repetition').checked ? 'true' : 'false';
         }
 
         document.getElementById('repetitions').value = repetitions;

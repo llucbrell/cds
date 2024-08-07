@@ -24,6 +24,8 @@ import requests
 import logging
 import jsonfinder
 from logging.handlers import RotatingFileHandler
+from concurrent_log_handler import ConcurrentRotatingFileHandler
+
 
 
 
@@ -44,7 +46,8 @@ def resource_path(relative_path):
 # Configura el registro para Flask y Werkzeug
 if not app.debug:
     # Configura el handler de rotación de archivos
-    handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
+    # handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
+    handler = ConcurrentRotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]')
     handler.setFormatter(formatter)
