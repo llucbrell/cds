@@ -998,3 +998,721 @@ INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:05:33] "GET /values/1 HTTP/1.1" 200 
 INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:05:41] "POST /values/delete/7 HTTP/1.1" 200 -
 2024-08-08 14:05:41,190 INFO: 127.0.0.1 - - [08/Aug/2024 14:05:41] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
 INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:05:41] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:27:26,613 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "GET /tests/config/1/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "GET /tests/config/1/1 HTTP/1.1" 200 -
+2024-08-08 14:27:26,734 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,737 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/all.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/all.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,737 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/handsometable.full.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/handsometable.full.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,741 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 -
+2024-08-08 14:27:26,743 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/handsometable.good.full.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/css/handsometable.good.full.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,744 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,761 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/jquery.slim.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/jquery.slim.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,761 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,773 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/popper.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/popper.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,775 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:26,778 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/images/surf_wax.png HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:26] "[36mGET /static/images/surf_wax.png HTTP/1.1[0m" 304 -
+2024-08-08 14:27:27,047 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:27] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:27] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:27,127 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:27] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:27] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:27:27,283 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:27] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:27] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:27:27,322 INFO: 127.0.0.1 - - [08/Aug/2024 14:27:27] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:27:27] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 -
+2024-08-08 14:32:09,747 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "GET /tests/config/1/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "GET /tests/config/1/1 HTTP/1.1" 200 -
+2024-08-08 14:32:09,787 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,792 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,794 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/jquery.slim.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/jquery.slim.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,797 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/popper.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/popper.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,799 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,806 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 -
+2024-08-08 14:32:09,807 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,823 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/all.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/all.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,824 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/handsometable.full.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/handsometable.full.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,837 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/handsometable.good.full.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/css/handsometable.good.full.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:09,870 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/images/surf_wax.png HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:09] "[36mGET /static/images/surf_wax.png HTTP/1.1[0m" 304 -
+2024-08-08 14:32:10,011 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:10] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:10] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:10,091 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:10] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:10] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:10,243 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:10] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:10] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:32:10,285 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:10] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:10] "GET /static/images/cds_icon_5.png HTTP/1.1" 200 -
+2024-08-08 14:32:53,536 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:53] "POST /save_iterable_selection HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:53] "POST /save_iterable_selection HTTP/1.1" 200 -
+2024-08-08 14:32:55,893 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:55] "GET /tests/config/1/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:55] "GET /tests/config/1/1 HTTP/1.1" 200 -
+2024-08-08 14:32:55,937 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:55] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:55] "[36mGET /static/css/bootstrap.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,026 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/css/all.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/css/all.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,030 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/css/handsometable.full.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/css/handsometable.full.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,030 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/css/handsometable.good.full.min.css HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/css/handsometable.good.full.min.css HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,032 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,033 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,042 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/jquery.slim.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/jquery.slim.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,043 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/popper.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/popper.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,051 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/bootstrap.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,062 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/images/surf_wax.png HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/images/surf_wax.png HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,064 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/images/cds_icon_5.png HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/images/cds_icon_5.png HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,259 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/handsometable.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,326 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "[36mGET /static/js/xlsx.full.min.js HTTP/1.1[0m" 304 -
+2024-08-08 14:32:56,618 INFO: 127.0.0.1 - - [08/Aug/2024 14:32:56] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:32:56] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:06,226 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:06] "POST /values/delete/7 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:06] "POST /values/delete/7 HTTP/1.1" 200 -
+2024-08-08 14:33:06,240 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:06] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:06] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:06,899 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:06] "POST /values/delete/8 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:06] "POST /values/delete/8 HTTP/1.1" 200 -
+2024-08-08 14:33:06,921 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:06] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:06] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:07,454 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:07] "POST /values/delete/9 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:07] "POST /values/delete/9 HTTP/1.1" 200 -
+2024-08-08 14:33:07,474 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:07] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:07] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:07,788 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:07] "POST /values/delete/10 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:07] "POST /values/delete/10 HTTP/1.1" 200 -
+2024-08-08 14:33:07,805 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:07] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:07] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:08,057 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/11 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/11 HTTP/1.1" 200 -
+2024-08-08 14:33:08,068 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:08,298 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/12 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/12 HTTP/1.1" 200 -
+2024-08-08 14:33:08,311 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:08,557 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/13 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/13 HTTP/1.1" 200 -
+2024-08-08 14:33:08,568 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:08,806 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/14 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:08] "POST /values/delete/14 HTTP/1.1" 200 -
+2024-08-08 14:33:11,127 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:11] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:11] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:11,581 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:11] "POST /values/delete/15 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:11] "POST /values/delete/15 HTTP/1.1" 200 -
+2024-08-08 14:33:11,615 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:11] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:11] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:11,690 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:11] "[35m[1mPOST /values/delete/14 HTTP/1.1[0m" 500 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:11] "[35m[1mPOST /values/delete/14 HTTP/1.1[0m" 500 -
+2024-08-08 14:33:11,693 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:11] "[35m[1mPOST /values/delete/14 HTTP/1.1[0m" 500 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:11] "[35m[1mPOST /values/delete/14 HTTP/1.1[0m" 500 -
+2024-08-08 14:33:11,696 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:11] "[35m[1mPOST /values/delete/14 HTTP/1.1[0m" 500 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:11] "[35m[1mPOST /values/delete/14 HTTP/1.1[0m" 500 -
+2024-08-08 14:33:15,210 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:15] "POST /values/delete/16 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:15] "POST /values/delete/16 HTTP/1.1" 200 -
+2024-08-08 14:33:15,219 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:15] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:15] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:15,958 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:15] "POST /values/delete/17 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:15] "POST /values/delete/17 HTTP/1.1" 200 -
+2024-08-08 14:33:15,977 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:15] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:15] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:16,483 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:16] "POST /values/delete/18 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:16] "POST /values/delete/18 HTTP/1.1" 200 -
+2024-08-08 14:33:16,509 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:16] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:16] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:17,093 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:17] "POST /values/delete/19 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:17] "POST /values/delete/19 HTTP/1.1" 200 -
+2024-08-08 14:33:17,110 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:17] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:17] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:17,602 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:17] "POST /values/delete/20 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:17] "POST /values/delete/20 HTTP/1.1" 200 -
+2024-08-08 14:33:17,628 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:17] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:17] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:17,966 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:17] "POST /values/delete/21 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:17] "POST /values/delete/21 HTTP/1.1" 200 -
+2024-08-08 14:33:17,985 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:17] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:17] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:18,415 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:18] "POST /values/delete/22 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:18] "POST /values/delete/22 HTTP/1.1" 200 -
+2024-08-08 14:33:18,426 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:18] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:18] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:18,623 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:18] "POST /values/delete/23 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:18] "POST /values/delete/23 HTTP/1.1" 200 -
+2024-08-08 14:33:18,636 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:18] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:18] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:18,881 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:18] "POST /values/delete/24 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:18] "POST /values/delete/24 HTTP/1.1" 200 -
+2024-08-08 14:33:18,908 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:18] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:18] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:19,265 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:19] "POST /values/delete/25 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:19] "POST /values/delete/25 HTTP/1.1" 200 -
+2024-08-08 14:33:19,276 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:19] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:19] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:19,448 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:19] "POST /values/delete/26 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:19] "POST /values/delete/26 HTTP/1.1" 200 -
+2024-08-08 14:33:19,472 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:19] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:19] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:19,832 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:19] "POST /values/delete/27 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:19] "POST /values/delete/27 HTTP/1.1" 200 -
+2024-08-08 14:33:19,844 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:19] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:19] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:20,280 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:20] "POST /values/delete/28 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:20] "POST /values/delete/28 HTTP/1.1" 200 -
+2024-08-08 14:33:20,311 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:20] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:20] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:20,716 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:20] "POST /values/delete/29 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:20] "POST /values/delete/29 HTTP/1.1" 200 -
+2024-08-08 14:33:20,737 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:20] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:20] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:21,073 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "POST /values/delete/30 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "POST /values/delete/30 HTTP/1.1" 200 -
+2024-08-08 14:33:21,086 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:21,196 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "[35m[1mPOST /values/delete/30 HTTP/1.1[0m" 500 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "[35m[1mPOST /values/delete/30 HTTP/1.1[0m" 500 -
+2024-08-08 14:33:21,497 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "POST /values/delete/31 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "POST /values/delete/31 HTTP/1.1" 200 -
+2024-08-08 14:33:21,518 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:21,898 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "POST /values/delete/32 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "POST /values/delete/32 HTTP/1.1" 200 -
+2024-08-08 14:33:21,909 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:21] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:21] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:22,264 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:22] "POST /values/delete/33 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:22] "POST /values/delete/33 HTTP/1.1" 200 -
+2024-08-08 14:33:22,275 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:22] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:22] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:22,682 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:22] "POST /values/delete/34 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:22] "POST /values/delete/34 HTTP/1.1" 200 -
+2024-08-08 14:33:22,692 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:22] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:22] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:23,139 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:23] "POST /values/delete/35 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:23] "POST /values/delete/35 HTTP/1.1" 200 -
+2024-08-08 14:33:23,150 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:23] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:23] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:23,531 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:23] "POST /values/delete/36 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:23] "POST /values/delete/36 HTTP/1.1" 200 -
+2024-08-08 14:33:23,540 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:23] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:23] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:24,060 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:24] "POST /values/delete/37 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:24] "POST /values/delete/37 HTTP/1.1" 200 -
+2024-08-08 14:33:24,080 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:24] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:24] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:24,497 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:24] "POST /values/delete/38 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:24] "POST /values/delete/38 HTTP/1.1" 200 -
+2024-08-08 14:33:24,507 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:24] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:24] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:24,879 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:24] "POST /values/delete/39 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:24] "POST /values/delete/39 HTTP/1.1" 200 -
+2024-08-08 14:33:24,902 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:24] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:24] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:25,324 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:25] "POST /values/delete/40 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:25] "POST /values/delete/40 HTTP/1.1" 200 -
+2024-08-08 14:33:25,335 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:25] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:25] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:25,564 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:25] "POST /values/delete/41 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:25] "POST /values/delete/41 HTTP/1.1" 200 -
+2024-08-08 14:33:25,573 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:25] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:25] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:25,789 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:25] "POST /values/delete/42 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:25] "POST /values/delete/42 HTTP/1.1" 200 -
+2024-08-08 14:33:25,800 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:25] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:25] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:26,022 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/43 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/43 HTTP/1.1" 200 -
+2024-08-08 14:33:26,033 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:26,232 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/44 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/44 HTTP/1.1" 200 -
+2024-08-08 14:33:26,242 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:26,440 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/45 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/45 HTTP/1.1" 200 -
+2024-08-08 14:33:26,450 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:26,670 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/46 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "POST /values/delete/46 HTTP/1.1" 200 -
+2024-08-08 14:33:26,692 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:26] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:27,097 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/47 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/47 HTTP/1.1" 200 -
+2024-08-08 14:33:27,107 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:27,432 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/48 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/48 HTTP/1.1" 200 -
+2024-08-08 14:33:27,444 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:27,640 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/49 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/49 HTTP/1.1" 200 -
+2024-08-08 14:33:27,651 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:27,857 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/50 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "POST /values/delete/50 HTTP/1.1" 200 -
+2024-08-08 14:33:27,867 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:27] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:28,064 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:28] "POST /values/delete/51 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:28] "POST /values/delete/51 HTTP/1.1" 200 -
+2024-08-08 14:33:28,075 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:28] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:28] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:28,397 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:28] "POST /values/delete/52 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:28] "POST /values/delete/52 HTTP/1.1" 200 -
+2024-08-08 14:33:28,409 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:28] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:28] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:28,803 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:28] "POST /values/delete/53 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:28] "POST /values/delete/53 HTTP/1.1" 200 -
+2024-08-08 14:33:28,828 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:28] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:28] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:29,114 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:29] "POST /values/delete/54 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:29] "POST /values/delete/54 HTTP/1.1" 200 -
+2024-08-08 14:33:29,126 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:29] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:29] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:29,498 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:29] "POST /values/delete/55 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:29] "POST /values/delete/55 HTTP/1.1" 200 -
+2024-08-08 14:33:29,508 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:29] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:29] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:29,676 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:29] "POST /values/delete/56 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:29] "POST /values/delete/56 HTTP/1.1" 200 -
+2024-08-08 14:33:29,698 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:29] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:29] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:30,239 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:30] "POST /values/delete/57 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:30] "POST /values/delete/57 HTTP/1.1" 200 -
+2024-08-08 14:33:30,251 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:30] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:30] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:30,586 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:30] "POST /values/delete/58 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:30] "POST /values/delete/58 HTTP/1.1" 200 -
+2024-08-08 14:33:30,603 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:30] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:30] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:30,972 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:30] "POST /values/delete/59 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:30] "POST /values/delete/59 HTTP/1.1" 200 -
+2024-08-08 14:33:30,981 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:30] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:30] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:31,323 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:31] "POST /values/delete/60 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:31] "POST /values/delete/60 HTTP/1.1" 200 -
+2024-08-08 14:33:31,334 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:31] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:31] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:31,673 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:31] "POST /values/delete/61 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:31] "POST /values/delete/61 HTTP/1.1" 200 -
+2024-08-08 14:33:31,683 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:31] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:31] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:31,915 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:31] "POST /values/delete/62 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:31] "POST /values/delete/62 HTTP/1.1" 200 -
+2024-08-08 14:33:31,925 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:31] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:31] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:32,381 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:32] "POST /values/delete/63 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:32] "POST /values/delete/63 HTTP/1.1" 200 -
+2024-08-08 14:33:32,406 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:32] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:32] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:32,428 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:32] "[35m[1mPOST /values/delete/63 HTTP/1.1[0m" 500 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:32] "[35m[1mPOST /values/delete/63 HTTP/1.1[0m" 500 -
+2024-08-08 14:33:33,023 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:33] "POST /values/delete/64 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:33] "POST /values/delete/64 HTTP/1.1" 200 -
+2024-08-08 14:33:33,051 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:33] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:33] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:33,457 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:33] "POST /values/delete/65 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:33] "POST /values/delete/65 HTTP/1.1" 200 -
+2024-08-08 14:33:33,467 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:33] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:33] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:33,864 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:33] "POST /values/delete/66 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:33] "POST /values/delete/66 HTTP/1.1" 200 -
+2024-08-08 14:33:33,874 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:33] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:33] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:34,274 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:34] "POST /values/delete/67 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:34] "POST /values/delete/67 HTTP/1.1" 200 -
+2024-08-08 14:33:34,294 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:34] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:34] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:34,717 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:34] "POST /values/delete/68 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:34] "POST /values/delete/68 HTTP/1.1" 200 -
+2024-08-08 14:33:34,735 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:34] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:34] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:35,007 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/69 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/69 HTTP/1.1" 200 -
+2024-08-08 14:33:35,017 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:35,223 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/70 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/70 HTTP/1.1" 200 -
+2024-08-08 14:33:35,233 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:35,439 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/71 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/71 HTTP/1.1" 200 -
+2024-08-08 14:33:35,448 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:35,839 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/72 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "POST /values/delete/72 HTTP/1.1" 200 -
+2024-08-08 14:33:35,848 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:35] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:36,238 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:36] "POST /values/delete/73 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:36] "POST /values/delete/73 HTTP/1.1" 200 -
+2024-08-08 14:33:36,248 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:36] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:36] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:36,656 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:36] "POST /values/delete/74 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:36] "POST /values/delete/74 HTTP/1.1" 200 -
+2024-08-08 14:33:36,671 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:36] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:36] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:37,081 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:37] "POST /values/delete/75 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:37] "POST /values/delete/75 HTTP/1.1" 200 -
+2024-08-08 14:33:37,225 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:37] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:37] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:37,638 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:37] "POST /values/delete/76 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:37] "POST /values/delete/76 HTTP/1.1" 200 -
+2024-08-08 14:33:37,658 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:37] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:37] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:38,056 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:38] "POST /values/delete/77 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:38] "POST /values/delete/77 HTTP/1.1" 200 -
+2024-08-08 14:33:38,064 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:38] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:38] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:38,472 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:38] "POST /values/delete/78 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:38] "POST /values/delete/78 HTTP/1.1" 200 -
+2024-08-08 14:33:38,481 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:38] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:38] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:38,864 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:38] "POST /values/delete/79 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:38] "POST /values/delete/79 HTTP/1.1" 200 -
+2024-08-08 14:33:38,874 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:38] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:38] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:39,081 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:39] "POST /values/delete/80 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:39] "POST /values/delete/80 HTTP/1.1" 200 -
+2024-08-08 14:33:39,093 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:39] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:39] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:39,588 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:39] "POST /values/delete/81 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:39] "POST /values/delete/81 HTTP/1.1" 200 -
+2024-08-08 14:33:39,597 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:39] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:39] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:39,962 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:39] "POST /values/delete/82 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:39] "POST /values/delete/82 HTTP/1.1" 200 -
+2024-08-08 14:33:39,970 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:39] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:39] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:40,252 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:40] "POST /values/delete/83 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:40] "POST /values/delete/83 HTTP/1.1" 200 -
+2024-08-08 14:33:40,272 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:40] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:40] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:40,668 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:40] "POST /values/delete/84 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:40] "POST /values/delete/84 HTTP/1.1" 200 -
+2024-08-08 14:33:40,685 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:40] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:40] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:41,169 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/85 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/85 HTTP/1.1" 200 -
+2024-08-08 14:33:41,178 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:41,546 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/86 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/86 HTTP/1.1" 200 -
+2024-08-08 14:33:41,556 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:41,730 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/87 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/87 HTTP/1.1" 200 -
+2024-08-08 14:33:41,741 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:41,996 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/88 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:41] "POST /values/delete/88 HTTP/1.1" 200 -
+2024-08-08 14:33:42,012 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:42] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:42] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:42,389 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:42] "POST /values/delete/89 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:42] "POST /values/delete/89 HTTP/1.1" 200 -
+2024-08-08 14:33:42,400 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:42] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:42] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:42,780 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:42] "POST /values/delete/90 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:42] "POST /values/delete/90 HTTP/1.1" 200 -
+2024-08-08 14:33:42,790 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:42] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:42] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:43,172 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:43] "POST /values/delete/91 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:43] "POST /values/delete/91 HTTP/1.1" 200 -
+2024-08-08 14:33:43,180 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:43] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:43] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:43,496 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:43] "POST /values/delete/92 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:43] "POST /values/delete/92 HTTP/1.1" 200 -
+2024-08-08 14:33:43,506 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:43] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:43] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:43,938 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:43] "POST /values/delete/93 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:43] "POST /values/delete/93 HTTP/1.1" 200 -
+2024-08-08 14:33:43,958 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:43] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:43] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:44,347 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:44] "POST /values/delete/94 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:44] "POST /values/delete/94 HTTP/1.1" 200 -
+2024-08-08 14:33:44,356 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:44] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:44] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:44,731 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:44] "POST /values/delete/95 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:44] "POST /values/delete/95 HTTP/1.1" 200 -
+2024-08-08 14:33:44,757 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:44] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:44] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:45,147 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:45] "POST /values/delete/96 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:45] "POST /values/delete/96 HTTP/1.1" 200 -
+2024-08-08 14:33:45,158 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:45] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:45] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:45,526 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:45] "POST /values/delete/97 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:45] "POST /values/delete/97 HTTP/1.1" 200 -
+2024-08-08 14:33:45,542 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:45] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:45] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:45,946 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:45] "POST /values/delete/98 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:45] "POST /values/delete/98 HTTP/1.1" 200 -
+2024-08-08 14:33:45,961 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:45] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:45] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:46,368 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:46] "POST /values/delete/99 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:46] "POST /values/delete/99 HTTP/1.1" 200 -
+2024-08-08 14:33:46,388 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:46] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:46] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:46,740 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:46] "POST /values/delete/100 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:46] "POST /values/delete/100 HTTP/1.1" 200 -
+2024-08-08 14:33:46,748 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:46] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:46] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:46,955 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:46] "POST /values/delete/101 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:46] "POST /values/delete/101 HTTP/1.1" 200 -
+2024-08-08 14:33:46,966 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:46] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:46] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:47,360 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:47] "POST /values/delete/102 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:47] "POST /values/delete/102 HTTP/1.1" 200 -
+2024-08-08 14:33:47,379 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:47] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:47] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:47,922 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:47] "POST /values/delete/103 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:47] "POST /values/delete/103 HTTP/1.1" 200 -
+2024-08-08 14:33:47,930 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:47] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:47] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:48,263 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:48] "POST /values/delete/104 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:48] "POST /values/delete/104 HTTP/1.1" 200 -
+2024-08-08 14:33:48,274 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:48] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:48] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:48,689 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:48] "POST /values/delete/105 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:48] "POST /values/delete/105 HTTP/1.1" 200 -
+2024-08-08 14:33:48,697 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:48] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:48] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:49,063 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:49] "POST /values/delete/106 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:49] "POST /values/delete/106 HTTP/1.1" 200 -
+2024-08-08 14:33:49,072 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:49] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:49] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:49,483 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:49] "POST /values/delete/107 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:49] "POST /values/delete/107 HTTP/1.1" 200 -
+2024-08-08 14:33:49,501 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:49] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:49] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:49,850 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:49] "POST /values/delete/108 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:49] "POST /values/delete/108 HTTP/1.1" 200 -
+2024-08-08 14:33:49,871 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:49] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:49] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:50,055 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/109 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/109 HTTP/1.1" 200 -
+2024-08-08 14:33:50,064 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:50,256 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/110 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/110 HTTP/1.1" 200 -
+2024-08-08 14:33:50,265 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:50,504 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/111 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/111 HTTP/1.1" 200 -
+2024-08-08 14:33:50,513 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:50,916 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/112 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "POST /values/delete/112 HTTP/1.1" 200 -
+2024-08-08 14:33:50,936 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:50] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:51,377 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:51] "POST /values/delete/113 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:51] "POST /values/delete/113 HTTP/1.1" 200 -
+2024-08-08 14:33:51,386 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:51] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:51] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:51,714 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:51] "POST /values/delete/114 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:51] "POST /values/delete/114 HTTP/1.1" 200 -
+2024-08-08 14:33:51,723 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:51] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:51] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:51,971 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:51] "POST /values/delete/115 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:51] "POST /values/delete/115 HTTP/1.1" 200 -
+2024-08-08 14:33:51,979 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:51] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:51] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:52,363 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:52] "POST /values/delete/116 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:52] "POST /values/delete/116 HTTP/1.1" 200 -
+2024-08-08 14:33:52,373 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:52] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:52] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:52,562 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:52] "POST /values/delete/117 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:52] "POST /values/delete/117 HTTP/1.1" 200 -
+2024-08-08 14:33:52,572 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:52] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:52] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:52,779 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:52] "POST /values/delete/118 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:52] "POST /values/delete/118 HTTP/1.1" 200 -
+2024-08-08 14:33:52,788 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:52] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:52] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:53,006 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/119 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/119 HTTP/1.1" 200 -
+2024-08-08 14:33:53,015 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:53,227 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/120 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/120 HTTP/1.1" 200 -
+2024-08-08 14:33:53,244 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:53,637 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/121 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/121 HTTP/1.1" 200 -
+2024-08-08 14:33:53,646 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:53,956 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/122 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "POST /values/delete/122 HTTP/1.1" 200 -
+2024-08-08 14:33:53,964 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:53] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:54,146 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/123 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/123 HTTP/1.1" 200 -
+2024-08-08 14:33:54,156 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:54,372 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/124 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/124 HTTP/1.1" 200 -
+2024-08-08 14:33:54,380 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:54,572 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/125 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/125 HTTP/1.1" 200 -
+2024-08-08 14:33:54,579 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:54,926 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/126 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "POST /values/delete/126 HTTP/1.1" 200 -
+2024-08-08 14:33:54,943 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:54] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:55,321 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:55] "POST /values/delete/127 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:55] "POST /values/delete/127 HTTP/1.1" 200 -
+2024-08-08 14:33:55,329 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:55] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:55] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:55,672 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:55] "POST /values/delete/128 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:55] "POST /values/delete/128 HTTP/1.1" 200 -
+2024-08-08 14:33:55,680 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:55] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:55] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:55,879 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:55] "POST /values/delete/129 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:55] "POST /values/delete/129 HTTP/1.1" 200 -
+2024-08-08 14:33:55,888 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:55] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:55] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:56,113 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/130 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/130 HTTP/1.1" 200 -
+2024-08-08 14:33:56,122 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:56,322 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/131 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/131 HTTP/1.1" 200 -
+2024-08-08 14:33:56,330 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:56,513 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/132 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/132 HTTP/1.1" 200 -
+2024-08-08 14:33:56,523 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:56,712 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/133 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/133 HTTP/1.1" 200 -
+2024-08-08 14:33:56,721 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:56,966 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/134 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "POST /values/delete/134 HTTP/1.1" 200 -
+2024-08-08 14:33:56,983 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:56] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:57,371 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:57] "POST /values/delete/135 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:57] "POST /values/delete/135 HTTP/1.1" 200 -
+2024-08-08 14:33:57,380 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:57] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:57] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:57,607 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:57] "POST /values/delete/136 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:57] "POST /values/delete/136 HTTP/1.1" 200 -
+2024-08-08 14:33:57,625 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:57] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:57] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:58,055 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:58] "POST /values/delete/137 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:58] "POST /values/delete/137 HTTP/1.1" 200 -
+2024-08-08 14:33:58,071 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:58] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:58] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:58,379 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:58] "POST /values/delete/138 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:58] "POST /values/delete/138 HTTP/1.1" 200 -
+2024-08-08 14:33:58,388 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:58] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:58] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:58,605 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:58] "POST /values/delete/139 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:58] "POST /values/delete/139 HTTP/1.1" 200 -
+2024-08-08 14:33:58,613 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:58] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:58] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:59,007 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/140 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/140 HTTP/1.1" 200 -
+2024-08-08 14:33:59,024 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:59,421 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/141 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/141 HTTP/1.1" 200 -
+2024-08-08 14:33:59,435 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:59,646 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/142 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/142 HTTP/1.1" 200 -
+2024-08-08 14:33:59,654 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:33:59,846 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/143 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "POST /values/delete/143 HTTP/1.1" 200 -
+2024-08-08 14:33:59,855 INFO: 127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:33:59] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:00,112 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:00] "POST /values/delete/144 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:00] "POST /values/delete/144 HTTP/1.1" 200 -
+2024-08-08 14:34:00,120 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:00] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:00] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:00,733 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:00] "POST /values/delete/145 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:00] "POST /values/delete/145 HTTP/1.1" 200 -
+2024-08-08 14:34:00,755 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:00] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:00] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:01,139 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:01] "POST /values/delete/146 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:01] "POST /values/delete/146 HTTP/1.1" 200 -
+2024-08-08 14:34:01,159 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:01] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:01] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:01,529 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:01] "POST /values/delete/147 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:01] "POST /values/delete/147 HTTP/1.1" 200 -
+2024-08-08 14:34:01,537 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:01] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:01] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:01,896 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:01] "POST /values/delete/148 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:01] "POST /values/delete/148 HTTP/1.1" 200 -
+2024-08-08 14:34:01,903 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:01] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:01] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:02,148 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:02] "POST /values/delete/149 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:02] "POST /values/delete/149 HTTP/1.1" 200 -
+2024-08-08 14:34:02,166 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:02] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:02] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:02,515 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:02] "POST /values/delete/150 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:02] "POST /values/delete/150 HTTP/1.1" 200 -
+2024-08-08 14:34:02,532 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:02] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:02] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:02,921 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:02] "POST /values/delete/151 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:02] "POST /values/delete/151 HTTP/1.1" 200 -
+2024-08-08 14:34:02,928 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:02] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:02] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:03,154 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:03] "POST /values/delete/152 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:03] "POST /values/delete/152 HTTP/1.1" 200 -
+2024-08-08 14:34:03,161 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:03] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:03] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:03,573 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:03] "POST /values/delete/153 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:03] "POST /values/delete/153 HTTP/1.1" 200 -
+2024-08-08 14:34:03,587 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:03] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:03] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:03,923 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:03] "POST /values/delete/154 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:03] "POST /values/delete/154 HTTP/1.1" 200 -
+2024-08-08 14:34:03,944 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:03] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:03] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:04,370 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:04] "POST /values/delete/155 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:04] "POST /values/delete/155 HTTP/1.1" 200 -
+2024-08-08 14:34:04,378 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:04] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:04] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:04,570 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:04] "POST /values/delete/156 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:04] "POST /values/delete/156 HTTP/1.1" 200 -
+2024-08-08 14:34:04,578 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:04] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:04] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:04,820 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:04] "POST /values/delete/157 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:04] "POST /values/delete/157 HTTP/1.1" 200 -
+2024-08-08 14:34:04,827 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:04] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:04] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:05,278 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:05] "POST /values/delete/158 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:05] "POST /values/delete/158 HTTP/1.1" 200 -
+2024-08-08 14:34:05,295 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:05] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:05] "GET /values/1 HTTP/1.1" 200 -
+2024-08-08 14:34:05,645 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:05] "POST /values/delete/159 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:05] "POST /values/delete/159 HTTP/1.1" 200 -
+2024-08-08 14:34:05,652 INFO: 127.0.0.1 - - [08/Aug/2024 14:34:05] "GET /values/1 HTTP/1.1" 200 - [in D:\Archivos_de_Programa\Anaconda\envs\charlie\lib\site-packages\werkzeug\_internal.py:97]
+INFO:werkzeug:127.0.0.1 - - [08/Aug/2024 14:34:05] "GET /values/1 HTTP/1.1" 200 -
