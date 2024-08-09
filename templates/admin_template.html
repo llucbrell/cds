@@ -216,6 +216,12 @@
             if (event.target.classList.contains('delete-btn')) {
                 const valueId = event.target.getAttribute('data-id');
                 const endpoint = `/values/delete/${valueId}`;
+                // Deshabilitar temporalmente el botón para evitar múltiples clics
+                event.target.disabled = true;
+
+                // Mostrar un mensaje de "procesando..." o un spinner aquí si lo deseas
+                event.target.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';  // Icono de spinner
+
                 fetch(endpoint, {
                     method: 'POST',
                     headers: {

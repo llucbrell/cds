@@ -43,6 +43,7 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
+app.debug = True
 # Configura el registro para Flask y Werkzeug
 if not app.debug:
     # Configura el handler de rotación de archivos
@@ -277,11 +278,32 @@ def edit_value(value_id):
 
 @app.route('/values/delete/<int:value_id>', methods=['POST'])
 def delete_value(value_id):
+    print("Deletion")
+    
+    # Obtener el valor y mostrar su representación
     value = db.get_value(value_id)
+    print(f"Value to delete: {value}")
+    
+    # Obtener el test_id antes de eliminar
     test_id = value.test_id
+    
+    # Eliminar el valor
     db.delete_value(value_id)
+    
+    # Obtener todos los valores después de la eliminación
     values = db.get_values(test_id)
-    return jsonify({'status': 'success', 'message': 'Value deleted successfully', 'values': [{'id': v.id, 'key': v.value_key, 'value': v.value_value, 'value_type': v.value_type} for v in values]})
+    
+    # Imprimir cada valor de manera legible
+    print("Remaining Values after deletion:")
+    for v in values:
+        print(f" - {v}")
+    
+    # Devolver la respuesta como JSON
+    return jsonify({
+        'status': 'success',
+        'message': 'Value deleted successfully',
+        'values': [{'id': v.id, 'key': v.value_key, 'value': v.value_value, 'value_type': v.value_type} for v in values]
+    })
 
 
 @app.route('/upload_csv', methods=['POST'])

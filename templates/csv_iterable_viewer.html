@@ -97,6 +97,7 @@
                     const worksheet = workbook.Sheets[firstSheetName];
                     const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
                     displayTable(jsonData);
+                    hideSpinner();
                 }
             };
 
@@ -133,6 +134,19 @@
                 spinner.style.display = 'none';
             }
         }
+
+        function checkSpaces(){
+            const arrayKeyInput = document.getElementById("array-iterable-key");
+            const arrayKeyValue = arrayKeyInput.value.trim();
+
+            // Validar que solo haya una palabra (sin espacios)
+            if (arrayKeyValue.includes(" ")) {
+                alert("Name must bo only one word without spaces");
+                arrayKeyInput.focus();
+                return true; // Prevenir que continúe si no es válido
+            }
+            return false;
+        }
         function displayTable(data) {
             console.log("Displaying table with data:", data);
 
@@ -160,13 +174,19 @@
                 try {
                    var arrayKey = document.getElementById("array-iterable-key"); 
                    console.log(arrayKey.value);
+                   if(!arrayKey.value){
+                    alert("Can't save without name");
+                    return;
+                   }
                 } catch (error) {
                     alert("Can't save without name");
                     return;
                 }
 
                 console.log("Data to save:", selectedData);
-                showSpinnerSave();
+                if(checkSpaces()){
+                    return;
+                }
                 
                 const pathArray = window.location.pathname.split('/');
                 const testId = pathArray[pathArray.length - 1];
@@ -174,6 +194,7 @@
                 console.log(testId);
                 const confirmMessage = `Are you sure you want to save the following data?\n\n${JSON.stringify(selectedData, null, 2)}`;
                 if (confirm(confirmMessage)) {
+                    showSpinnerSave();
                     fetch('/save_iterable_selection', {
                         method: 'POST',
                         headers: {
