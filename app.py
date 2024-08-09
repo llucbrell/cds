@@ -43,7 +43,6 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
     return os.path.join(base_path, relative_path)
 
-app.debug = True
 # Configura el registro para Flask y Werkzeug
 if not app.debug:
     # Configura el handler de rotación de archivos
