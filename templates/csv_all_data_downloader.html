@@ -8,6 +8,7 @@
         <input type="checkbox" id="chk_test_id" checked> Test ID<br>
         <input type="checkbox" id="chk_result" checked> Result<br>
         <input type="checkbox" id="chk_timestamp" checked> Timestamp<br>
+        <input type="checkbox" id="chk_prompt" checked> Prompt<br>
         <input type="checkbox" id="chk_response_data" checked> Response data<br>
         <input type="checkbox" id="chk_start_time" checked> Start Time<br>
         <input type="checkbox" id="chk_end_time" checked> End Time<br>
@@ -32,6 +33,7 @@
         if (document.getElementById('chk_test_id').checked) selectedColumns.push('Test ID');
         if (document.getElementById('chk_result').checked) selectedColumns.push('Resultado');
         if (document.getElementById('chk_timestamp').checked) selectedColumns.push('Timestamp');
+        if (document.getElementById('chk_prompt').checked) selectedColumns.push('Prompt');
         if (document.getElementById('chk_response_data').checked) selectedColumns.push('Datos de Respuesta');
         if (document.getElementById('chk_start_time').checked) selectedColumns.push('Hora de Inicio');
         if (document.getElementById('chk_end_time').checked) selectedColumns.push('Hora de Finalización');

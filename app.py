@@ -503,7 +503,7 @@ def start_execution(test_id):
         print(response)
         
         duration = end_time - start_time
-        db.add_response(execution_id=execution_id, response_data=response, start_time=start_time, end_time=end_time, duration=duration, model_name=model_name, target_url=target_url )
+        db.add_response(execution_id=execution_id, response_data=response, start_time=start_time, end_time=end_time, duration=duration, model_name=model_name, target_url=target_url, prompt=rendered_text )
         #status_code = response.status_code
         #response_text = response.text
         
@@ -640,7 +640,6 @@ def download_all_data_csv():
     # Obtener todos los datos de ejecuciones y respuestas
     session = Session()
     executions = session.query(Execution).all()
-    responses = session.query(Response).all()
     
     # Crear archivo CSV en memoria
     output = io.StringIO()
@@ -655,21 +654,23 @@ def download_all_data_csv():
     if 'Timestamp' in columns:
         headers.append('Timestamp')
     if 'Resultado' in columns:
-        headers.append('Resultado')
+        headers.append('Result')
+    if 'Prompt' in columns:
+        headers.append('Prompt')
     if 'Datos de Respuesta' in columns:
-        headers.append('Datos de Respuesta')
+        headers.append('Response')
     if 'Hora de Inicio' in columns:
-        headers.append('Hora de Inicio')
+        headers.append('Start Time')
     if 'Hora de Finalización' in columns:
-        headers.append('Hora de Finalización')
+        headers.append('End Time')
     if 'Duración' in columns:
-        headers.append('Duración')
+        headers.append('Duration')
     if 'Fecha' in columns:
-        headers.append('Fecha')
+        headers.append('Date')
     if 'Modelo' in columns:
-        headers.append('Modelo')
+        headers.append('Model Name')
     if 'Url Destino' in columns:
-        headers.append('Url Destino')
+        headers.append('Target Url')
     
     writer.writerow(headers)
     
@@ -678,34 +679,43 @@ def download_all_data_csv():
         execution_data = []
 
         if 'ID' in columns:
-            execution_data.append(execution.id)  # Asegurar que la columna se omite si no está seleccionada
+            execution_data.append(execution.id)
         if 'Test ID' in columns:
-           execution_data.append(execution.test_id)  # Asegurar que la columna se omite si no está seleccionada
+           execution_data.append(execution.test_id)
         if 'Timestamp' in columns:
-            execution_data.append(execution.timestamp)  # Asegurar que la columna se omite si no está seleccionada
+            execution_data.append(execution.timestamp)
         if 'Resultado' in columns:
-            execution_data.append(execution.result)  # Asegurar que la columna se omite si no está seleccionada
-            # Añade más campos según sea necesario
+            execution_data.append(execution.result)
 
-    for response in responses:
-        response_data = []
+        # Obtener respuestas correspondientes a esta ejecución
+        responses = session.query(Response).filter(Response.execution_id == execution.id).all()
 
-        if 'Datos de Respuesta' in columns:
-            response_data.append(response.response_data)  # Asegurar que la columna se omite si no está seleccionada
-        if 'Hora de Inicio' in columns:
-            response_data.append(response.start_time)  # Asegurar que la columna se omite si no está seleccionada
-        if 'Hora de Finalización' in columns:
-            response_data.append(response.end_time)  # Asegurar que la columna se omite si no está seleccionada
-        if 'Duración' in columns:
-            response_data.append(response.duration)  # Asegurar que la columna se omite si no está seleccionada
-        if 'Fecha' in columns:
-            response_data.append(response.date)  # Asegurar que la columna se omite si no está seleccionada
-        if 'Modelo' in columns:
-            response_data.append(response.model_name)  # Asegurar que la columna se omite si no está seleccionada
-        if 'Url Destino' in columns:
-            response_data.append(response.target_url)  # Asegurar que la columna se omite si no está seleccionada
-            # Añade más campos según sea necesario
-        writer.writerow(execution_data + response_data)
+        if responses:
+            for response in responses:
+                response_data = []
+
+                if 'Prompt' in columns:
+                    response_data.append(response.prompt)
+                if 'Datos de Respuesta' in columns:
+                    response_data.append(response.response_data)
+                if 'Hora de Inicio' in columns:
+                    response_data.append(response.start_time)
+                if 'Hora de Finalización' in columns:
+                    response_data.append(response.end_time)
+                if 'Duración' in columns:
+                    response_data.append(response.duration)
+                if 'Fecha' in columns:
+                    response_data.append(response.date)
+                if 'Modelo' in columns:
+                    response_data.append(response.model_name)
+                if 'Url Destino' in columns:
+                    response_data.append(response.target_url)
+
+                # Escribir la fila combinada de ejecución y respuesta
+                writer.writerow(execution_data + response_data)
+        else:
+            # Si no hay respuestas, escribir solo los datos de ejecución
+            writer.writerow(execution_data)
     
     # Convertir StringIO a BytesIO
     output.seek(0)
@@ -719,7 +729,6 @@ def download_all_data_csv():
         as_attachment=True,
         download_name='data.csv'
     )
-
 
 
 @app.route('/download_data_csv', methods=['GET'])
@@ -751,21 +760,23 @@ def download_data_csv():
     if 'Timestamp' in columns:
         headers.append('Timestamp')
     if 'Resultado' in columns:
-        headers.append('Resultado')
+        headers.append('Result')
+    if 'Prompt' in columns:
+        headers.append('Prompt')
     if 'Datos de Respuesta' in columns:
-        headers.append('Datos de Respuesta')
+        headers.append('Response')
     if 'Hora de Inicio' in columns:
-        headers.append('Hora de Inicio')
+        headers.append('Init Time')
     if 'Hora de Finalización' in columns:
-        headers.append('Hora de Finalización')
+        headers.append('End Time')
     if 'Duración' in columns:
-        headers.append('Duración')
+        headers.append('Duration')
     if 'Fecha' in columns:
-        headers.append('Fecha')
+        headers.append('Date')
     if 'Modelo' in columns:
-        headers.append('Modelo')
+        headers.append('Model Name')
     if 'Url Destino' in columns:
-        headers.append('Url Destino')
+        headers.append('Target Url')
 
     writer.writerow(headers)
     # Escribir datos de ejecuciones y respuestas
@@ -785,6 +796,8 @@ def download_data_csv():
     for response in responses:
         response_data = []
 
+        if 'Prompt' in columns:
+            response_data.append(response.prompt)  # Asegurar que la columna se omite si no está seleccionada
         if 'Datos de Respuesta' in columns:
             response_data.append(response.response_data)  # Asegurar que la columna se omite si no está seleccionada
         if 'Hora de Inicio' in columns:

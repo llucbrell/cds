@@ -68,6 +68,7 @@ class Response(Base):
     __tablename__ = 'responses'
     id = Column(Integer, primary_key=True, autoincrement=True)
     execution_id = Column(Integer, ForeignKey('executions.id'), nullable=False)
+    prompt = Column(String, nullable=True)
     response_data = Column(String, nullable=False)
     start_time = Column(Float, nullable=False)
     end_time = Column(Float, nullable=False)
@@ -80,6 +81,7 @@ class Response(Base):
         return {
             'id': self.id,
             'execution_id': self.execution_id,
+            'prompt': self.prompt,
             'response_data': self.response_data,
             'start_time': self.start_time,
             'end_time': self.end_time,
@@ -270,8 +272,8 @@ class Database:
         execution.result = status
         self.session.commit()
 
-    def add_response(self, execution_id, response_data, start_time, end_time, duration, model_name, target_url):
-        new_response = Response(execution_id=execution_id, response_data=response_data, start_time=start_time, end_time=end_time, duration=duration, model_name=model_name, target_url=target_url)
+    def add_response(self, execution_id, response_data, start_time, end_time, duration, model_name, target_url, prompt):
+        new_response = Response(execution_id=execution_id, response_data=response_data, start_time=start_time, end_time=end_time, duration=duration, model_name=model_name, target_url=target_url, prompt=prompt)
         self.session.add(new_response)
         self.session.commit()
 
